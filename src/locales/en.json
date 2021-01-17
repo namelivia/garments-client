@@ -17,6 +17,7 @@
     "name": "Name",
     "garment_type": "Type",
     "color": "Color",
+    "place": "Place",
     "status": "Status",
     "deleteIt": "Delete it"
   },
@@ -32,6 +33,8 @@
     "enterGarmentType": "Enter the type",
     "color": "Color:",
     "enterGarmentColor": "Enter the color",
+    "place": "Place:",
+    "enterGarmentPlace": "Enter the place",
     "status": "Status:",
     "enterGarmentStatus": "Enter the status",
     "image": "Image:",

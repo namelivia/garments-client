@@ -37,7 +37,7 @@ section
                 name="color"
                 v-model="form.color"
                 type="text"
-                :placeholder="$t('newGarment.enterGarmentType')"
+                :placeholder="$t('newGarment.enterGarmentColor')"
             )
         b-form-group(
             id="status-input-group"
@@ -49,7 +49,19 @@ section
                 name="status"
                 v-model="form.status"
                 type="text"
-                :placeholder="$t('newGarment.enterGarmentType')"
+                :placeholder="$t('newGarment.enterGarmentStatus')"
+            )
+        b-form-group(
+            id="place-input-group"
+            :label="$t('newGarment.place')"
+            label-for="place"
+        )
+            b-form-input(
+                id="place"
+                name="place"
+                v-model="form.place"
+                type="text"
+                :placeholder="$t('newGarment.enterGarmentPlace')"
             )
         b-form-group(
             id="image-input-group"
@@ -79,6 +91,7 @@ export default {
         garment_type: "",
         status: "",
         color: "",
+        place: "",
         image: null,
       },
       show: true,
@@ -129,6 +142,7 @@ export default {
       this.form.name = "";
       this.form.garment_type = "";
       this.form.color = "";
+      this.form.place = "";
       this.form.status = "";
       this.show = false;
       this.$nextTick(() => {

@@ -17,6 +17,7 @@
     "name": "Nombre",
     "garment_type": "Tipo",
     "color": "Color",
+    "place": "Lugar",
     "status": "Estado",
     "deleteIt": "Eliminarla"
   },
@@ -32,6 +33,8 @@
     "enterGarmentType": "Introduce el tipo",
     "color": "Color:",
     "enterGarmentColor": "Introduce el color",
+    "place": "Lugar:",
+    "enterGarmentPlace": "Introduce el lugar",
     "status": "Status:",
     "enterGarmentStatus": "Introduce el estado",
     "image": "Imagen:",

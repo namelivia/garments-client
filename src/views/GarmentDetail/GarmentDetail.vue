@@ -8,6 +8,7 @@ section
         p.mb-0 {{$t("garmentDetails.garment_type")}}: {{ garment.garment_type}}
         p.mb-0 {{$t("garmentDetails.color")}}: {{ garment.color}}
         p.mb-0 {{$t("garmentDetails.status")}}: {{ garment.status}}
+        p.mb-0 {{$t("garmentDetails.place")}}: {{ garment.place}}
         b-button(variant="danger" v-on:click="onDelete" v-t="'garmentDetails.deleteIt'")
         journal-entry(
             v-for='entry in journal' :key='entry.id'
