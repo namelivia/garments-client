@@ -1,0 +1,42 @@
+{
+  "navigation": {
+    "title": "App Ropa",
+    "list": "Lista",
+    "new": "Nueva"
+  },
+  "welcome": {
+    "welcome": "Bienvenido a la app de Ropa"
+  },
+  "list": {
+    "title": "Lista de ropa"
+  },
+  "garmentCard": {
+    "details": "Detalles"
+  },
+  "garmentDetails": {
+    "name": "Nombre",
+    "garment_type": "Tipo",
+    "color": "Color",
+    "status": "Estado",
+    "deleteIt": "Eliminarla"
+  },
+  "addJournalEntry": {
+    "add": "Añadir",
+    "insertEntryManually": "Añadir entrada manual:",
+    "messageContent": "Contenido del mensaje"
+  },
+  "newGarment": {
+    "name": "Nombre:",
+    "enterGarmentName": "Introduce el nombre",
+    "garment_type": "Tipo de prenda:",
+    "enterGarmentType": "Introduce el tipo",
+    "color": "Color:",
+    "enterGarmentColor": "Introduce el color",
+    "status": "Status:",
+    "enterGarmentStatus": "Introduce el estado",
+    "image": "Imagen:",
+    "imageForTheGarment": "Imagen de la prenda",
+    "submit": "Guardar",
+    "reset": "Limpiar"
+  }
+}

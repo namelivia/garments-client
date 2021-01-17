@@ -1,0 +1,42 @@
+{
+  "navigation": {
+    "title": "Garments App",
+    "list": "List",
+    "new": "New"
+  },
+  "welcome": {
+    "welcome": "Welcome to the garments app"
+  },
+  "list": {
+    "title": "Garment list"
+  },
+  "garmentCard": {
+    "details": "Details"
+  },
+  "garmentDetails": {
+    "name": "Name",
+    "garment_type": "Type",
+    "color": "Color",
+    "status": "Status",
+    "deleteIt": "Delete it"
+  },
+  "addJournalEntry": {
+    "add": "Add",
+    "insertEntryManually": "Insert entry manually:",
+    "messageContent": "Message content"
+  },
+  "newGarment": {
+    "name": "Name:",
+    "enterGarmentName": "Enter the name",
+    "garment_type": "Garment Type:",
+    "enterGarmentType": "Enter the type",
+    "color": "Color:",
+    "enterGarmentColor": "Enter the color",
+    "status": "Status:",
+    "enterGarmentStatus": "Enter the status",
+    "image": "Image:",
+    "imageForTheGarment": "Image for the garment",
+    "submit": "Submit",
+    "reset": "Reset"
+  }
+}

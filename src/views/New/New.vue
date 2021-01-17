@@ -1,0 +1,140 @@
+<template lang="pug">
+section
+    h1 Add new garment
+    b-form(@submit="onSubmit" @reset="onReset"  v-if="show")
+        b-form-group(
+            id="name-input-group"
+            :label="$t('newGarment.name')"
+            label-for="name"
+        )
+            b-form-input(
+                id="name"
+                name="name"
+                v-model="form.name"
+                type="text"
+                required
+                :placeholder="$t('newGarment.enterGarmentName')"
+            )
+        b-form-group(
+            id="garment_type-input-group"
+            :label="$t('newGarment.garment_type')"
+            label-for="garment_type"
+        )
+            b-form-input(
+                id="garment_type"
+                name="garment_type"
+                v-model="form.garment_type"
+                type="text"
+                :placeholder="$t('newGarment.enterGarmentType')"
+            )
+        b-form-group(
+            id="color-input-group"
+            :label="$t('newGarment.color')"
+            label-for="color"
+        )
+            b-form-input(
+                id="color"
+                name="color"
+                v-model="form.color"
+                type="text"
+                :placeholder="$t('newGarment.enterGarmentType')"
+            )
+        b-form-group(
+            id="status-input-group"
+            :label="$t('newGarment.status')"
+            label-for="status"
+        )
+            b-form-input(
+                id="status"
+                name="status"
+                v-model="form.status"
+                type="text"
+                :placeholder="$t('newGarment.enterGarmentType')"
+            )
+        b-form-group(
+            id="image-input-group"
+            :label="$t('newGarment.image')"
+            label-for="image"
+        )
+            b-form-file(
+                id="image"
+                name="image"
+                v-model="form.image"
+                accept="image/*"
+                :placeholder="$t('newGarment.imageForTheGarment')"
+                :drop-placeholder="$t('newGarment.imageForTheGarment')"
+            )
+        .mt-4
+        b-button.mr-2(type="submit" variant="primary") {{$t('newGarment.submit')}}
+        b-button(type="reset" variant="danger") {{$t('newGarment.reset')}}
+</template>
+
+<script>
+import router from "@/router";
+export default {
+  data() {
+    return {
+      form: {
+        name: "",
+        garment_type: "",
+        status: "",
+        color: "",
+        image: null,
+      },
+      show: true,
+    };
+  },
+  methods: {
+    async onSubmit(evt) {
+      try {
+        evt.preventDefault();
+        //After creating if the garment upload image if has it
+        if (this.form.image) {
+          let formData = new FormData();
+          formData.append("media", this.form.image);
+          let image = await this.$axios.post(
+            `${process.env.VUE_APP_API_ENDPOINT}/image`,
+            formData,
+            {
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            }
+          );
+          this.form.image = image.data.location;
+        }
+        await this.$axios.post(
+          `${process.env.VUE_APP_API_ENDPOINT}/garments`,
+          this.form
+        );
+        router.replace("/list", () => {
+          this.$root.$bvToast.toast(`Garment ${this.form.name} created`, {
+            title: "Success",
+            variant: "success",
+            solid: true,
+          });
+        });
+      } catch (err) {
+        this.$bvToast.toast(`Garment could not be created`, {
+          title: "Error",
+          variant: "danger",
+          solid: true,
+        });
+      }
+    },
+    onReset(evt) {
+      if (evt) {
+        evt.preventDefault();
+      }
+      this.form.name = "";
+      this.form.garment_type = "";
+      this.form.color = "";
+      this.form.status = "";
+      this.show = false;
+      this.$nextTick(() => {
+        this.show = true;
+      });
+    },
+  },
+};
+</script>
