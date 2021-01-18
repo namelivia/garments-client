@@ -1,8 +1,8 @@
 <template lang="pug">
 section
     h1(v-t="'list.title'")
-    h4 Showing garments in: {{currentUserLocation}}
-    garment-list
+    h4 Showing garments in: {{currentUserPlace}}
+    garment-list(:place="currentUserPlace")
 </template>
 
 <script>
@@ -14,7 +14,7 @@ export default {
   },
   data: function () {
     return {
-      currentUserLocation: "place not set",
+      currentUserPlace: "place not set",
     };
   },
   mounted() {
@@ -23,7 +23,7 @@ export default {
   methods: {
     async getCurrentUser() {
       const currentUser = await store.getCurrentUser();
-      this.currentUserLocation = currentUser.place;
+      this.currentUserPlace = currentUser.place;
     },
   },
 };

@@ -16,6 +16,12 @@ export default {
   components: {
     garmentCard: GarmentCard,
   },
+  props: {
+    place: {
+      type: String,
+      default: null,
+    },
+  },
   data: function () {
     return {
       garments: [],
@@ -29,7 +35,7 @@ export default {
     async loadList() {
       try {
         const response = await this.$axios.get(
-          `${process.env.VUE_APP_API_ENDPOINT}/garments`
+          `${process.env.VUE_APP_API_ENDPOINT}/garments?place=${this.place}`
         );
         this.garments = response.data;
       } catch (err) {
