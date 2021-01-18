@@ -2,7 +2,8 @@
   "navigation": {
     "title": "Garments App",
     "list": "List",
-    "new": "New"
+    "new": "New",
+    "new-place": "New Place"
   },
   "welcome": {
     "welcome": "Welcome to the garments app"
@@ -39,6 +40,12 @@
     "enterGarmentStatus": "Enter the status",
     "image": "Image:",
     "imageForTheGarment": "Image for the garment",
+    "submit": "Submit",
+    "reset": "Reset"
+  },
+  "newPlace": {
+    "name": "Name:",
+    "enterPlaceName": "Enter the name",
     "submit": "Submit",
     "reset": "Reset"
   }

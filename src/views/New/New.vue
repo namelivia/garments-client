@@ -56,11 +56,11 @@ section
             :label="$t('newGarment.place')"
             label-for="place"
         )
-            b-form-input(
+            b-form-select(
                 id="place"
                 name="place"
                 v-model="form.place"
-                type="text"
+                :options="options"
                 :placeholder="$t('newGarment.enterGarmentPlace')"
             )
         b-form-group(
@@ -94,10 +94,43 @@ export default {
         place: "",
         image: null,
       },
+      places: [],
       show: true,
     };
   },
+  computed: {
+    options: function () {
+      let options = [{ value: "", text: "Select a place", disabled: true }];
+      return options.concat(
+        this.places.map((place) => {
+          return {
+            value: place.name,
+            text: place.name,
+          };
+        })
+      );
+    },
+  },
+  mounted: function () {
+    this.loadPlaces();
+  },
   methods: {
+    async loadPlaces() {
+      try {
+        const response = await this.$axios.get(
+          `${process.env.VUE_APP_API_ENDPOINT}/places`
+        );
+        this.places = response.data;
+      } catch (err) {
+        this.$bvToast.toast(`Places can't be retrieved`, {
+          title: "Error",
+          variant: "danger",
+          solid: true,
+        });
+      } finally {
+        this.loading = false;
+      }
+    },
     async onSubmit(evt) {
       try {
         evt.preventDefault();

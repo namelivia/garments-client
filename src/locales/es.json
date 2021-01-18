@@ -2,7 +2,8 @@
   "navigation": {
     "title": "App Ropa",
     "list": "Lista",
-    "new": "Nueva"
+    "new": "Nueva",
+    "new-place": "Nuevo Lugar"
   },
   "welcome": {
     "welcome": "Bienvenido a la app de Ropa"
@@ -39,6 +40,12 @@
     "enterGarmentStatus": "Introduce el estado",
     "image": "Imagen:",
     "imageForTheGarment": "Imagen de la prenda",
+    "submit": "Guardar",
+    "reset": "Limpiar"
+  },
+  "newPlace": {
+    "name": "Nombre:",
+    "enterPlaceName": "Introduce el nombre",
     "submit": "Guardar",
     "reset": "Limpiar"
   }

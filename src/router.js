@@ -23,6 +23,11 @@ const router = new Router({
       component: () => import("./views/New/New.vue"),
     },
     {
+      path: "/new-place",
+      name: "new-place",
+      component: () => import("./views/NewPlace/NewPlace.vue"),
+    },
+    {
       path: "/garment/:garmentId",
       name: "garment",
       component: () => import("./views/GarmentDetail/GarmentDetail.vue"),
