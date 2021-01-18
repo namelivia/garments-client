@@ -14,7 +14,7 @@ export default {
   },
   data: function () {
     return {
-      currentUserPlace: "place not set",
+      currentUserPlace: null,
     };
   },
   mounted() {
