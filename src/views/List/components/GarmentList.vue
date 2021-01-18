@@ -28,14 +28,16 @@ export default {
       loading: true,
     };
   },
-  mounted: function () {
-    this.loadList();
+  watch: {
+    place: function (newPlace) {
+      this.loadList(newPlace);
+    },
   },
   methods: {
-    async loadList() {
+    async loadList(newPlace) {
       try {
         const response = await this.$axios.get(
-          `${process.env.VUE_APP_API_ENDPOINT}/garments?place=${this.place}`
+          `${process.env.VUE_APP_API_ENDPOINT}/garments?place=${newPlace}`
         );
         this.garments = response.data;
       } catch (err) {
