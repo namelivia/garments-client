@@ -2,7 +2,11 @@
 section
     h1(v-t="'list.title'")
     h4 Showing garments in: {{currentUserPlace}}
-    garment-list(:place="currentUserPlace")
+    h4 Showing garments of type: {{currentGarmentType}}
+    garment-list(
+        :place="currentUserPlace"
+        :garment-type="currentGarmentType"
+    )
 </template>
 
 <script>
@@ -15,6 +19,7 @@ export default {
   data: function () {
     return {
       currentUserPlace: null,
+      currentGarmentType: "shirt",
     };
   },
   mounted() {

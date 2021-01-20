@@ -21,6 +21,10 @@ export default {
       type: String,
       default: null,
     },
+    garmentType: {
+      type: String,
+      default: null,
+    },
   },
   data: function () {
     return {
@@ -37,7 +41,7 @@ export default {
     async loadList(newPlace) {
       try {
         const response = await this.$axios.get(
-          `${process.env.VUE_APP_API_ENDPOINT}/garments?place=${newPlace}`
+          `${process.env.VUE_APP_API_ENDPOINT}/garments?place=${newPlace}&garment_type=${this.garmentType}`
         );
         this.garments = response.data;
       } catch (err) {
