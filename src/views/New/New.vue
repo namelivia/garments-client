@@ -20,12 +20,12 @@ section
             :label="$t('newGarment.garment_type')"
             label-for="garment_type"
         )
-            b-form-input(
+            b-form-select(
                 id="garment_type"
                 name="garment_type"
                 v-model="form.garment_type"
-                type="text"
-                :placeholder="$t('newGarment.enterGarmentType')"
+                :options="garmentTypeOptions"
+                :garment_typeholder="$t('newGarment.enterGarmentPlace')"
             )
         b-form-group(
             id="color-input-group"
@@ -60,7 +60,7 @@ section
                 id="place"
                 name="place"
                 v-model="form.place"
-                :options="options"
+                :options="placeOptions"
                 :placeholder="$t('newGarment.enterGarmentPlace')"
             )
         b-form-group(
@@ -95,11 +95,12 @@ export default {
         image: null,
       },
       places: [],
+      garmentTypes: [],
       show: true,
     };
   },
   computed: {
-    options: function () {
+    placeOptions: function () {
       let options = [{ value: "", text: "Select a place", disabled: true }];
       return options.concat(
         this.places.map((place) => {
@@ -110,9 +111,21 @@ export default {
         })
       );
     },
+    garmentTypeOptions: function () {
+      let options = [{ value: "", text: "Select a type", disabled: true }];
+      return options.concat(
+        this.garmentTypes.map((garmentType) => {
+          return {
+            value: garmentType.name,
+            text: garmentType.name,
+          };
+        })
+      );
+    },
   },
   mounted: function () {
     this.loadPlaces();
+    this.loadGarmentTypes();
   },
   methods: {
     async loadPlaces() {
@@ -123,6 +136,22 @@ export default {
         this.places = response.data;
       } catch (err) {
         this.$bvToast.toast(`Places can't be retrieved`, {
+          title: "Error",
+          variant: "danger",
+          solid: true,
+        });
+      } finally {
+        this.loading = false;
+      }
+    },
+    async loadGarmentTypes() {
+      try {
+        const response = await this.$axios.get(
+          `${process.env.VUE_APP_API_ENDPOINT}/garment_types`
+        );
+        this.garmentTypes = response.data;
+      } catch (err) {
+        this.$bvToast.toast(`Garment Types can't be retrieved`, {
           title: "Error",
           variant: "danger",
           solid: true,

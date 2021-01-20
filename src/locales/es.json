@@ -3,7 +3,8 @@
     "title": "App Ropa",
     "list": "Lista",
     "new": "Nueva",
-    "new-place": "Nuevo Lugar"
+    "new-place": "Nuevo Lugar",
+    "new-garment-type": "Nuevo Tipo"
   },
   "welcome": {
     "welcome": "Bienvenido a la app de Ropa"
@@ -46,6 +47,12 @@
   "newPlace": {
     "name": "Nombre:",
     "enterPlaceName": "Introduce el nombre",
+    "submit": "Guardar",
+    "reset": "Limpiar"
+  },
+  "newGarmentType": {
+    "name": "Nombre:",
+    "enterGarmentTypeName": "Introduce el nombre",
     "submit": "Guardar",
     "reset": "Limpiar"
   }

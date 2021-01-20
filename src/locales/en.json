@@ -3,7 +3,8 @@
     "title": "Garments App",
     "list": "List",
     "new": "New",
-    "new-place": "New Place"
+    "new-place": "New Place",
+    "new-garment-type": "New Type"
   },
   "welcome": {
     "welcome": "Welcome to the garments app"
@@ -46,6 +47,12 @@
   "newPlace": {
     "name": "Name:",
     "enterPlaceName": "Enter the name",
+    "submit": "Submit",
+    "reset": "Reset"
+  },
+  "newGarmentType": {
+    "name": "Name:",
+    "enterGarmentTypeName": "Enter the name",
     "submit": "Submit",
     "reset": "Reset"
   }
