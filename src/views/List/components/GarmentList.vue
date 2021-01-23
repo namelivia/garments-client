@@ -29,6 +29,8 @@ export default {
   data: function () {
     return {
       garments: [],
+      places: [],
+      garmentTypes: [],
       loading: true,
     };
   },
@@ -36,6 +38,10 @@ export default {
     place: function (newPlace) {
       this.loadList(newPlace);
     },
+  },
+  mounted: function () {
+    this.loadPlaces();
+    this.loadGarmentTypes();
   },
   methods: {
     async loadList(newPlace) {
@@ -46,6 +52,38 @@ export default {
         this.garments = response.data;
       } catch (err) {
         this.$bvToast.toast(`Garments can't be retrieved`, {
+          title: "Error",
+          variant: "danger",
+          solid: true,
+        });
+      } finally {
+        this.loading = false;
+      }
+    },
+    async loadPlaces() {
+      try {
+        const response = await this.$axios.get(
+          `${process.env.VUE_APP_API_ENDPOINT}/places`
+        );
+        this.places = response.data;
+      } catch (err) {
+        this.$bvToast.toast(`Places can't be retrieved`, {
+          title: "Error",
+          variant: "danger",
+          solid: true,
+        });
+      } finally {
+        this.loading = false;
+      }
+    },
+    async loadGarmentTypes() {
+      try {
+        const response = await this.$axios.get(
+          `${process.env.VUE_APP_API_ENDPOINT}/garment_types`
+        );
+        this.garmentTypes = response.data;
+      } catch (err) {
+        this.$bvToast.toast(`Garment Types can't be retrieved`, {
           title: "Error",
           variant: "danger",
           solid: true,
