@@ -10,6 +10,8 @@ section
         p.mb-0 {{$t("garmentDetails.status")}}: {{ garment.status}}
         p.mb-0 {{$t("garmentDetails.place")}}: {{ garment.place}}
         b-button(variant="danger" v-on:click="onDelete" v-t="'garmentDetails.deleteIt'")
+        router-link(:to="{ name: 'edit', params: { garmentId: garmentId}}")
+            b-button.ml-2(v-t="'garmentCard.editIt'")
         journal-entry(
             v-for='entry in journal' :key='entry.id'
             :message="entry.message"

@@ -33,6 +33,12 @@ const router = new Router({
       component: () => import("./views/NewGarmentType/NewGarmentType.vue"),
     },
     {
+      path: "/garment/:garmentId/edit",
+      name: "edit",
+      component: () => import("./views/Edit/Edit.vue"),
+      props: true,
+    },
+    {
       path: "/garment/:garmentId",
       name: "garment",
       component: () => import("./views/GarmentDetail/GarmentDetail.vue"),
