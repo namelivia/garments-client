@@ -1,6 +1,7 @@
 <template lang="pug">
 section
     h1 Edit existing garment
+    img.mb-4.img-fluid(:src="imageUrl")
     b-form(@submit="onSubmit" @reset="onReset"  v-if="show")
         b-form-group(
             id="name-input-group"
@@ -63,6 +64,19 @@ section
                 :options="placeOptions"
                 :placeholder="$t('editGarment.enterGarmentPlace')"
             )
+        b-form-group(
+            id="image-input-group"
+            :label="$t('newGarment.image')"
+            label-for="image"
+        )
+            b-form-file(
+                id="image"
+                name="image"
+                v-model="form.newImage"
+                accept="image/*"
+                :placeholder="$t('newGarment.imageForTheGarment')"
+                :drop-placeholder="$t('newGarment.imageForTheGarment')"
+            )
         .mt-4
         b-button.mr-2(type="submit" variant="primary") {{$t('editGarment.save')}}
         b-button(type="reset" variant="danger") {{$t('editGarment.reset')}}
@@ -86,6 +100,7 @@ export default {
         color: "",
         place: "",
         image: null,
+        newImage: null,
       },
       places: [],
       garmentTypes: [],
@@ -114,6 +129,12 @@ export default {
           };
         })
       );
+    },
+    imageUrl: function () {
+      if (this.form.image) {
+        return process.env.VUE_APP_API_ENDPOINT + this.form.image;
+      }
+      return null;
     },
   },
   mounted: function () {
@@ -176,9 +197,23 @@ export default {
       }
     },
     async onSubmit(evt) {
-      //TODO: Images can't still be replaced
       try {
         evt.preventDefault();
+        //After creating if the garment upload image if has it
+        if (this.form.newImage) {
+          let formData = new FormData();
+          formData.append("media", this.form.newImage);
+          let newImage = await this.$axios.post(
+            `${process.env.VUE_APP_API_ENDPOINT}/image`,
+            formData,
+            {
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            }
+          );
+          this.form.image = newImage.data.location;
+        }
         await this.$axios.put(
           `${process.env.VUE_APP_API_ENDPOINT}/garments/${this.garmentId}`,
           this.form
