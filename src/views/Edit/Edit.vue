@@ -85,6 +85,7 @@ export default {
         status: "",
         color: "",
         place: "",
+        image: null,
       },
       places: [],
       garmentTypes: [],
@@ -163,6 +164,7 @@ export default {
         this.form.color = response.data.color;
         this.form.status = response.data.status;
         this.form.place = response.data.place;
+        this.form.image = response.data.image;
       } catch (err) {
         this.$bvToast.toast(`Garment can't be retrieved`, {
           title: "Error",
@@ -174,6 +176,7 @@ export default {
       }
     },
     async onSubmit(evt) {
+      //TODO: Images can't still be replaced
       try {
         evt.preventDefault();
         await this.$axios.put(
