@@ -29,61 +29,33 @@ export default {
   data: function () {
     return {
       garments: [],
-      places: [],
-      garmentTypes: [],
       loading: true,
+      selectedPlace: null,
+      selectedType: null,
     };
   },
   watch: {
     place: function (newPlace) {
-      this.loadList(newPlace);
+      this.selectedPlace = newPlace;
+      this.loadList();
+    },
+    garmentType: function (newType) {
+      this.selectedType = newType;
+      this.loadList();
     },
   },
-  mounted: function () {
-    this.loadPlaces();
-    this.loadGarmentTypes();
-  },
   methods: {
-    async loadList(newPlace) {
+    async loadList() {
+      if (!this.selectedType || !this.selectedType) {
+        return null;
+      }
       try {
         const response = await this.$axios.get(
-          `${process.env.VUE_APP_API_ENDPOINT}/garments?place=${newPlace}&garment_type=${this.garmentType}`
+          `${process.env.VUE_APP_API_ENDPOINT}/garments?place=${this.selectedPlace}&garment_type=${this.selectedType}`
         );
         this.garments = response.data;
       } catch (err) {
         this.$bvToast.toast(`Garments can't be retrieved`, {
-          title: "Error",
-          variant: "danger",
-          solid: true,
-        });
-      } finally {
-        this.loading = false;
-      }
-    },
-    async loadPlaces() {
-      try {
-        const response = await this.$axios.get(
-          `${process.env.VUE_APP_API_ENDPOINT}/places`
-        );
-        this.places = response.data;
-      } catch (err) {
-        this.$bvToast.toast(`Places can't be retrieved`, {
-          title: "Error",
-          variant: "danger",
-          solid: true,
-        });
-      } finally {
-        this.loading = false;
-      }
-    },
-    async loadGarmentTypes() {
-      try {
-        const response = await this.$axios.get(
-          `${process.env.VUE_APP_API_ENDPOINT}/garment_types`
-        );
-        this.garmentTypes = response.data;
-      } catch (err) {
-        this.$bvToast.toast(`Garment Types can't be retrieved`, {
           title: "Error",
           variant: "danger",
           solid: true,
