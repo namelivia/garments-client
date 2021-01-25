@@ -153,7 +153,7 @@ export default {
   methods: {
     async loadPlaces() {
       try {
-        this.places = getPlaces();
+        this.places = await getPlaces();
       } catch (err) {
         this.$bvToast.toast(`Places can't be retrieved`, {
           title: "Error",
@@ -166,7 +166,7 @@ export default {
     },
     async loadGarmentTypes() {
       try {
-        this.garmentTypes = getGarmentTypes();
+        this.garmentTypes = await getGarmentTypes();
       } catch (err) {
         this.$bvToast.toast(`Garment Types can't be retrieved`, {
           title: "Error",
@@ -179,7 +179,7 @@ export default {
     },
     async loadGarment() {
       try {
-        const garment = getGarment(this.garmentId);
+        const garment = await getGarment(this.garmentId);
         //TODO: This can probably be done in an oneliner
         this.form.name = garment.name;
         this.form.garment_type = garment.garment_type;
@@ -202,7 +202,7 @@ export default {
         evt.preventDefault();
         //After creating if the garment upload image if has it
         if (this.form.newImage) {
-          this.form.image = postImage(this.form.newImage);
+          this.form.image = await postImage(this.form.newImage);
         }
         putGarment(this.garmentId, this.form);
         router.replace("/list", () => {

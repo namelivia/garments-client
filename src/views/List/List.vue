@@ -82,7 +82,7 @@ export default {
     },
     async loadPlaces() {
       try {
-        this.places = getPlaces();
+        this.places = await getPlaces();
       } catch (err) {
         this.$bvToast.toast(`Places can't be retrieved`, {
           title: "Error",
@@ -95,7 +95,7 @@ export default {
     },
     async loadGarmentTypes() {
       try {
-        this.garmentTypes = getGarmentTypes();
+        this.garmentTypes = await getGarmentTypes();
       } catch (err) {
         this.$bvToast.toast(`Garment Types can't be retrieved`, {
           title: "Error",

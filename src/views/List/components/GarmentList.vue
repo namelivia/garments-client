@@ -51,7 +51,10 @@ export default {
         return null;
       }
       try {
-        this.garments = getGarments(this.selectedPlace, this.selectedType);
+        this.garments = await getGarments(
+          this.selectedPlace,
+          this.selectedType
+        );
       } catch (err) {
         this.$bvToast.toast(`Garments can't be retrieved`, {
           title: "Error",

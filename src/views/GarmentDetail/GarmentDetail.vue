@@ -59,7 +59,7 @@ export default {
   methods: {
     async loadJournal() {
       try {
-        this.journal = getJournal(this.garmentId);
+        this.journal = await getJournal(this.garmentId);
       } catch (err) {
         this.$bvToast.toast(`Journal can't be retrieved`, {
           title: "Error",
@@ -72,7 +72,7 @@ export default {
     },
     async loadGarment() {
       try {
-        this.garment = getGarment(this.garmentId);
+        this.garment = await getGarment(this.garmentId);
       } catch (err) {
         this.$bvToast.toast(`Garment can't be retrieved`, {
           title: "Error",
