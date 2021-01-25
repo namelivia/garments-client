@@ -21,6 +21,7 @@ section
 </template>
 
 <script>
+import { getJournal, getGarment, deleteGarment } from "@/apis/apis.js";
 import JournalEntry from "./components/JournalEntry";
 import AddJournalEntry from "./components/AddJournalEntry";
 import router from "@/router";
@@ -57,10 +58,7 @@ export default {
   methods: {
     async loadJournal() {
       try {
-        const response = await this.$axios.get(
-          `${process.env.VUE_APP_API_ENDPOINT}/garments/${this.garmentId}/journal`
-        );
-        this.journal = response.data;
+        this.journal = getJournal(this.garmentId);
       } catch (err) {
         this.$bvToast.toast(`Journal can't be retrieved`, {
           title: "Error",
@@ -73,10 +71,7 @@ export default {
     },
     async loadGarment() {
       try {
-        const response = await this.$axios.get(
-          `${process.env.VUE_APP_API_ENDPOINT}/garments/${this.garmentId}`
-        );
-        this.garment = response.data;
+        this.garment = getGarment(this.garmentId);
       } catch (err) {
         this.$bvToast.toast(`Garment can't be retrieved`, {
           title: "Error",
@@ -90,9 +85,7 @@ export default {
     async onDelete(evt) {
       evt.preventDefault();
       try {
-        await this.$axios.delete(
-          `${process.env.VUE_APP_API_ENDPOINT}/garments/${this.garment.id}`
-        );
+        deleteGarment(this.garment.id);
         router.replace("/list", () => {
           this.$root.$bvToast.toast(`Garment removed`, {
             title: "Success",

@@ -30,6 +30,7 @@ section
 
 <script>
 import GarmentList from "./components/GarmentList";
+import { getPlaces, getGarmentTypes } from "@/apis/apis.js";
 import store from "@/currentUser";
 export default {
   components: {
@@ -81,10 +82,7 @@ export default {
     },
     async loadPlaces() {
       try {
-        const response = await this.$axios.get(
-          `${process.env.VUE_APP_API_ENDPOINT}/places`
-        );
-        this.places = response.data;
+        this.places = getPlaces();
       } catch (err) {
         this.$bvToast.toast(`Places can't be retrieved`, {
           title: "Error",
@@ -97,10 +95,7 @@ export default {
     },
     async loadGarmentTypes() {
       try {
-        const response = await this.$axios.get(
-          `${process.env.VUE_APP_API_ENDPOINT}/garment_types`
-        );
-        this.garmentTypes = response.data;
+        this.garmentTypes = getGarmentTypes();
       } catch (err) {
         this.$bvToast.toast(`Garment Types can't be retrieved`, {
           title: "Error",

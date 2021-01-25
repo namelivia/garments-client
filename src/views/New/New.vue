@@ -83,6 +83,12 @@ section
 
 <script>
 import router from "@/router";
+import {
+  getPlaces,
+  postImage,
+  postGarment,
+  getGarmentTypes,
+} from "@/apis/apis.js";
 export default {
   data() {
     return {
@@ -130,10 +136,7 @@ export default {
   methods: {
     async loadPlaces() {
       try {
-        const response = await this.$axios.get(
-          `${process.env.VUE_APP_API_ENDPOINT}/places`
-        );
-        this.places = response.data;
+        this.places = getPlaces();
       } catch (err) {
         this.$bvToast.toast(`Places can't be retrieved`, {
           title: "Error",
@@ -146,10 +149,7 @@ export default {
     },
     async loadGarmentTypes() {
       try {
-        const response = await this.$axios.get(
-          `${process.env.VUE_APP_API_ENDPOINT}/garment_types`
-        );
-        this.garmentTypes = response.data;
+        this.garmentTypes = getGarmentTypes();
       } catch (err) {
         this.$bvToast.toast(`Garment Types can't be retrieved`, {
           title: "Error",
@@ -165,23 +165,9 @@ export default {
         evt.preventDefault();
         //After creating if the garment upload image if has it
         if (this.form.image) {
-          let formData = new FormData();
-          formData.append("media", this.form.image);
-          let image = await this.$axios.post(
-            `${process.env.VUE_APP_API_ENDPOINT}/image`,
-            formData,
-            {
-              headers: {
-                "Content-Type": "multipart/form-data",
-              },
-            }
-          );
-          this.form.image = image.data.location;
+          this.form.image = postImage(this.form.image);
         }
-        await this.$axios.post(
-          `${process.env.VUE_APP_API_ENDPOINT}/garments`,
-          this.form
-        );
+        postGarment(this.form);
         router.replace("/list", () => {
           this.$root.$bvToast.toast(`Garment ${this.form.name} created`, {
             title: "Success",

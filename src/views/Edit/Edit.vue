@@ -84,6 +84,13 @@ section
 
 <script>
 import router from "@/router";
+import {
+  getPlaces,
+  postImage,
+  getGarment,
+  putGarment,
+  getGarmentTypes,
+} from "@/apis/apis.js";
 export default {
   props: {
     garmentId: {
@@ -145,10 +152,7 @@ export default {
   methods: {
     async loadPlaces() {
       try {
-        const response = await this.$axios.get(
-          `${process.env.VUE_APP_API_ENDPOINT}/places`
-        );
-        this.places = response.data;
+        this.places = getPlaces();
       } catch (err) {
         this.$bvToast.toast(`Places can't be retrieved`, {
           title: "Error",
@@ -161,10 +165,7 @@ export default {
     },
     async loadGarmentTypes() {
       try {
-        const response = await this.$axios.get(
-          `${process.env.VUE_APP_API_ENDPOINT}/garment_types`
-        );
-        this.garmentTypes = response.data;
+        this.garmentTypes = getGarmentTypes();
       } catch (err) {
         this.$bvToast.toast(`Garment Types can't be retrieved`, {
           title: "Error",
@@ -177,15 +178,14 @@ export default {
     },
     async loadGarment() {
       try {
-        const response = await this.$axios.get(
-          `${process.env.VUE_APP_API_ENDPOINT}/garments/${this.garmentId}`
-        );
-        this.form.name = response.data.name;
-        this.form.garment_type = response.data.garment_type;
-        this.form.color = response.data.color;
-        this.form.status = response.data.status;
-        this.form.place = response.data.place;
-        this.form.image = response.data.image;
+        const garment = getGarment(this.garmentId);
+        //TODO: This can probably be done in an oneliner
+        this.form.name = garment.name;
+        this.form.garment_type = garment.garment_type;
+        this.form.color = garment.color;
+        this.form.status = garment.status;
+        this.form.place = garment.place;
+        this.form.image = garment.image;
       } catch (err) {
         this.$bvToast.toast(`Garment can't be retrieved`, {
           title: "Error",
@@ -201,23 +201,9 @@ export default {
         evt.preventDefault();
         //After creating if the garment upload image if has it
         if (this.form.newImage) {
-          let formData = new FormData();
-          formData.append("media", this.form.newImage);
-          let newImage = await this.$axios.post(
-            `${process.env.VUE_APP_API_ENDPOINT}/image`,
-            formData,
-            {
-              headers: {
-                "Content-Type": "multipart/form-data",
-              },
-            }
-          );
-          this.form.image = newImage.data.location;
+          this.form.image = postImage(this.form.newImage);
         }
-        await this.$axios.put(
-          `${process.env.VUE_APP_API_ENDPOINT}/garments/${this.garmentId}`,
-          this.form
-        );
+        putGarment(this.garmentId, this.form);
         router.replace("/list", () => {
           this.$root.$bvToast.toast(`Garment ${this.form.name} created`, {
             title: "Success",

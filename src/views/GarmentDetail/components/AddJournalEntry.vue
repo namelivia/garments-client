@@ -18,6 +18,7 @@ section
                     b-button(type="submit" variant="primary" v-t="'addJournalEntry.add'")
 </template>
 <script>
+import { postJournalEntry } from "@/apis/apis.js";
 export default {
   props: {
     garmentId: {
@@ -37,10 +38,7 @@ export default {
     async onSubmit(evt) {
       try {
         evt.preventDefault();
-        await this.$axios.post(
-          `${process.env.VUE_APP_API_ENDPOINT}/garments/${this.garmentId}/journal`,
-          this.form
-        );
+        postJournalEntry(this.garmentId, this.form);
         this.$bvToast.toast(`Journal entry added`, {
           title: "Success",
           variant: "success",

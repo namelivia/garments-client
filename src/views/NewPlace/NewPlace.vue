@@ -22,6 +22,7 @@ section
 
 <script>
 import router from "@/router";
+import { postPlace } from "@/apis/apis.js";
 export default {
   data() {
     return {
@@ -35,10 +36,7 @@ export default {
     async onSubmit(evt) {
       try {
         evt.preventDefault();
-        await this.$axios.post(
-          `${process.env.VUE_APP_API_ENDPOINT}/places`,
-          this.form
-        );
+        postPlace(this.form);
         router.replace("/list", () => {
           this.$root.$bvToast.toast(`Place ${this.form.name} created`, {
             title: "Success",

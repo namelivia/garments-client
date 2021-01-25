@@ -12,6 +12,7 @@ section
 
 <script>
 import GarmentCard from "./GarmentCard";
+import { getGarments } from "@/apis/apis.js";
 export default {
   components: {
     garmentCard: GarmentCard,
@@ -50,10 +51,7 @@ export default {
         return null;
       }
       try {
-        const response = await this.$axios.get(
-          `${process.env.VUE_APP_API_ENDPOINT}/garments?place=${this.selectedPlace}&garment_type=${this.selectedType}`
-        );
-        this.garments = response.data;
+        this.garments = getGarments(this.selectedPlace, this.selectedType);
       } catch (err) {
         this.$bvToast.toast(`Garments can't be retrieved`, {
           title: "Error",
