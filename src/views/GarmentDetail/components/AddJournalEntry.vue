@@ -18,7 +18,7 @@ section
                     b-button(type="submit" variant="primary" v-t="'addJournalEntry.add'")
 </template>
 <script>
-import { postJournalEntry } from "@/apis/apis.js";
+import { postJournalEntry } from "@/apis/apis";
 export default {
   props: {
     garmentId: {

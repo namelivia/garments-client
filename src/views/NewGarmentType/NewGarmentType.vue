@@ -22,7 +22,7 @@ section
 
 <script>
 import router from "@/router";
-import { postGarmentType } from "@/apis/apis.js";
+import { postGarmentType } from "@/apis/apis";
 export default {
   data() {
     return {

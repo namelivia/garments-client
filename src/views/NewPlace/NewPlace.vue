@@ -22,7 +22,7 @@ section
 
 <script>
 import router from "@/router";
-import { postPlace } from "@/apis/apis.js";
+import { postPlace } from "@/apis/apis";
 export default {
   data() {
     return {

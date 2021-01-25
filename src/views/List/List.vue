@@ -30,7 +30,7 @@ section
 
 <script>
 import GarmentList from "./components/GarmentList";
-import { getPlaces, getGarmentTypes } from "@/apis/apis.js";
+import { getPlaces, getGarmentTypes } from "@/apis/apis";
 import store from "@/currentUser";
 export default {
   components: {

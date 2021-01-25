@@ -88,7 +88,7 @@ import {
   postImage,
   postGarment,
   getGarmentTypes,
-} from "@/apis/apis.js";
+} from "@/apis/apis";
 export default {
   data() {
     return {

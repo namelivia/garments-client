@@ -12,7 +12,7 @@ section
 
 <script>
 import GarmentCard from "./GarmentCard";
-import { getGarments } from "@/apis/apis.js";
+import { getGarments } from "@/apis/apis";
 export default {
   components: {
     garmentCard: GarmentCard,

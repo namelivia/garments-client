@@ -10,6 +10,7 @@
             b-button.ml-2(v-t="'garmentCard.details'")
 </template>
 <script>
+import { getImageUrl } from "@/apis/helpers";
 export default {
   props: {
     name: {
@@ -28,7 +29,7 @@ export default {
   computed: {
     imageUrl: function () {
       if (this.imagePath) {
-        return process.env.VUE_APP_API_ENDPOINT + this.imagePath;
+        return getImageUrl(this.imagePath);
       }
       return null;
     },

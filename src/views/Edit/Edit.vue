@@ -90,7 +90,8 @@ import {
   getGarment,
   putGarment,
   getGarmentTypes,
-} from "@/apis/apis.js";
+} from "@/apis/apis";
+import { getImageUrl } from "@/apis/helpers";
 export default {
   props: {
     garmentId: {
@@ -139,7 +140,7 @@ export default {
     },
     imageUrl: function () {
       if (this.form.image) {
-        return process.env.VUE_APP_API_ENDPOINT + this.form.image;
+        getImageUrl(this.form.image);
       }
       return null;
     },

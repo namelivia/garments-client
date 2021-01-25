@@ -21,7 +21,8 @@ section
 </template>
 
 <script>
-import { getJournal, getGarment, deleteGarment } from "@/apis/apis.js";
+import { getJournal, getGarment, deleteGarment } from "@/apis/apis";
+import { getImageUrl } from "@/apis/helpers";
 import JournalEntry from "./components/JournalEntry";
 import AddJournalEntry from "./components/AddJournalEntry";
 import router from "@/router";
@@ -46,7 +47,7 @@ export default {
   computed: {
     imageUrl: function () {
       if (this.garment.image) {
-        return process.env.VUE_APP_API_ENDPOINT + this.garment.image;
+        return getImageUrl(this.garment.image);
       }
       return null;
     },
