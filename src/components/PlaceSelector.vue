@@ -51,6 +51,9 @@ export default {
         this.loading = false;
       }
     },
+    onChange(evt) {
+      this.$emit("selected", evt);
+    },
   },
 };
 </script>
