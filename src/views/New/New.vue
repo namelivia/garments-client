@@ -42,18 +42,6 @@ section
                 :placeholder="$t('newGarment.enterGarmentStatus')"
             )
         b-form-group(
-            id="place-input-group"
-            :label="$t('newGarment.place')"
-            label-for="place"
-        )
-            b-form-select(
-                id="place"
-                name="place"
-                v-model="form.place"
-                :options="placeOptions"
-                :placeholder="$t('newGarment.enterGarmentPlace')"
-            )
-        b-form-group(
             id="image-input-group"
             :label="$t('newGarment.image')"
             label-for="image"
