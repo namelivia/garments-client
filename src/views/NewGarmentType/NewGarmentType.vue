@@ -23,6 +23,7 @@ section
 <script>
 import router from "@/router";
 import { postGarmentType } from "@/apis/apis";
+import { errorToast, okToast } from "@/helpers/ui";
 export default {
   data() {
     return {
@@ -38,19 +39,13 @@ export default {
         evt.preventDefault();
         postGarmentType(this.form);
         router.replace("/list", () => {
-          this.$root.$bvToast.toast(`GarmentType ${this.form.name} created`, {
-            title: "Success",
-            variant: "success",
-            solid: true,
-          });
+          this.$root.$bvToast.toast(
+            `GarmentType ${this.form.name} created`,
+            okToast
+          );
         });
       } catch (err) {
-        console.log(err);
-        this.$bvToast.toast(`GarmentType could not be created`, {
-          title: "Error",
-          variant: "danger",
-          solid: true,
-        });
+        this.$bvToast.toast(`GarmentType could not be created`, errorToast);
       }
     },
     onReset(evt) {

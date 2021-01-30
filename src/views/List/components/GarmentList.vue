@@ -13,6 +13,7 @@ section
 <script>
 import GarmentCard from "./GarmentCard";
 import { getGarments } from "@/apis/apis";
+import { errorToast } from "@/helpers/ui";
 export default {
   components: {
     garmentCard: GarmentCard,
@@ -56,11 +57,7 @@ export default {
           this.selectedType
         );
       } catch (err) {
-        this.$bvToast.toast(`Garments can't be retrieved`, {
-          title: "Error",
-          variant: "danger",
-          solid: true,
-        });
+        this.$bvToast.toast(`Garments can't be retrieved`, errorToast);
       } finally {
         this.loading = false;
       }

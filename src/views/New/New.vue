@@ -16,7 +16,7 @@ section
                 :placeholder="$t('newGarment.enterGarmentName')"
             )
         garment-type-selector(@selected="onGarmentTypeSelected")
-        place-type-selector(@selected="onPlaceSelected")
+        place-selector(@selected="onPlaceSelected")
         b-form-group(
             id="color-input-group"
             :label="$t('newGarment.color')"
@@ -76,6 +76,7 @@ import router from "@/router";
 import GarmentTypeSelector from "@/components/GarmentTypeSelector";
 import PlaceSelector from "@/components/PlaceSelector";
 import { postImage, postGarment } from "@/apis/apis";
+import { errorToast, okToast } from "@/helpers/ui";
 export default {
   components: {
     GarmentTypeSelector: GarmentTypeSelector,
@@ -111,18 +112,13 @@ export default {
         }
         postGarment(this.form);
         router.replace("/list", () => {
-          this.$root.$bvToast.toast(`Garment ${this.form.name} created`, {
-            title: "Success",
-            variant: "success",
-            solid: true,
-          });
+          this.$root.$bvToast.toast(
+            `Garment ${this.form.name} created`,
+            okToast
+          );
         });
       } catch (err) {
-        this.$bvToast.toast(`Garment could not be created`, {
-          title: "Error",
-          variant: "danger",
-          solid: true,
-        });
+        this.$bvToast.toast(`Garment could not be created`, errorToast);
       }
     },
     onReset(evt) {

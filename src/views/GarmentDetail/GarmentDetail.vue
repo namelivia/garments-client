@@ -23,6 +23,7 @@ section
 <script>
 import { getJournal, getGarment, deleteGarment } from "@/apis/apis";
 import { getImageUrl } from "@/apis/helpers";
+import { errorToast, okToast } from "@/helpers/ui";
 import JournalEntry from "./components/JournalEntry";
 import AddJournalEntry from "./components/AddJournalEntry";
 import router from "@/router";
@@ -61,11 +62,7 @@ export default {
       try {
         this.journal = await getJournal(this.garmentId);
       } catch (err) {
-        this.$bvToast.toast(`Journal can't be retrieved`, {
-          title: "Error",
-          variant: "danger",
-          solid: true,
-        });
+        this.$bvToast.toast(`Journal can't be retrieved`, errorToast);
       } finally {
         this.loading = false;
       }
@@ -74,11 +71,7 @@ export default {
       try {
         this.garment = await getGarment(this.garmentId);
       } catch (err) {
-        this.$bvToast.toast(`Garment can't be retrieved`, {
-          title: "Error",
-          variant: "danger",
-          solid: true,
-        });
+        this.$bvToast.toast(`Garment can't be retrieved`, errorToast);
       } finally {
         this.loading = false;
       }
@@ -88,19 +81,10 @@ export default {
       try {
         deleteGarment(this.garment.id);
         router.replace("/list", () => {
-          this.$root.$bvToast.toast(`Garment removed`, {
-            title: "Success",
-            variant: "success",
-            solid: true,
-          });
+          this.$root.$bvToast.toast(`Garment removed`, okToast);
         });
       } catch (err) {
-        console.log(err);
-        this.$bvToast.toast(`Garment could not be removed`, {
-          title: "Error",
-          variant: "danger",
-          solid: true,
-        });
+        this.$bvToast.toast(`Garment could not be removed`, errorToast);
       }
     },
   },

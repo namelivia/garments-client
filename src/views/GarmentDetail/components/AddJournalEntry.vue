@@ -19,6 +19,7 @@ section
 </template>
 <script>
 import { postJournalEntry } from "@/apis/apis";
+import { errorToast, okToast } from "@/helpers/ui";
 export default {
   props: {
     garmentId: {
@@ -39,18 +40,10 @@ export default {
       try {
         evt.preventDefault();
         postJournalEntry(this.garmentId, this.form);
-        this.$bvToast.toast(`Journal entry added`, {
-          title: "Success",
-          variant: "success",
-          solid: true,
-        });
+        this.$bvToast.toast(`Journal entry added`, okToast);
         this.onReset();
       } catch (err) {
-        this.$bvToast.toast(`Journal entry could not be added`, {
-          title: "Error",
-          variant: "danger",
-          solid: true,
-        });
+        this.$bvToast.toast(`Journal entry could not be added`, errorToast);
       }
     },
     onReset(evt) {

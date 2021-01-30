@@ -16,6 +16,7 @@
 </template>
 <script>
 import { getGarmentTypes } from "@/apis/apis";
+import { errorToast } from "@/helpers/ui";
 export default {
   data() {
     return {
@@ -45,11 +46,7 @@ export default {
       try {
         this.garmentTypes = await getGarmentTypes();
       } catch (err) {
-        this.$bvToast.toast(`Garment Types can't be retrieved`, {
-          title: "Error",
-          variant: "danger",
-          solid: true,
-        });
+        this.$bvToast.toast(`Garment Types can't be retrieved`, errorToast);
       } finally {
         this.loading = false;
       }

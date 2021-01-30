@@ -3,7 +3,7 @@ section
     h1(v-t="'list.title'")
     b-form.row
         garment-type-selector(@selected="onGarmentTypeSelected")
-        place-type-selector(@selected="onPlaceSelected")
+        place-selector(@selected="onPlaceSelected")
     garment-list(
         :place="form.place"
         :garment-type="form.garment_type"

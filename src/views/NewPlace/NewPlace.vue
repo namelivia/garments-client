@@ -23,6 +23,7 @@ section
 <script>
 import router from "@/router";
 import { postPlace } from "@/apis/apis";
+import { errorToast, okToast } from "@/helpers/ui";
 export default {
   data() {
     return {
@@ -38,18 +39,10 @@ export default {
         evt.preventDefault();
         postPlace(this.form);
         router.replace("/list", () => {
-          this.$root.$bvToast.toast(`Place ${this.form.name} created`, {
-            title: "Success",
-            variant: "success",
-            solid: true,
-          });
+          this.$root.$bvToast.toast(`Place ${this.form.name} created`, okToast);
         });
       } catch (err) {
-        this.$bvToast.toast(`Place could not be created`, {
-          title: "Error",
-          variant: "danger",
-          solid: true,
-        });
+        this.$bvToast.toast(`Place could not be created`, errorToast);
       }
     },
     onReset(evt) {

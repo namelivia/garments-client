@@ -92,6 +92,7 @@ import {
   getGarmentTypes,
 } from "@/apis/apis";
 import { getImageUrl } from "@/apis/helpers";
+import { errorToast, okToast } from "@/helpers/ui";
 export default {
   props: {
     garmentId: {
@@ -155,11 +156,7 @@ export default {
       try {
         this.places = await getPlaces();
       } catch (err) {
-        this.$bvToast.toast(`Places can't be retrieved`, {
-          title: "Error",
-          variant: "danger",
-          solid: true,
-        });
+        this.$bvToast.toast(`Places can't be retrieved`, errorToast);
       } finally {
         this.loading = false;
       }
@@ -168,11 +165,7 @@ export default {
       try {
         this.garmentTypes = await getGarmentTypes();
       } catch (err) {
-        this.$bvToast.toast(`Garment Types can't be retrieved`, {
-          title: "Error",
-          variant: "danger",
-          solid: true,
-        });
+        this.$bvToast.toast(`Garment Types can't be retrieved`, errorToast);
       } finally {
         this.loading = false;
       }
@@ -188,11 +181,7 @@ export default {
         this.form.place = garment.place;
         this.form.image = garment.image;
       } catch (err) {
-        this.$bvToast.toast(`Garment can't be retrieved`, {
-          title: "Error",
-          variant: "danger",
-          solid: true,
-        });
+        this.$bvToast.toast(`Garment can't be retrieved`, errorToast);
       } finally {
         this.loading = false;
       }
@@ -206,18 +195,13 @@ export default {
         }
         putGarment(this.garmentId, this.form);
         router.replace("/list", () => {
-          this.$root.$bvToast.toast(`Garment ${this.form.name} created`, {
-            title: "Success",
-            variant: "success",
-            solid: true,
-          });
+          this.$root.$bvToast.toast(
+            `Garment ${this.form.name} created`,
+            okToast
+          );
         });
       } catch (err) {
-        this.$bvToast.toast(`Garment could not be created`, {
-          title: "Error",
-          variant: "danger",
-          solid: true,
-        });
+        this.$bvToast.toast(`Garment could not be created`, errorToast);
       }
     },
     onReset(evt) {
