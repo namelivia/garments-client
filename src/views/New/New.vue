@@ -15,18 +15,8 @@ section
                 required
                 :placeholder="$t('newGarment.enterGarmentName')"
             )
-        b-form-group(
-            id="garment_type-input-group"
-            :label="$t('newGarment.garment_type')"
-            label-for="garment_type"
-        )
-            b-form-select(
-                id="garment_type"
-                name="garment_type"
-                v-model="form.garment_type"
-                :options="garmentTypeOptions"
-                :garment_typeholder="$t('newGarment.enterGarmentPlace')"
-            )
+        garment-type-selector(@selected="onGarmentTypeSelected")
+        place-type-selector(@selected="onPlaceSelected")
         b-form-group(
             id="color-input-group"
             :label="$t('newGarment.color')"
@@ -83,13 +73,14 @@ section
 
 <script>
 import router from "@/router";
-import {
-  getPlaces,
-  postImage,
-  postGarment,
-  getGarmentTypes,
-} from "@/apis/apis";
+import GarmentTypeSelector from "@/components/GarmentTypeSelector";
+import PlaceSelector from "@/components/PlaceSelector";
+import { postImage, postGarment } from "@/apis/apis";
 export default {
+  components: {
+    GarmentTypeSelector: GarmentTypeSelector,
+    PlaceSelector: PlaceSelector,
+  },
   data() {
     return {
       form: {
@@ -100,65 +91,16 @@ export default {
         place: "",
         image: null,
       },
-      places: [],
-      garmentTypes: [],
       show: true,
     };
   },
-  computed: {
-    placeOptions: function () {
-      let options = [{ value: "", text: "Select a place", disabled: true }];
-      return options.concat(
-        this.places.map((place) => {
-          return {
-            value: place.name,
-            text: place.name,
-          };
-        })
-      );
-    },
-    garmentTypeOptions: function () {
-      let options = [{ value: "", text: "Select a type", disabled: true }];
-      return options.concat(
-        this.garmentTypes.map((garmentType) => {
-          return {
-            value: garmentType.name,
-            text: garmentType.name,
-          };
-        })
-      );
-    },
-  },
-  mounted: function () {
-    this.loadPlaces();
-    this.loadGarmentTypes();
-  },
+  computed: {},
   methods: {
-    async loadPlaces() {
-      try {
-        this.places = await getPlaces();
-      } catch (err) {
-        this.$bvToast.toast(`Places can't be retrieved`, {
-          title: "Error",
-          variant: "danger",
-          solid: true,
-        });
-      } finally {
-        this.loading = false;
-      }
+    onGarmentTypeSelected(selectedGarmentType) {
+      this.form.garment_type = selectedGarmentType;
     },
-    async loadGarmentTypes() {
-      try {
-        this.garmentTypes = await getGarmentTypes();
-      } catch (err) {
-        this.$bvToast.toast(`Garment Types can't be retrieved`, {
-          title: "Error",
-          variant: "danger",
-          solid: true,
-        });
-      } finally {
-        this.loading = false;
-      }
+    onPlaceSelected(selectedPlace) {
+      this.form.place = selectedPlace;
     },
     async onSubmit(evt) {
       try {
