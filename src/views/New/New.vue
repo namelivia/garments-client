@@ -41,19 +41,7 @@ section
                 type="text"
                 :placeholder="$t('newGarment.enterGarmentStatus')"
             )
-        b-form-group(
-            id="image-input-group"
-            :label="$t('newGarment.image')"
-            label-for="image"
-        )
-            b-form-file(
-                id="image"
-                name="image"
-                v-model="form.image"
-                accept="image/*"
-                :placeholder="$t('newGarment.imageForTheGarment')"
-                :drop-placeholder="$t('newGarment.imageForTheGarment')"
-            )
+        resize-image-upload(@loaded="onImageLoaded")
         .mt-4
         b-button.mr-2(type="submit" variant="primary") {{$t('newGarment.submit')}}
         b-button(type="reset" variant="danger") {{$t('newGarment.reset')}}
@@ -63,12 +51,14 @@ section
 import router from "@/router";
 import GarmentTypeSelector from "@/components/GarmentTypeSelector";
 import PlaceSelector from "@/components/PlaceSelector";
+import ResizeImageUpload from "@/components/ResizeImageUpload";
 import { postImage, postGarment } from "@/apis/apis";
 import { errorToast, okToast } from "@/helpers/ui";
 export default {
   components: {
     GarmentTypeSelector: GarmentTypeSelector,
     PlaceSelector: PlaceSelector,
+    ResizeImageUpload: ResizeImageUpload,
   },
   data() {
     return {
@@ -90,6 +80,9 @@ export default {
     },
     onPlaceSelected(selectedPlace) {
       this.form.place = selectedPlace;
+    },
+    onImageLoaded(newImage) {
+      this.form.image = newImage;
     },
     async onSubmit(evt) {
       try {

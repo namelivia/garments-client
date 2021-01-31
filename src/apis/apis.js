@@ -78,7 +78,7 @@ export const postImage = async (image) => {
       },
     }
   );
-  response.data.location;
+  return response.data.location;
 };
 
 export const getJournal = async (garmentId) => {

@@ -13,6 +13,7 @@
     "axios": "^0.21.1",
     "bootstrap": "^4.5.3",
     "bootstrap-vue": "^2.21.2",
+    "image-blob-reduce": "^2.2.2",
     "vue": "^2.6.12",
     "vue-i18n": "^8.22.3",
     "vue-router": "^3.4.9",
