@@ -15,7 +15,6 @@ export default {
   },
   methods: {
     async onSubmit(data) {
-      console.log(data);
       try {
         postGarment(data);
         router.replace("/list", () => {

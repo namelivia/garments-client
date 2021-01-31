@@ -8,13 +8,13 @@
             b-form-input(
                 id="name"
                 name="name"
-                v-model="form.name"
+                v-model="garment.name"
                 type="text"
                 required
                 :placeholder="$t('garmentForm.enterGarmentName')"
             )
-        garment-type-selector(@selected="onGarmentTypeSelected")
-        place-selector(@selected="onPlaceSelected")
+        garment-type-selector(@selected="onGarmentTypeSelected" :selected="garment.garment_type")
+        place-selector(@selected="onPlaceSelected" :selected="garment.place")
         b-form-group(
             id="color-input-group"
             :label="$t('newGarment.color')"
@@ -23,7 +23,7 @@
             b-form-input(
                 id="color"
                 name="color"
-                v-model="form.color"
+                v-model="garment.color"
                 type="text"
                 :placeholder="$t('newGarment.enterGarmentColor')"
             )
@@ -35,7 +35,7 @@
             b-form-input(
                 id="status"
                 name="status"
-                v-model="form.status"
+                v-model="garment.status"
                 type="text"
                 :placeholder="$t('newGarment.enterGarmentStatus')"
             )
@@ -56,9 +56,25 @@ export default {
     PlaceSelector,
     ResizeImageUpload,
   },
+  props: {
+    initialData: {
+      type: Object,
+      default: () => {
+        return {
+          name: "",
+          garment_type: "",
+          status: "",
+          color: "",
+          place: "",
+          image: null,
+        };
+      },
+    },
+  },
   data() {
     return {
-      form: {
+      show: true,
+      garment: {
         name: "",
         garment_type: "",
         status: "",
@@ -66,26 +82,31 @@ export default {
         place: "",
         image: null,
       },
-      show: true,
     };
   },
-  computed: {},
-  mounted: function () {},
+  watch: {
+    initialData: {
+      immediate: true,
+      handler: function (newData) {
+        this.garment = newData;
+      },
+    },
+  },
   methods: {
     onGarmentTypeSelected(selectedGarmentType) {
-      this.form.garment_type = selectedGarmentType;
+      this.garment.garment_type = selectedGarmentType;
     },
     onPlaceSelected(selectedPlace) {
-      this.form.place = selectedPlace;
+      this.garment.place = selectedPlace;
     },
     onImageLoaded(newImage) {
-      this.form.image = newImage;
+      this.garment.image = newImage;
     },
     async uploadImage() {
       //After creating if the garment upload image if has it
-      if (this.form.image) {
+      if (this.garment.image) {
         try {
-          this.form.image = await postImage(this.form.image);
+          this.garment.image = await postImage(this.garment.image);
         } catch (err) {
           this.$bvToast.toast(`Image could not be loaded`, errorToast);
         }
@@ -96,18 +117,18 @@ export default {
         evt.preventDefault();
       }
       await this.uploadImage();
-      this.$emit("submit", this.form);
+      this.$emit("submit", this.garment);
     },
     onReset(evt) {
       if (evt) {
         evt.preventDefault();
       }
-      this.form.name = "";
-      this.form.garment_type = "";
-      this.form.color = "";
-      this.form.place = "";
-      this.form.status = "";
-      this.form.image = null;
+      this.garment.name = "";
+      this.garment.garment_type = "";
+      this.garment.color = "";
+      this.garment.place = "";
+      this.garment.status = "";
+      this.garment.image = null;
       this.show = false;
       this.$nextTick(() => {
         this.show = true;
