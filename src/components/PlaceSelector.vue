@@ -9,7 +9,7 @@
         b-form-select(
             id="place"
             name="place"
-            v-model="selectedPlace"
+            v-model="selected"
             @change="onChange($event)"
             :options="placeOptions"
         )
@@ -18,10 +18,15 @@
 import { getPlaces } from "@/apis/apis";
 import { errorToast } from "@/helpers/ui";
 export default {
+  props: {
+    selected: {
+      type: String,
+      default: "",
+    },
+  },
   data() {
     return {
       places: [],
-      selectedPlace: "",
       loading: true,
     };
   },

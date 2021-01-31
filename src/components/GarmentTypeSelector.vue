@@ -9,7 +9,7 @@
         b-form-select(
             id="garment_type"
             name="garment_type"
-            v-model="selectedGarmentType"
+            v-model="selected"
             @change="onChange($event)"
             :options="garmentTypeOptions"
         )
@@ -18,10 +18,15 @@
 import { getGarmentTypes } from "@/apis/apis";
 import { errorToast } from "@/helpers/ui";
 export default {
+  props: {
+    selected: {
+      type: String,
+      default: "",
+    },
+  },
   data() {
     return {
       garmentTypes: [],
-      selectedGarmentType: "",
       loading: true,
     };
   },
