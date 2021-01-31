@@ -7,7 +7,7 @@
         style="max-width: 20rem;"
     )
         router-link(:to="{ name: 'garment', params: { garmentId: id}}")
-            b-button.ml-2(v-t="'garmentCard.details'")
+            b-button(v-t="'garmentCard.details'")
 </template>
 <script>
 import { getImageUrl } from "@/apis/helpers";
