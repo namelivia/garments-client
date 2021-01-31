@@ -9,14 +9,8 @@ import router from "@/router";
 import { getGarment, putGarment } from "@/apis/apis";
 import { errorToast, okToast } from "@/helpers/ui";
 import GarmentForm from "@/components/GarmentForm";
-import GarmentTypeSelector from "@/components/GarmentTypeSelector";
-import PlaceSelector from "@/components/PlaceSelector";
-import ResizeImageUpload from "@/components/ResizeImageUpload";
 export default {
   components: {
-    GarmentTypeSelector,
-    PlaceSelector,
-    ResizeImageUpload,
     GarmentForm,
   },
   props: {
@@ -34,7 +28,6 @@ export default {
         color: "",
         place: "",
         image: null,
-        newImage: null,
       },
       show: true,
     };
@@ -63,10 +56,7 @@ export default {
       try {
         putGarment(this.garmentId, data);
         router.replace("/list", () => {
-          this.$root.$bvToast.toast(
-            `Garment ${this.form.name} created`,
-            okToast
-          );
+          this.$root.$bvToast.toast(`Garment ${data.name} created`, okToast);
         });
       } catch (err) {
         this.$bvToast.toast(`Garment could not be updated`, errorToast);
