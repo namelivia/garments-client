@@ -9,7 +9,7 @@
         b-form-select(
             id="place"
             name="place"
-            v-model="selected"
+            v-model="place"
             @change="onChange($event)"
             :options="placeOptions"
         )
@@ -27,6 +27,7 @@ export default {
   data() {
     return {
       places: [],
+      place: "",
       loading: true,
     };
   },
@@ -41,6 +42,14 @@ export default {
           };
         })
       );
+    },
+  },
+  watch: {
+    selected: {
+      immediate: true,
+      handler: function (newData) {
+        this.place = newData;
+      },
     },
   },
   mounted: function () {

@@ -9,7 +9,7 @@
         b-form-select(
             id="garment_type"
             name="garment_type"
-            v-model="selected"
+            v-model="garmentType"
             @change="onChange($event)"
             :options="garmentTypeOptions"
         )
@@ -27,6 +27,7 @@ export default {
   data() {
     return {
       garmentTypes: [],
+      garmentType: "",
       loading: true,
     };
   },
@@ -41,6 +42,14 @@ export default {
           };
         })
       );
+    },
+  },
+  watch: {
+    selected: {
+      immediate: true,
+      handler: function (newData) {
+        this.garmentType = newData;
+      },
     },
   },
   mounted: function () {
