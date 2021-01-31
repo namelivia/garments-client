@@ -1,7 +1,6 @@
 <template lang="pug">
 section
     h1 Edit existing garment
-    img.mb-4.img-fluid(:src="imageUrl")
     b-form(@submit="onSubmit" @reset="onReset"  v-if="show")
         b-form-group(
             id="name-input-group"
@@ -16,18 +15,8 @@ section
                 required
                 :placeholder="$t('editGarment.enterGarmentName')"
             )
-        b-form-group(
-            id="garment_type-input-group"
-            :label="$t('editGarment.garment_type')"
-            label-for="garment_type"
-        )
-            b-form-select(
-                id="garment_type"
-                name="garment_type"
-                v-model="form.garment_type"
-                :options="garmentTypeOptions"
-                :garment_typeholder="$t('editGarment.enterGarmentPlace')"
-            )
+        garment-type-selector(@selected="onGarmentTypeSelected" :selected="form.garment_type")
+        place-selector(@selected="onPlaceSelected" :selected="form.place")
         b-form-group(
             id="color-input-group"
             :label="$t('editGarment.color')"
@@ -52,31 +41,7 @@ section
                 type="text"
                 :placeholder="$t('editGarment.enterGarmentStatus')"
             )
-        b-form-group(
-            id="place-input-group"
-            :label="$t('editGarment.place')"
-            label-for="place"
-        )
-            b-form-select(
-                id="place"
-                name="place"
-                v-model="form.place"
-                :options="placeOptions"
-                :placeholder="$t('editGarment.enterGarmentPlace')"
-            )
-        b-form-group(
-            id="image-input-group"
-            :label="$t('newGarment.image')"
-            label-for="image"
-        )
-            b-form-file(
-                id="image"
-                name="image"
-                v-model="form.newImage"
-                accept="image/*"
-                :placeholder="$t('newGarment.imageForTheGarment')"
-                :drop-placeholder="$t('newGarment.imageForTheGarment')"
-            )
+        resize-image-upload(@loaded="onImageLoaded")
         .mt-4
         b-button.mr-2(type="submit" variant="primary") {{$t('editGarment.save')}}
         b-button(type="reset" variant="danger") {{$t('editGarment.reset')}}
@@ -84,16 +49,17 @@ section
 
 <script>
 import router from "@/router";
-import {
-  getPlaces,
-  postImage,
-  getGarment,
-  putGarment,
-  getGarmentTypes,
-} from "@/apis/apis";
-import { getImageUrl } from "@/apis/helpers";
+import { postImage, getGarment, putGarment } from "@/apis/apis";
 import { errorToast, okToast } from "@/helpers/ui";
+import GarmentTypeSelector from "@/components/GarmentTypeSelector";
+import PlaceSelector from "@/components/PlaceSelector";
+import ResizeImageUpload from "@/components/ResizeImageUpload";
 export default {
+  components: {
+    GarmentTypeSelector: GarmentTypeSelector,
+    PlaceSelector: PlaceSelector,
+    ResizeImageUpload: ResizeImageUpload,
+  },
   props: {
     garmentId: {
       type: Number,
@@ -111,64 +77,21 @@ export default {
         image: null,
         newImage: null,
       },
-      places: [],
-      garmentTypes: [],
       show: true,
     };
   },
-  computed: {
-    placeOptions: function () {
-      let options = [{ value: "", text: "Select a place", disabled: true }];
-      return options.concat(
-        this.places.map((place) => {
-          return {
-            value: place.name,
-            text: place.name,
-          };
-        })
-      );
-    },
-    garmentTypeOptions: function () {
-      let options = [{ value: "", text: "Select a type", disabled: true }];
-      return options.concat(
-        this.garmentTypes.map((garmentType) => {
-          return {
-            value: garmentType.name,
-            text: garmentType.name,
-          };
-        })
-      );
-    },
-    imageUrl: function () {
-      if (this.form.image) {
-        getImageUrl(this.form.image);
-      }
-      return null;
-    },
-  },
   mounted: function () {
     this.loadGarment();
-    this.loadPlaces();
-    this.loadGarmentTypes();
   },
   methods: {
-    async loadPlaces() {
-      try {
-        this.places = await getPlaces();
-      } catch (err) {
-        this.$bvToast.toast(`Places can't be retrieved`, errorToast);
-      } finally {
-        this.loading = false;
-      }
+    onGarmentTypeSelected(selectedGarmentType) {
+      this.form.garment_type = selectedGarmentType;
     },
-    async loadGarmentTypes() {
-      try {
-        this.garmentTypes = await getGarmentTypes();
-      } catch (err) {
-        this.$bvToast.toast(`Garment Types can't be retrieved`, errorToast);
-      } finally {
-        this.loading = false;
-      }
+    onPlaceSelected(selectedPlace) {
+      this.form.place = selectedPlace;
+    },
+    onImageLoaded(newImage) {
+      this.form.newImage = newImage;
     },
     async loadGarment() {
       try {
