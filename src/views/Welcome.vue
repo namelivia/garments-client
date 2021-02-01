@@ -1,9 +1,10 @@
 <template lang="pug">
 section
     h1 {{ $t("welcome.welcome") }}
-    b-spinner(v-if="loading" label="Loading...")
+    place-selector(@selected="onPlaceSelected")
+    garment-type-selector(@selected="onGarmentTypeSelected")
     garment-card(
-        v-else
+        v-if="randomGarment !== null"
         :id="randomGarment.id"
         :name="randomGarment.name"
         :image-path="randomGarment.image"
@@ -12,25 +13,44 @@ section
 
 <script>
 import GarmentCard from "@/components/GarmentCard";
+import GarmentTypeSelector from "@/components/GarmentTypeSelector";
+import PlaceSelector from "@/components/PlaceSelector";
 import { getRandomGarment } from "@/apis/apis";
 import { errorToast } from "@/helpers/ui";
 export default {
   components: {
     garmentCard: GarmentCard,
+    GarmentTypeSelector: GarmentTypeSelector,
+    PlaceSelector: PlaceSelector,
   },
   data: function () {
     return {
       randomGarment: null,
+      form: {
+        garment_type: "",
+        place: "",
+      },
       loading: true,
     };
   },
-  mounted() {
-    this.loadRandom();
-  },
   methods: {
+    onGarmentTypeSelected(selectedGarmentType) {
+      this.form.garment_type = selectedGarmentType;
+      this.loadRandom();
+    },
+    onPlaceSelected(selectedPlace) {
+      this.form.place = selectedPlace;
+      this.loadRandom();
+    },
     async loadRandom() {
+      if (this.form.place === "" || this.form.garment_type === "") {
+        return;
+      }
       try {
-        this.randomGarment = await getRandomGarment();
+        this.randomGarment = await getRandomGarment(
+          this.form.place,
+          this.form.garment_type
+        );
       } catch (err) {
         this.$bvToast.toast(`Random can't be retrieved`, errorToast);
       } finally {

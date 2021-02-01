@@ -36,9 +36,9 @@ export const getGarment = async (garmentId) => {
   return response.data;
 };
 
-export const getRandomGarment = async () => {
+export const getRandomGarment = async (selectedPlace, selectedType) => {
   const response = await axios.get(
-    `${process.env.VUE_APP_API_ENDPOINT}/garments/random`
+    `${process.env.VUE_APP_API_ENDPOINT}/garments/random?place=${selectedPlace}&garment_type=${selectedType}`
   );
   return response.data;
 };
