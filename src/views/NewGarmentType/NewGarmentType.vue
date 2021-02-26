@@ -37,7 +37,7 @@ export default {
     async onSubmit(evt) {
       try {
         evt.preventDefault();
-        postGarmentType(this.form);
+        await postGarmentType(this.form);
         router.replace("/list", () => {
           this.$root.$bvToast.toast(
             `GarmentType ${this.form.name} created`,

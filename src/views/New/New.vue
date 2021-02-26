@@ -16,7 +16,7 @@ export default {
   methods: {
     async onSubmit(data) {
       try {
-        postGarment(data);
+        await postGarment(data);
         router.replace("/list", () => {
           this.$root.$bvToast.toast(`Garment ${data.name} created`, okToast);
         });

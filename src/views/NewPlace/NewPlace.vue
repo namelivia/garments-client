@@ -37,7 +37,7 @@ export default {
     async onSubmit(evt) {
       try {
         evt.preventDefault();
-        postPlace(this.form);
+        await postPlace(this.form);
         router.replace("/list", () => {
           this.$root.$bvToast.toast(`Place ${this.form.name} created`, okToast);
         });
