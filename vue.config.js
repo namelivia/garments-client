@@ -1,7 +1,12 @@
 // vue.config.js
+
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
+
 module.exports = {
   configureWebpack: {
-    plugins: [],
+    plugins: [
+ 		new FaviconsWebpackPlugin()
+	],
   },
   chainWebpack: (config) => {
     //Pug loader
