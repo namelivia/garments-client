@@ -1,13 +1,11 @@
 <template lang="pug">
-    b-card.mb-2(
-        :title="name"
-        :img-src="imageUrl"
-        :img-alt="name"
-        img-top
+    b-card.mb-2.no-body(
         style="max-width: 20rem;"
     )
-        router-link(:to="{ name: 'garment', params: { garmentId: id}}")
-            b-button(v-t="'garmentCard.details'")
+        b-card-img-lazy(:src="imageUrl" :alt="name" top)
+        b-card-body(:title="name")
+            router-link(:to="{ name: 'garment', params: { garmentId: id}}")
+                b-button(v-t="'garmentCard.details'")
 </template>
 <script>
 import { getImageUrl } from "@/apis/helpers";
