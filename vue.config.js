@@ -5,10 +5,14 @@ const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 module.exports = {
   configureWebpack: {
     plugins: [
- 		new FaviconsWebpackPlugin()
-	],
+        new FaviconsWebpackPlugin()
+    ],
   },
   chainWebpack: (config) => {
+    //Eslint autofix
+    config.module.rule('eslint').use('eslint-loader').options({
+      fix: true
+    })
     //Pug loader
     config.module
       .rule("pug")
