@@ -13,7 +13,8 @@
     "title": "Lista de ropa"
   },
   "garmentCard": {
-    "details": "Detalles"
+    "details": "Detalles",
+    "wearIt": "Ponérselo"
   },
   "garmentDetails": {
     "name": "Nombre",
@@ -39,6 +40,8 @@
     "enterGarmentPlace": "Introduce el lugar",
     "status": "Status:",
     "enterGarmentStatus": "Introduce el estado",
+    "wearToWash": "Veces hasta lavado:",
+    "enterWearToWash": "Introduce veces hasta lavado",
     "image": "Imagen:",
     "imageForTheGarment": "Imagen de la prenda",
     "submit": "Guardar",

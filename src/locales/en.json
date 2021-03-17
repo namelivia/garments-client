@@ -13,7 +13,8 @@
     "title": "Garment list"
   },
   "garmentCard": {
-    "details": "Details"
+    "details": "Details",
+    "wearIt": "Wear it"
   },
   "garmentDetails": {
     "name": "Name",
@@ -39,6 +40,8 @@
     "enterGarmentPlace": "Enter the place",
     "status": "Status:",
     "enterGarmentStatus": "Enter the status",
+    "wearToWash": "Wear to wash:",
+    "enterWearToWash": "Enter wear to wash",
     "image": "Image:",
     "imageForTheGarment": "Image for the garment",
     "submit": "Submit",

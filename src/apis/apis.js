@@ -102,3 +102,17 @@ export const postJournalEntry = async (garmentId, data) => {
   );
   return response.data;
 };
+
+export const wearGarment = async (garmentId) => {
+  const response = await axios.post(
+    `${process.env.VUE_APP_API_ENDPOINT}/garments/${garmentId}/wear`
+  );
+  return response.data;
+};
+
+export const washGarment = async (garmentId) => {
+  const response = await axios.post(
+    `${process.env.VUE_APP_API_ENDPOINT}/garments/${garmentId}/wash`
+  );
+  return response.data;
+};

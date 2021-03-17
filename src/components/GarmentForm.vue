@@ -39,6 +39,19 @@
                 type="text"
                 :placeholder="$t('newGarment.enterGarmentStatus')"
             )
+        b-form-group(
+            id="wear-to-wash-input-group"
+            :label="$t('newGarment.wearToWash')"
+            label-for="wear-to-wash"
+        )
+            b-form-input(
+                id="wear-to-wash"
+                name="wear-to-wash"
+                v-model="garment.wear_to_wash"
+                type="number"
+                min="1"
+                :placeholder="$t('newGarment.enterWearToWash')"
+            )
         resize-image-upload(@loaded="onImageLoaded")
         .mt-4
         b-button.mr-2(type="submit" variant="primary") {{$t('newGarment.submit')}}
@@ -67,6 +80,7 @@ export default {
           color: "",
           place: "",
           image: null,
+          wear_to_wash: 1,
         };
       },
     },
