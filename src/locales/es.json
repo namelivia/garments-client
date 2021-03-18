@@ -4,13 +4,17 @@
     "list": "Lista",
     "new": "Nueva",
     "new-place": "Nuevo Lugar",
-    "new-garment-type": "Nuevo Tipo"
+    "new-garment-type": "Nuevo Tipo",
+    "washing": "Lavando"
   },
   "welcome": {
     "welcome": "Bienvenido a la app de Ropa"
   },
   "list": {
     "title": "Lista de ropa"
+  },
+  "washing": {
+    "title": "Ropa lavándose"
   },
   "garmentCard": {
     "details": "Detalles",

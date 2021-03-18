@@ -14,6 +14,8 @@
                   span(v-t="'navigation.new-place'")
                 b-nav-item(to="/new-garment-type")
                   span(v-t="'navigation.new-garment-type'")
+                b-nav-item(to="/washing")
+                  span(v-t="'navigation.washing'")
             b-navbar-nav.ml-auto
                 b-nav-item {{ $i18n.locale }}
                 b-nav-item {{ currentUserEmail }}

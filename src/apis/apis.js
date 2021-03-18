@@ -50,6 +50,13 @@ export const getGarments = async (selectedPlace, selectedType) => {
   return response.data;
 };
 
+export const getWashingGarments = async () => {
+  const response = await axios.get(
+    `${process.env.VUE_APP_API_ENDPOINT}/garments/washing`
+  );
+  return response.data;
+};
+
 export const putGarment = async (garmentId, data) => {
   const response = await axios.put(
     `${process.env.VUE_APP_API_ENDPOINT}/garments/${garmentId}`,

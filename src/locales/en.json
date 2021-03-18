@@ -4,13 +4,17 @@
     "list": "List",
     "new": "New",
     "new-place": "New Place",
-    "new-garment-type": "New Type"
+    "new-garment-type": "New Type",
+    "washing": "Washing"
   },
   "welcome": {
     "welcome": "Welcome to the garments app"
   },
   "list": {
     "title": "Garment list"
+  },
+  "washing": {
+    "title": "Washing Garments"
   },
   "garmentCard": {
     "details": "Details",

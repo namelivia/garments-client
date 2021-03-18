@@ -44,6 +44,11 @@ const router = new Router({
       component: () => import("./views/GarmentDetail/GarmentDetail.vue"),
       props: true,
     },
+    {
+      path: "/washing",
+      name: "washing",
+      component: () => import("./views/Washing/Washing.vue"),
+    },
   ],
 });
 
