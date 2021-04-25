@@ -1,7 +1,7 @@
 <template lang="pug">
 section
     h1 {{ $t("welcome.welcome") }}
-    place-selector(@selected="onPlaceSelected")
+    place-selector(@selected="onPlaceSelected" :selected="form.place")
     garment-type-selector(@selected="onGarmentTypeSelected")
     garment-card(
         v-if="randomGarment !== null"
@@ -17,6 +17,7 @@ import GarmentTypeSelector from '@/components/GarmentTypeSelector'
 import PlaceSelector from '@/components/PlaceSelector'
 import { getRandomGarment } from '@/apis/apis'
 import { errorToast } from '@/helpers/ui'
+import store from '@/currentUser'
 export default {
   components: {
     garmentCard: GarmentCard,
@@ -33,7 +34,14 @@ export default {
       loading: true,
     }
   },
+  mounted() {
+    this.getCurrentUser()
+  },
   methods: {
+    async getCurrentUser() {
+      const currentUser = await store.getCurrentUser()
+      this.form.place = currentUser.place || ''
+    },
     onGarmentTypeSelected(selectedGarmentType) {
       this.form.garment_type = selectedGarmentType
       this.loadRandom()
