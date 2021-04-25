@@ -11,10 +11,10 @@ section
 </template>
 
 <script>
-import GarmentList from "./components/GarmentList";
-import GarmentTypeSelector from "@/components/GarmentTypeSelector";
-import PlaceSelector from "@/components/PlaceSelector";
-import store from "@/currentUser";
+import GarmentList from './components/GarmentList'
+import GarmentTypeSelector from '@/components/GarmentTypeSelector'
+import PlaceSelector from '@/components/PlaceSelector'
+import store from '@/currentUser'
 export default {
   components: {
     GarmentList: GarmentList,
@@ -24,25 +24,25 @@ export default {
   data: function () {
     return {
       form: {
-        garment_type: "",
-        place: "",
+        garment_type: '',
+        place: '',
       },
-    };
+    }
   },
   mounted() {
-    this.getCurrentUser();
+    this.getCurrentUser()
   },
   methods: {
     async getCurrentUser() {
-      const currentUser = await store.getCurrentUser();
-      this.form.place = currentUser.place || "";
+      const currentUser = await store.getCurrentUser()
+      this.form.place = currentUser.place || ''
     },
     onGarmentTypeSelected(selectedGarmentType) {
-      this.form.garment_type = selectedGarmentType;
+      this.form.garment_type = selectedGarmentType
     },
     onPlaceSelected(selectedPlace) {
-      this.form.place = selectedPlace;
+      this.form.place = selectedPlace
     },
   },
-};
+}
 </script>

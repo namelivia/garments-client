@@ -12,11 +12,11 @@ section
 </template>
 
 <script>
-import GarmentCard from "@/components/GarmentCard";
-import GarmentTypeSelector from "@/components/GarmentTypeSelector";
-import PlaceSelector from "@/components/PlaceSelector";
-import { getRandomGarment } from "@/apis/apis";
-import { errorToast } from "@/helpers/ui";
+import GarmentCard from '@/components/GarmentCard'
+import GarmentTypeSelector from '@/components/GarmentTypeSelector'
+import PlaceSelector from '@/components/PlaceSelector'
+import { getRandomGarment } from '@/apis/apis'
+import { errorToast } from '@/helpers/ui'
 export default {
   components: {
     garmentCard: GarmentCard,
@@ -27,36 +27,36 @@ export default {
     return {
       randomGarment: null,
       form: {
-        garment_type: "",
-        place: "",
+        garment_type: '',
+        place: '',
       },
       loading: true,
-    };
+    }
   },
   methods: {
     onGarmentTypeSelected(selectedGarmentType) {
-      this.form.garment_type = selectedGarmentType;
-      this.loadRandom();
+      this.form.garment_type = selectedGarmentType
+      this.loadRandom()
     },
     onPlaceSelected(selectedPlace) {
-      this.form.place = selectedPlace;
-      this.loadRandom();
+      this.form.place = selectedPlace
+      this.loadRandom()
     },
     async loadRandom() {
-      if (this.form.place === "" || this.form.garment_type === "") {
-        return;
+      if (this.form.place === '' || this.form.garment_type === '') {
+        return
       }
       try {
         this.randomGarment = await getRandomGarment(
           this.form.place,
-          this.form.garment_type
-        );
+          this.form.garment_type,
+        )
       } catch (err) {
-        this.$bvToast.toast(`Random can't be retrieved`, errorToast);
+        this.$bvToast.toast(`Random can't be retrieved`, errorToast)
       } finally {
-        this.loading = false;
+        this.loading = false
       }
     },
   },
-};
+}
 </script>

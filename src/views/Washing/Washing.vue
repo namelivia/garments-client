@@ -5,10 +5,10 @@ section
 </template>
 
 <script>
-import GarmentList from "./components/GarmentList";
+import GarmentList from './components/GarmentList'
 export default {
   components: {
     GarmentList: GarmentList,
   },
-};
+}
 </script>

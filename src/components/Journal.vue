@@ -10,10 +10,10 @@ section(v-else)
     add-journal-entry.mt-4(:garment-id="this.id")
 </template>
 <script>
-import { getJournal } from "@/apis/apis";
-import { errorToast } from "@/helpers/ui";
-import JournalEntry from "./JournalEntry";
-import AddJournalEntry from "./AddJournalEntry";
+import { getJournal } from '@/apis/apis'
+import { errorToast } from '@/helpers/ui'
+import JournalEntry from './JournalEntry'
+import AddJournalEntry from './AddJournalEntry'
 export default {
   components: {
     JournalEntry,
@@ -30,27 +30,27 @@ export default {
       journal: [],
       id: null,
       loading: true,
-    };
+    }
   },
   watch: {
     garmentId: {
       immediate: true,
       handler: function (newData) {
-        this.id = newData;
-        this.loadJournal();
+        this.id = newData
+        this.loadJournal()
       },
     },
   },
   methods: {
     async loadJournal() {
       try {
-        this.journal = await getJournal(this.id);
+        this.journal = await getJournal(this.id)
       } catch (err) {
-        this.$bvToast.toast(`Journal can't be retrieved`, errorToast);
+        this.$bvToast.toast(`Journal can't be retrieved`, errorToast)
       } finally {
-        this.loading = false;
+        this.loading = false
       }
     },
   },
-};
+}
 </script>

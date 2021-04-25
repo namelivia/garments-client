@@ -18,8 +18,8 @@ section
                     b-button(type="submit" variant="primary" v-t="'addJournalEntry.add'")
 </template>
 <script>
-import { postJournalEntry } from "@/apis/apis";
-import { errorToast, okToast } from "@/helpers/ui";
+import { postJournalEntry } from '@/apis/apis'
+import { errorToast, okToast } from '@/helpers/ui'
 export default {
   props: {
     garmentId: {
@@ -30,32 +30,32 @@ export default {
   data() {
     return {
       form: {
-        message: "",
+        message: '',
       },
       show: true,
-    };
+    }
   },
   methods: {
     async onSubmit(evt) {
       try {
-        evt.preventDefault();
-        await postJournalEntry(this.garmentId, this.form);
-        this.$bvToast.toast(`Journal entry added`, okToast);
-        this.onReset();
+        evt.preventDefault()
+        await postJournalEntry(this.garmentId, this.form)
+        this.$bvToast.toast(`Journal entry added`, okToast)
+        this.onReset()
       } catch (err) {
-        this.$bvToast.toast(`Journal entry could not be added`, errorToast);
+        this.$bvToast.toast(`Journal entry could not be added`, errorToast)
       }
     },
     onReset(evt) {
       if (evt) {
-        evt.preventDefault();
+        evt.preventDefault()
       }
-      this.form.message = "";
-      this.show = false;
+      this.form.message = ''
+      this.show = false
       this.$nextTick(() => {
-        this.show = true;
-      });
+        this.show = true
+      })
     },
   },
-};
+}
 </script>

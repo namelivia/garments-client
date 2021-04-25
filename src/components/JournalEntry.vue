@@ -1,25 +1,25 @@
 <template lang="pug">
-    b-card.mb-2
-        b-card-text
-            p.mb-0 {{formattedDate}}
-            p.mb-0 {{message}}
+b-card.mb-2
+    b-card-text
+        p.mb-0 {{formattedDate}}
+        p.mb-0 {{message}}
 </template>
 <script>
 export default {
   props: {
     message: {
       type: String,
-      default: "",
+      default: '',
     },
     timestamp: {
       type: String,
-      default: "",
+      default: '',
     },
   },
   computed: {
     formattedDate: function () {
-      return new Date(this.timestamp).toLocaleString();
+      return new Date(this.timestamp).toLocaleString()
     },
   },
-};
+}
 </script>
