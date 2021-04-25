@@ -9,17 +9,17 @@ export default {
   props: {
     message: {
       type: String,
-      default: "",
+      default: '',
     },
     timestamp: {
       type: String,
-      default: "",
+      default: '',
     },
   },
   computed: {
     formattedDate: function () {
-      return new Date(this.timestamp).toLocaleString();
+      return new Date(this.timestamp).toLocaleString()
     },
   },
-};
+}
 </script>

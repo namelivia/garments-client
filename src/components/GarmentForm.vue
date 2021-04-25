@@ -58,11 +58,11 @@
         b-button(type="reset" variant="danger") {{$t('newGarment.reset')}}
 </template>
 <script>
-import GarmentTypeSelector from "@/components/GarmentTypeSelector";
-import PlaceSelector from "@/components/PlaceSelector";
-import ResizeImageUpload from "@/components/ResizeImageUpload";
-import { postImage } from "@/apis/apis";
-import { errorToast } from "@/helpers/ui";
+import GarmentTypeSelector from '@/components/GarmentTypeSelector'
+import PlaceSelector from '@/components/PlaceSelector'
+import ResizeImageUpload from '@/components/ResizeImageUpload'
+import { postImage } from '@/apis/apis'
+import { errorToast } from '@/helpers/ui'
 export default {
   components: {
     GarmentTypeSelector,
@@ -74,14 +74,14 @@ export default {
       type: Object,
       default: () => {
         return {
-          name: "",
-          garment_type: "",
-          status: "",
-          color: "",
-          place: "",
+          name: '',
+          garment_type: '',
+          status: '',
+          color: '',
+          place: '',
           image: null,
           wear_to_wash: 1,
-        };
+        }
       },
     },
   },
@@ -89,65 +89,65 @@ export default {
     return {
       show: true,
       garment: {
-        name: "",
-        garment_type: "",
-        status: "",
-        color: "",
-        place: "",
+        name: '',
+        garment_type: '',
+        status: '',
+        color: '',
+        place: '',
         image: null,
       },
-    };
+    }
   },
   watch: {
     initialData: {
       immediate: true,
       handler: function (newData) {
-        this.garment = newData;
+        this.garment = newData
       },
     },
   },
   methods: {
     onGarmentTypeSelected(selectedGarmentType) {
-      this.garment.garment_type = selectedGarmentType;
+      this.garment.garment_type = selectedGarmentType
     },
     onPlaceSelected(selectedPlace) {
-      this.garment.place = selectedPlace;
+      this.garment.place = selectedPlace
     },
     onImageLoaded(newImage) {
-      this.garment.image = newImage;
+      this.garment.image = newImage
     },
     async uploadImage() {
       //After creating if the garment upload image if has it
       if (this.garment.image) {
         try {
-          this.garment.image = await postImage(this.garment.image);
+          this.garment.image = await postImage(this.garment.image)
         } catch (err) {
-          this.$bvToast.toast(`Image could not be loaded`, errorToast);
+          this.$bvToast.toast(`Image could not be loaded`, errorToast)
         }
       }
     },
     async onSubmit(evt) {
       if (evt) {
-        evt.preventDefault();
+        evt.preventDefault()
       }
-      await this.uploadImage();
-      this.$emit("submit", this.garment);
+      await this.uploadImage()
+      this.$emit('submit', this.garment)
     },
     onReset(evt) {
       if (evt) {
-        evt.preventDefault();
+        evt.preventDefault()
       }
-      this.garment.name = "";
-      this.garment.garment_type = "";
-      this.garment.color = "";
-      this.garment.place = "";
-      this.garment.status = "";
-      this.garment.image = null;
-      this.show = false;
+      this.garment.name = ''
+      this.garment.garment_type = ''
+      this.garment.color = ''
+      this.garment.place = ''
+      this.garment.status = ''
+      this.garment.image = null
+      this.show = false
       this.$nextTick(() => {
-        this.show = true;
-      });
+        this.show = true
+      })
     },
   },
-};
+}
 </script>

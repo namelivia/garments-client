@@ -11,9 +11,9 @@ section
 </template>
 
 <script>
-import GarmentCard from "@/components/GarmentCard";
-import { getGarments } from "@/apis/apis";
-import { errorToast } from "@/helpers/ui";
+import GarmentCard from '@/components/GarmentCard'
+import { getGarments } from '@/apis/apis'
+import { errorToast } from '@/helpers/ui'
 export default {
   components: {
     garmentCard: GarmentCard,
@@ -34,34 +34,31 @@ export default {
       loading: true,
       selectedPlace: null,
       selectedType: null,
-    };
+    }
   },
   watch: {
     place: function (newPlace) {
-      this.selectedPlace = newPlace;
-      this.loadList();
+      this.selectedPlace = newPlace
+      this.loadList()
     },
     garmentType: function (newType) {
-      this.selectedType = newType;
-      this.loadList();
+      this.selectedType = newType
+      this.loadList()
     },
   },
   methods: {
     async loadList() {
       if (!this.selectedType || !this.selectedType) {
-        return null;
+        return null
       }
       try {
-        this.garments = await getGarments(
-          this.selectedPlace,
-          this.selectedType
-        );
+        this.garments = await getGarments(this.selectedPlace, this.selectedType)
       } catch (err) {
-        this.$bvToast.toast(`Garments can't be retrieved`, errorToast);
+        this.$bvToast.toast(`Garments can't be retrieved`, errorToast)
       } finally {
-        this.loading = false;
+        this.loading = false
       }
     },
   },
-};
+}
 </script>

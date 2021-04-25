@@ -15,59 +15,59 @@
         )
 </template>
 <script>
-import { getPlaces } from "@/apis/apis";
-import { errorToast } from "@/helpers/ui";
+import { getPlaces } from '@/apis/apis'
+import { errorToast } from '@/helpers/ui'
 export default {
   props: {
     selected: {
       type: String,
-      default: "",
+      default: '',
     },
   },
   data() {
     return {
       places: [],
-      place: "",
+      place: '',
       loading: true,
-    };
+    }
   },
   computed: {
     placeOptions: function () {
-      let options = [{ value: "", text: "Select a place", disabled: true }];
+      let options = [{ value: '', text: 'Select a place', disabled: true }]
       return options.concat(
         this.places.map((place) => {
           return {
             value: place.name,
             text: place.name,
-          };
-        })
-      );
+          }
+        }),
+      )
     },
   },
   watch: {
     selected: {
       immediate: true,
       handler: function (newData) {
-        this.place = newData;
+        this.place = newData
       },
     },
   },
   mounted: function () {
-    this.loadPlaces();
+    this.loadPlaces()
   },
   methods: {
     async loadPlaces() {
       try {
-        this.places = await getPlaces();
+        this.places = await getPlaces()
       } catch (err) {
-        this.$bvToast.toast(`Places can't be retrieved`, errorToast);
+        this.$bvToast.toast(`Places can't be retrieved`, errorToast)
       } finally {
-        this.loading = false;
+        this.loading = false
       }
     },
     onChange(evt) {
-      this.$emit("selected", evt);
+      this.$emit('selected', evt)
     },
   },
-};
+}
 </script>

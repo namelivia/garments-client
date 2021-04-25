@@ -11,9 +11,9 @@ section
 </template>
 
 <script>
-import GarmentCard from "@/components/GarmentCard";
-import { getWashingGarments } from "@/apis/apis";
-import { errorToast } from "@/helpers/ui";
+import GarmentCard from '@/components/GarmentCard'
+import { getWashingGarments } from '@/apis/apis'
+import { errorToast } from '@/helpers/ui'
 export default {
   components: {
     garmentCard: GarmentCard,
@@ -22,21 +22,21 @@ export default {
     return {
       garments: [],
       loading: true,
-    };
+    }
   },
   mounted: function () {
-    this.loadList();
+    this.loadList()
   },
   methods: {
     async loadList() {
       try {
-        this.garments = await getWashingGarments();
+        this.garments = await getWashingGarments()
       } catch (err) {
-        this.$bvToast.toast(`Garments can't be retrieved`, errorToast);
+        this.$bvToast.toast(`Garments can't be retrieved`, errorToast)
       } finally {
-        this.loading = false;
+        this.loading = false
       }
     },
   },
-};
+}
 </script>

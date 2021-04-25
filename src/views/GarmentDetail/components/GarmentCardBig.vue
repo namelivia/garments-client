@@ -14,10 +14,10 @@ section(v-else)
 </template>
 
 <script>
-import { getGarment, deleteGarment } from "@/apis/apis";
-import { getImageUrl } from "@/apis/helpers";
-import { errorToast, okToast } from "@/helpers/ui";
-import router from "@/router";
+import { getGarment, deleteGarment } from '@/apis/apis'
+import { getImageUrl } from '@/apis/helpers'
+import { errorToast, okToast } from '@/helpers/ui'
+import router from '@/router'
 export default {
   props: {
     garmentId: {
@@ -29,45 +29,45 @@ export default {
     return {
       garment: null,
       loading: true,
-    };
+    }
   },
   computed: {
     imageUrl: function () {
       if (this.garment.image) {
-        return getImageUrl(this.garment.image);
+        return getImageUrl(this.garment.image)
       }
-      return null;
+      return null
     },
   },
   watch: {
     garmentId: {
       immediate: true,
       handler: function (newData) {
-        this.loadGarment(newData);
+        this.loadGarment(newData)
       },
     },
   },
   methods: {
     async loadGarment(garmentId) {
       try {
-        this.garment = await getGarment(garmentId);
+        this.garment = await getGarment(garmentId)
       } catch (err) {
-        this.$bvToast.toast(`Garment can't be retrieved`, errorToast);
+        this.$bvToast.toast(`Garment can't be retrieved`, errorToast)
       } finally {
-        this.loading = false;
+        this.loading = false
       }
     },
     async onDelete(evt) {
-      evt.preventDefault();
+      evt.preventDefault()
       try {
-        deleteGarment(this.garment.id);
-        router.replace("/list", () => {
-          this.$root.$bvToast.toast(`Garment removed`, okToast);
-        });
+        deleteGarment(this.garment.id)
+        router.replace('/list', () => {
+          this.$root.$bvToast.toast(`Garment removed`, okToast)
+        })
       } catch (err) {
-        this.$bvToast.toast(`Garment could not be removed`, errorToast);
+        this.$bvToast.toast(`Garment could not be removed`, errorToast)
       }
     },
   },
-};
+}
 </script>
