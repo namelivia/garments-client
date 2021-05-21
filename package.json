@@ -41,7 +41,7 @@
     "prettier": "^2.3.0",
     "pug": "^3.0.2",
     "pug-plain-loader": "^1.1.0",
-    "sass": "^1.32.13",
+    "sass": "^1.33.0",
     "sass-loader": "^10.1.0",
     "vue-jest": "^3.0.7",
     "vue-template-compiler": "^2.6.12"
