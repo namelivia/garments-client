@@ -16,7 +16,7 @@
     "image-blob-reduce": "^3.0.0",
     "vue": "^2.6.14",
     "vue-i18n": "^8.24.5",
-    "vue-router": "^3.5.1",
+    "vue-router": "^3.5.2",
     "vue-test-utils": "^1.0.0-beta.11"
   },
   "devDependencies": {
