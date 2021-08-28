@@ -22,5 +22,10 @@ CMD ["nginx", "-g", "daemon off;"]
 
 # development stage
 FROM development-builder as development
+
+ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
+ENV PATH=$PATH:/home/node/.npm-global/bin
+RUN npm -g install @vue/cli
+
 EXPOSE 8080
 CMD ["npm", "run", "serve"]
