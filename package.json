@@ -14,6 +14,8 @@
     "bootstrap": "^4.6.0",
     "bootstrap-vue": "^2.21.2",
     "image-blob-reduce": "^3.0.1",
+    "primeicons": "^4.1.0",
+    "primevue": "^3.6.4",
     "vue": "^2.6.14",
     "vue-i18n": "^8.25.0",
     "vue-router": "^3.5.2",
