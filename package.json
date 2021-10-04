@@ -15,7 +15,7 @@
     "bootstrap-vue": "^2.21.2",
     "image-blob-reduce": "^3.0.1",
     "vue": "^2.6.14",
-    "vue-i18n": "^8.26.4",
+    "vue-i18n": "^8.26.5",
     "vue-router": "^3.5.2",
     "vue-test-utils": "^1.0.0-beta.11"
   },
