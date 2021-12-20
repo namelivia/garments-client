@@ -1,6 +1,6 @@
 <template lang="pug">
 section
-    h3(v-if='loading' ) Loading...
+    loading(v-if='loading')
     b-card-group(v-else columns)
         garment-card(
             v-for='garment in garments' :key='garment.id'

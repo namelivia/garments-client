@@ -2,7 +2,7 @@
 h1.text-center.text-6xl.leading-relaxed {{text}}
 </template>
 
-<script lang="ts">
+<script lang="js">
 export default {
   props: {
     text: String,
