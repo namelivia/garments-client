@@ -1,6 +1,6 @@
 <template lang="pug">
 section
-    h1 Add new garment
+    section-title(text="Add new garment")
     garment-form(@submit="onSubmit")
 </template>
 

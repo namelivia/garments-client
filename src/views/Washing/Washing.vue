@@ -1,6 +1,6 @@
 <template lang="pug">
 section
-    h1(v-t="'washing.title'")
+    section-title(:text="$t('washing.title')")
     garment-list()
 </template>
 

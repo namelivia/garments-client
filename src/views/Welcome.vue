@@ -1,6 +1,6 @@
 <template lang="pug">
 section
-    h1 {{ $t("welcome.welcome") }}
+    section-title(:text="$t('welcome.welcome')")
     place-selector(@selected="onPlaceSelected" :selected="form.place")
     garment-type-selector(@selected="onGarmentTypeSelected")
     garment-card(

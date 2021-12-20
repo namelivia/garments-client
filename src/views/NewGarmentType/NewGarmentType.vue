@@ -1,6 +1,6 @@
 <template lang="pug">
 section
-    h1 Add new garment_type
+    section-title(text="Add new garment type")
     b-form(@submit="onSubmit" @reset="onReset"  v-if="show")
         b-form-group(
             id="name-input-group"
