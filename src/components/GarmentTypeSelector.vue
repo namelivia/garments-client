@@ -1,22 +1,16 @@
 <template lang="pug">
-    b-spinner(v-if="loading" label="Loading...")
-    b-form-group(
-        id="garment_type-input-group"
+    loading(v-if='loading')
+    selector(
+        id="garment_type"
         :label="$t('newGarment.garment_type')"
-        label-for="garment_type"
+        :options="garmentTypeOptions"
+        @selected="onChange"
         v-else
-    )
-        b-form-select(
-            id="garment_type"
-            name="garment_type"
-            v-model="garmentType"
-            @change="onChange($event)"
-            :options="garmentTypeOptions"
-        )
+      )
 </template>
 <script>
 import { getGarmentTypes } from '@/apis/apis'
-import { errorToast } from '@/helpers/ui'
+//import { errorToast } from '@/helpers/ui'
 export default {
   props: {
     selected: {
@@ -60,13 +54,13 @@ export default {
       try {
         this.garmentTypes = await getGarmentTypes()
       } catch (err) {
-        this.$bvToast.toast(`Garment Types can't be retrieved`, errorToast)
+        //this.$bvToast.toast(`Garment Types can't be retrieved`, errorToast)
       } finally {
         this.loading = false
       }
     },
-    onChange(evt) {
-      this.$emit('selected', evt)
+    onChange(selected) {
+      this.$emit('selected', selected)
     },
   },
 }

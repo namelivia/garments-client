@@ -1,29 +1,23 @@
 <template lang="pug">
 section
     section-title(text="Add new garment type")
-    b-form(@submit="onSubmit" @reset="onReset"  v-if="show")
-        b-form-group(
-            id="name-input-group"
-            :label="$t('newGarmentType.name')"
-            label-for="name"
+    form(@submit="onSubmit" @reset="onReset" v-if="show")
+        text-input(
+          :name="name"
+          :label="$t('newGarmentType.name')"
+          :placeholder="$t('newGarmentType.enterGarmentTypeName')"
+          @update="onInput"
+          required
         )
-            b-form-input(
-                id="name"
-                name="name"
-                v-model="form.name"
-                type="text"
-                required
-                :garment_typeholder="$t('newGarmentType.enterGarmentTypeName')"
-            )
         .mt-4
-        b-button.mr-2(type="submit" variant="primary") {{$t('newGarmentType.submit')}}
-        b-button(type="reset" variant="danger") {{$t('newGarmentType.reset')}}
+        submit-button.mr-2(:text="$t('newGarmentType.submit')")
+        reset-button(:text="$t('newGarmentType.reset')")
 </template>
 
 <script>
 import router from '@/router'
 import { postGarmentType } from '@/apis/apis'
-import { errorToast, okToast } from '@/helpers/ui'
+//import { errorToast, okToast } from '@/helpers/ui'
 export default {
   data() {
     return {
@@ -39,14 +33,17 @@ export default {
         evt.preventDefault()
         await postGarmentType(this.form)
         router.replace('/list', () => {
-          this.$root.$bvToast.toast(
+          /*`this.$root.$bvToast.toast(
             `GarmentType ${this.form.name} created`,
             okToast,
-          )
+          )*/
         })
       } catch (err) {
-        this.$bvToast.toast(`GarmentType could not be created`, errorToast)
+        //this.$bvToast.toast(`GarmentType could not be created`, errorToast)
       }
+    },
+    onInput(value) {
+      this.form.name = value
     },
     onReset(evt) {
       if (evt) {

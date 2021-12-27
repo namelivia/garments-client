@@ -7,7 +7,7 @@ section
 <script>
 import router from '@/router'
 import { getGarment, putGarment } from '@/apis/apis'
-import { errorToast, okToast } from '@/helpers/ui'
+//import { errorToast, okToast } from '@/helpers/ui'
 import GarmentForm from '@/components/GarmentForm'
 export default {
   components: {
@@ -47,7 +47,7 @@ export default {
         this.form.place = garment.place
         this.form.image = garment.image
       } catch (err) {
-        this.$bvToast.toast(`Garment can't be retrieved`, errorToast)
+        //this.$bvToast.toast(`Garment can't be retrieved`, errorToast)
       } finally {
         this.loading = false
       }
@@ -56,10 +56,10 @@ export default {
       try {
         await putGarment(this.garmentId, data)
         router.replace('/list', () => {
-          this.$root.$bvToast.toast(`Garment ${data.name} created`, okToast)
+          //this.$root.$bvToast.toast(`Garment ${data.name} created`, okToast)
         })
       } catch (err) {
-        this.$bvToast.toast(`Garment could not be updated`, errorToast)
+        //this.$bvToast.toast(`Garment could not be updated`, errorToast)
       }
     },
   },

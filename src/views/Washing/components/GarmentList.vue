@@ -1,7 +1,7 @@
 <template lang="pug">
 section
     loading(v-if='loading')
-    b-card-group(v-else columns)
+    card-grid(v-else)
         garment-card(
             v-for='garment in garments' :key='garment.id'
             :id="garment.id"
@@ -13,7 +13,7 @@ section
 <script>
 import GarmentCard from '@/components/GarmentCard'
 import { getWashingGarments } from '@/apis/apis'
-import { errorToast } from '@/helpers/ui'
+//import { errorToast } from '@/helpers/ui'
 export default {
   components: {
     garmentCard: GarmentCard,
@@ -32,7 +32,7 @@ export default {
       try {
         this.garments = await getWashingGarments()
       } catch (err) {
-        this.$bvToast.toast(`Garments can't be retrieved`, errorToast)
+        //this.$bvToast.toast(`Garments can't be retrieved`, errorToast)
       } finally {
         this.loading = false
       }

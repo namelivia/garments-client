@@ -1,24 +1,16 @@
 <template lang="pug">
-    b-spinner(v-if="resizing" label="Loading...")
-    b-form-group(
-        id="image-input-group"
-        :label="$t('newGarment.image')"
-        label-for="image"
-        v-else
+    loading(v-if='resizing')
+    image-input(
+      :label="$t('newGarment.image')"
+      :placeholder="$t('newGarment.imageForTheGarment')"
+      :drop-placeholder="$t('newGarment.imageForTheGarment')"
+      @update="onInput"
+      v-else
     )
-        b-form-file(
-            id="image"
-            name="image"
-            v-model="rawImage"
-            accept="image/*"
-            :placeholder="$t('newGarment.imageForTheGarment')"
-            :drop-placeholder="$t('newGarment.imageForTheGarment')"
-            @input="onInput"
-        )
 </template>
 <script>
 import ImageBlobReduce from 'image-blob-reduce'
-import { errorToast } from '@/helpers/ui'
+//import { errorToast } from '@/helpers/ui'
 export default {
   data() {
     return {
@@ -35,7 +27,7 @@ export default {
         const newFile = new File([blob], file.name, { type: file.type })
         this.$emit('loaded', newFile)
       } catch (err) {
-        this.$bvToast.toast(`Error loading image`, errorToast)
+        //this.$bvToast.toast(`Error loading image`, errorToast)
       } finally {
         this.resizing = false
       }

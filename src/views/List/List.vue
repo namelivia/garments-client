@@ -1,7 +1,7 @@
 <template lang="pug">
 section
     section-title(:text="$t('list.title')")
-    b-form.row
+    div.flex
         garment-type-selector(@selected="onGarmentTypeSelected")
         place-selector(@selected="onPlaceSelected" :selected="form.place")
     garment-list(

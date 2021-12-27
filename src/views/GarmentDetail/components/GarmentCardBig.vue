@@ -1,5 +1,5 @@
 <template lang="pug">
-b-spinner(v-if="loading" label="Loading...")
+loading(v-if='loading')
 section(v-else)
     img.mb-4.img-fluid(:src="imageUrl")
     p.mb-0 Id: {{ garment.id}}
@@ -8,15 +8,15 @@ section(v-else)
     p.mb-0 {{$t("garmentDetails.color")}}: {{ garment.color}}
     p.mb-0 {{$t("garmentDetails.status")}}: {{ garment.status}}
     p.mb-0 {{$t("garmentDetails.place")}}: {{ garment.place}}
-    b-button(variant="danger" v-on:click="onDelete" v-t="'garmentDetails.deleteIt'")
+    danger-button(@click="onDelete" :text="$t('garmentDetails.deleteIt')")
     router-link(:to="{ name: 'edit', params: { garmentId: this.garment.id}}")
-        b-button.ml-2(v-t="'garmentCard.editIt'")
+        secondary-button.ml-2(:text="$t('garmentCard.editIt')")
 </template>
 
 <script>
 import { getGarment, deleteGarment } from '@/apis/apis'
 import { getImageUrl } from '@/apis/helpers'
-import { errorToast, okToast } from '@/helpers/ui'
+//import { errorToast, okToast } from '@/helpers/ui'
 import router from '@/router'
 export default {
   props: {
@@ -52,7 +52,7 @@ export default {
       try {
         this.garment = await getGarment(garmentId)
       } catch (err) {
-        this.$bvToast.toast(`Garment can't be retrieved`, errorToast)
+        //this.$bvToast.toast(`Garment can't be retrieved`, errorToast)
       } finally {
         this.loading = false
       }
@@ -62,10 +62,10 @@ export default {
       try {
         deleteGarment(this.garment.id)
         router.replace('/list', () => {
-          this.$root.$bvToast.toast(`Garment removed`, okToast)
+          //this.$root.$bvToast.toast(`Garment removed`, okToast)
         })
       } catch (err) {
-        this.$bvToast.toast(`Garment could not be removed`, errorToast)
+        //this.$bvToast.toast(`Garment could not be removed`, errorToast)
       }
     },
   },

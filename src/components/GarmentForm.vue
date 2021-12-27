@@ -1,68 +1,46 @@
 <template lang="pug">
-    b-form(@submit="onSubmit" @reset="onReset"  v-if="show")
-        b-form-group(
-            id="name-input-group"
-            :label="$t('garmentForm.name')"
-            label-for="name"
+    form(@submit="onSubmit" @reset="onReset"  v-if="show")
+        text-input(
+          :name="name"
+          :label="$t('newGarment.name')"
+          :placeholder="$t('newGarment.enterGarmentName')"
+          @update="garment.name = $event"
+          required
         )
-            b-form-input(
-                id="name"
-                name="name"
-                v-model="garment.name"
-                type="text"
-                required
-                :placeholder="$t('garmentForm.enterGarmentName')"
-            )
         garment-type-selector(@selected="onGarmentTypeSelected" :selected="garment.garment_type")
         place-selector(@selected="onPlaceSelected" :selected="garment.place")
-        b-form-group(
-            id="color-input-group"
-            :label="$t('newGarment.color')"
-            label-for="color"
+        text-input(
+          :name="color"
+          :label="$t('newGarment.color')"
+          :placeholder="$t('newGarment.enterGarmentColor')"
+          @update="garment.color = $event"
+          required
         )
-            b-form-input(
-                id="color"
-                name="color"
-                v-model="garment.color"
-                type="text"
-                :placeholder="$t('newGarment.enterGarmentColor')"
-            )
-        b-form-group(
-            id="status-input-group"
-            :label="$t('newGarment.status')"
-            label-for="status"
+        text-input(
+          :name="status"
+          :label="$t('newGarment.status')"
+          :placeholder="$t('newGarment.enterGarmentStatus')"
+          @update="garment.status = $event"
+          required
         )
-            b-form-input(
-                id="status"
-                name="status"
-                v-model="garment.status"
-                type="text"
-                :placeholder="$t('newGarment.enterGarmentStatus')"
-            )
-        b-form-group(
-            id="wear-to-wash-input-group"
-            :label="$t('newGarment.wearToWash')"
-            label-for="wear-to-wash"
+        number-input(
+          :name="wear-to-wash"
+          :label="$t('newGarment.wearToWash')"
+          :placeholder="$t('newGarment.enterWearToWash')"
+          @update="garment.wear_to_wash = $event"
+          required
         )
-            b-form-input(
-                id="wear-to-wash"
-                name="wear-to-wash"
-                v-model="garment.wear_to_wash"
-                type="number"
-                min="1"
-                :placeholder="$t('newGarment.enterWearToWash')"
-            )
         resize-image-upload(@loaded="onImageLoaded")
         .mt-4
-        b-button.mr-2(type="submit" variant="primary") {{$t('newGarment.submit')}}
-        b-button(type="reset" variant="danger") {{$t('newGarment.reset')}}
+        submit-button.mr-2(:text="$t('newGarment.submit')")
+        reset-button(:text="$t('newGarment.reset')")
 </template>
 <script>
 import GarmentTypeSelector from '@/components/GarmentTypeSelector'
 import PlaceSelector from '@/components/PlaceSelector'
 import ResizeImageUpload from '@/components/ResizeImageUpload'
 import { postImage } from '@/apis/apis'
-import { errorToast } from '@/helpers/ui'
+//import { errorToast } from '@/helpers/ui'
 export default {
   components: {
     GarmentTypeSelector,
@@ -122,7 +100,7 @@ export default {
         try {
           this.garment.image = await postImage(this.garment.image)
         } catch (err) {
-          this.$bvToast.toast(`Image could not be loaded`, errorToast)
+          //this.$bvToast.toast(`Image could not be loaded`, errorToast)
         }
       }
     },

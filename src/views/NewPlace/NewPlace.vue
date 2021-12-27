@@ -1,29 +1,23 @@
 <template lang="pug">
 section
     section-title(text="Add new place")
-    b-form(@submit="onSubmit" @reset="onReset"  v-if="show")
-        b-form-group(
-            id="name-input-group"
-            :label="$t('newPlace.name')"
-            label-for="name"
+    form(@submit="onSubmit" @reset="onReset" v-if="show")
+        text-input(
+          :name="name"
+          :label="$t('newPlace.name')"
+          :placeholder="$t('newPlace.enterPlaceName')"
+          @update="form.name = $event"
+          required
         )
-            b-form-input(
-                id="name"
-                name="name"
-                v-model="form.name"
-                type="text"
-                required
-                :placeholder="$t('newPlace.enterPlaceName')"
-            )
         .mt-4
-        b-button.mr-2(type="submit" variant="primary") {{$t('newPlace.submit')}}
-        b-button(type="reset" variant="danger") {{$t('newPlace.reset')}}
+        submit-button.mr-2(:text="$t('newPlace.submit')")
+        reset-button(:text="$t('newPlace.reset')")
 </template>
 
 <script>
 import router from '@/router'
 import { postPlace } from '@/apis/apis'
-import { errorToast, okToast } from '@/helpers/ui'
+//import { errorToast, okToast } from '@/helpers/ui'
 export default {
   data() {
     return {
@@ -39,10 +33,10 @@ export default {
         evt.preventDefault()
         await postPlace(this.form)
         router.replace('/list', () => {
-          this.$root.$bvToast.toast(`Place ${this.form.name} created`, okToast)
+          //this.$root.$bvToast.toast(`Place ${this.form.name} created`, okToast)
         })
       } catch (err) {
-        this.$bvToast.toast(`Place could not be created`, errorToast)
+        //this.$bvToast.toast(`Place could not be created`, errorToast)
       }
     },
     onReset(evt) {

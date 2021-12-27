@@ -19,6 +19,7 @@ module.exports = {
       .test(/\.pug$/)
       .use("pug-plain-loader")
       .loader("pug-plain-loader");
+    config.resolve.symlinks(false)
   },
   pluginOptions: {
     i18n: {
