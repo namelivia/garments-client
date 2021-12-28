@@ -1,7 +1,7 @@
 <template lang="pug">
 div
   card
-    card-image(:src="imageUrl" :alt="name")
+    card-image(:src="imageUrl" :alt="name" @width="onWidth")
     card-body(:title="name")
       regular-button(@click="onWear" :text="$t('garmentCard.wearIt')")
       regular-button(@click="onWash" :text="$t('garmentCard.washIt')")
@@ -29,19 +29,8 @@ export default {
   },
   data: function () {
     return {
-      imageWidth: 0,
+      imageUrl: null,
     }
-  },
-  computed: {
-    imageUrl: function () {
-      if (this.imagePath && this.imageWidth) {
-        return getImageUrl(this.imagePath, this.imageWidth)
-      }
-      return null
-    },
-  },
-  mounted: function () {
-    this.calculateWidth()
   },
   methods: {
     async onWear(evt) {
@@ -64,8 +53,8 @@ export default {
         //this.$bvToast.toast(`Garment could not be washed`, errorToast)
       }
     },
-    calculateWidth() {
-      this.imageWidth = this.$refs.image.$el.clientWidth
+    onWidth(width) {
+      this.imageUrl = getImageUrl(this.imagePath, width)
     },
   },
 }
