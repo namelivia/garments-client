@@ -19,9 +19,8 @@ import {
   NumberInput,
   ImageInput,
   CardGrid,
+  Navbar,
 } from 'vue-components'
-
-import NewNavbar from './components/NewNavbar.vue'
 
 Vue.prototype.$axios = axios
 Vue.component('Loading', Loading)
@@ -39,7 +38,7 @@ Vue.component('TextInput', TextInput)
 Vue.component('NumberInput', NumberInput)
 Vue.component('ImageInput', ImageInput)
 Vue.component('CardGrid', CardGrid)
-Vue.component('NewNavbar', NewNavbar)
+Vue.component('Navbar', Navbar)
 
 new Vue({
   router,

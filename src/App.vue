@@ -1,8 +1,8 @@
 <template lang="pug">
-.min-vh-100
-    new-navbar(:links="links")
-    div(class="container mx-auto")
-        router-view
+.h-screen
+  navbar(:links="links" :locale="$i18n.locale" :current-user-email="currentUserEmail")
+  div(class="container mx-auto")
+      router-view
 </template>
 
 <script>
