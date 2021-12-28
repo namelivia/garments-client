@@ -20,7 +20,7 @@ import {
   ImageInput,
   CardGrid,
   Navbar,
-} from 'vue-components'
+} from '@namelivia/vue-components'
 
 Vue.prototype.$axios = axios
 Vue.component('Loading', Loading)
