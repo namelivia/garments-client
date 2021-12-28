@@ -16,7 +16,7 @@ import GarmentCard from '@/components/GarmentCard'
 import GarmentTypeSelector from '@/components/GarmentTypeSelector'
 import PlaceSelector from '@/components/PlaceSelector'
 import { getRandomGarment } from '@/apis/apis'
-import { errorToast } from '@/helpers/ui'
+//import { errorToast } from '@/helpers/ui'
 import store from '@/currentUser'
 export default {
   components: {
@@ -60,7 +60,7 @@ export default {
           this.form.garment_type,
         )
       } catch (err) {
-        this.$bvToast.toast(`Random can't be retrieved`, errorToast)
+        //this.$bvToast.toast(`Random can't be retrieved`, errorToast)
       } finally {
         this.loading = false
       }

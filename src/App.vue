@@ -1,26 +1,8 @@
 <template lang="pug">
-.garments-background.min-vh-100
-    b-navbar(toggleable="lg" type="dark" variant="info")
-        b-navbar-brand(to="/")
-            span(v-t="'navigation.title'")
-        b-navbar-toggle(target="nav-collapse")
-        b-collapse(id="nav-collapse" is-nav)
-            b-navbar-nav
-                b-nav-item(to="/list")
-                  span(v-t="'navigation.list'")
-                b-nav-item(to="/new")
-                  span(v-t="'navigation.new'")
-                b-nav-item(to="/new-place")
-                  span(v-t="'navigation.new-place'")
-                b-nav-item(to="/new-garment-type")
-                  span(v-t="'navigation.new-garment-type'")
-                b-nav-item(to="/washing")
-                  span(v-t="'navigation.washing'")
-            b-navbar-nav.ml-auto
-                b-nav-item {{ $i18n.locale }}
-                b-nav-item {{ currentUserEmail }}
-    b-container.bg-light.text-dark.pb-4.pt-4
-        router-view
+.h-screen
+  navbar(:links="links" :locale="$i18n.locale" :current-user-email="currentUserEmail")
+  div(class="container mx-auto")
+      router-view
 </template>
 
 <script>
@@ -29,6 +11,21 @@ export default {
   data: function () {
     return {
       currentUserEmail: undefined,
+      links: [
+        { id: 1, text: this.$i18n.t('navigation.list'), href: '/list' },
+        { id: 2, text: this.$i18n.t('navigation.new'), href: '/new' },
+        {
+          id: 3,
+          text: this.$i18n.t('navigation.new-place'),
+          href: '/new-place',
+        },
+        {
+          id: 4,
+          text: this.$i18n.t('navigation.new-garment-type'),
+          href: '/new-garment-type',
+        },
+        { id: 5, text: this.$i18n.t('navigation.washing'), href: '/washing' },
+      ],
     }
   },
   mounted() {
@@ -45,6 +42,4 @@ export default {
 
 <style lang="css">
 @import './assets/styles/custom.css';
-@import '../node_modules/bootstrap/dist/css/bootstrap.css';
-@import '../node_modules/bootstrap-vue/dist/bootstrap-vue.css';
 </style>

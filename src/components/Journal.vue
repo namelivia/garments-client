@@ -1,5 +1,5 @@
 <template lang="pug">
-b-spinner(v-if="loading" label="Loading...")
+loading(v-if='loading')
 section(v-else)
     .mt-4
     journal-entry(
@@ -11,7 +11,7 @@ section(v-else)
 </template>
 <script>
 import { getJournal } from '@/apis/apis'
-import { errorToast } from '@/helpers/ui'
+//import { errorToast } from '@/helpers/ui'
 import JournalEntry from './JournalEntry'
 import AddJournalEntry from './AddJournalEntry'
 export default {
@@ -46,7 +46,7 @@ export default {
       try {
         this.journal = await getJournal(this.id)
       } catch (err) {
-        this.$bvToast.toast(`Journal can't be retrieved`, errorToast)
+        //this.$bvToast.toast(`Journal can't be retrieved`, errorToast)
       } finally {
         this.loading = false
       }

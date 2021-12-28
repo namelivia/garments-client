@@ -1,22 +1,16 @@
 <template lang="pug">
-    b-spinner(v-if="loading" label="Loading...")
-    b-form-group(
-        id="place-input-group"
+    loading(v-if='loading')
+    selector(
+        id="place"
         :label="$t('newPlace.place')"
-        label-for="place"
+        :options="placeOptions"
+        @selected="onChange"
         v-else
-    )
-        b-form-select(
-            id="place"
-            name="place"
-            v-model="place"
-            @change="onChange($event)"
-            :options="placeOptions"
-        )
+      )
 </template>
 <script>
 import { getPlaces } from '@/apis/apis'
-import { errorToast } from '@/helpers/ui'
+//import { errorToast } from '@/helpers/ui'
 export default {
   props: {
     selected: {
@@ -60,13 +54,13 @@ export default {
       try {
         this.places = await getPlaces()
       } catch (err) {
-        this.$bvToast.toast(`Places can't be retrieved`, errorToast)
+        //this.$bvToast.toast(`Places can't be retrieved`, errorToast)
       } finally {
         this.loading = false
       }
     },
-    onChange(evt) {
-      this.$emit('selected', evt)
+    onChange(selected) {
+      this.$emit('selected', selected)
     },
   },
 }
