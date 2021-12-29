@@ -31,7 +31,7 @@ export default {
   data: function () {
     return {
       garments: [],
-      loading: true,
+      loading: false,
       selectedPlace: null,
       selectedType: null,
     }
@@ -48,6 +48,7 @@ export default {
   },
   methods: {
     async loadList() {
+      this.loading = true
       if (!this.selectedType || !this.selectedType) {
         return null
       }

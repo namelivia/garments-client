@@ -1,7 +1,7 @@
 <template lang="pug">
 .h-screen
   navbar(:links="links" :locale="$i18n.locale" :current-user-email="currentUserEmail")
-  div(class="container mx-auto")
+  container
       router-view
 </template>
 

@@ -19,10 +19,10 @@ import {
   NumberInput,
   ImageInput,
   CardGrid,
+  Container,
   Navbar,
 } from '@namelivia/vue-components'
 
-Vue.prototype.$axios = axios
 Vue.component('Loading', Loading)
 Vue.component('SectionTitle', SectionTitle)
 Vue.component('ResetButton', ResetButton)
@@ -38,7 +38,9 @@ Vue.component('TextInput', TextInput)
 Vue.component('NumberInput', NumberInput)
 Vue.component('ImageInput', ImageInput)
 Vue.component('CardGrid', CardGrid)
+Vue.component('Container', Container)
 Vue.component('Navbar', Navbar)
+Vue.prototype.$axios = axios
 
 new Vue({
   router,
