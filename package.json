@@ -20,7 +20,7 @@
   "devDependencies": {
     "@babel/core": "^7.16.5",
     "@babel/preset-env": "^7.16.5",
-    "@namelivia/vue-components": "^0.1.4",
+    "@namelivia/vue-components": "^0.1.5",
     "@tailwindcss/postcss7-compat": "^2.2.17",
     "@testing-library/vue": "^5.8.2",
     "@vue/cli-plugin-eslint": "^4.5.15",
