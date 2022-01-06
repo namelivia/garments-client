@@ -43,8 +43,7 @@
   },
   "lint-staged": {
     "*.(js|vue)": [
-      "npm run prettier -- --write",
-      "npm run lint"
+      "npm run prettier -- --write"
     ]
   }
 }
