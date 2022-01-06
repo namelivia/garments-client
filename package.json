@@ -13,14 +13,14 @@
     "axios": "^0.24.0",
     "image-blob-reduce": "^4.1.0",
     "vue": "^3.0.0-beta.1",
-    "vue-i18n": "^8.26.8",
-    "vue-router": "^3.5.3",
+    "vue-i18n": "^9.2.0-beta.26",
+    "vue-router": "^4.0.12",
     "vue-test-utils": "^1.0.0-beta.11"
   },
   "devDependencies": {
     "@babel/core": "^7.16.7",
     "@babel/preset-env": "^7.16.7",
-    "@namelivia/vue-components": "^0.1.10",
+    "@namelivia/vue-components": "^1.0.0",
     "@tailwindcss/postcss7-compat": "^2.2.17",
     "@testing-library/vue": "^5.8.2",
     "@vue/cli-plugin-eslint": "^4.5.15",

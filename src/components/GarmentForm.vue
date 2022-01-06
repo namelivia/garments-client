@@ -38,14 +38,12 @@ form(@submit="onSubmit" @reset="onReset"  v-if="show")
 <script>
 import GarmentTypeSelector from '@/components/GarmentTypeSelector'
 import PlaceSelector from '@/components/PlaceSelector'
-import ResizeImageUpload from '@/components/ResizeImageUpload'
 import { postImage } from '@/apis/apis'
 //import { errorToast } from '@/helpers/ui'
 export default {
   components: {
     GarmentTypeSelector,
     PlaceSelector,
-    ResizeImageUpload,
   },
   props: {
     initialData: {
@@ -63,6 +61,7 @@ export default {
       },
     },
   },
+  emits: ['submit'],
   data() {
     return {
       show: true,
