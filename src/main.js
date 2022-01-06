@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Vue, { createApp, h } from 'vue'
 import axios from 'axios'
 import router from './router'
 import i18n from './i18n'
@@ -42,8 +42,9 @@ Vue.component('Container', Container)
 Vue.component('Navbar', Navbar)
 Vue.prototype.$axios = axios
 
-new Vue({
-  router,
+createApp({
   i18n,
-  render: (h) => h(App),
-}).$mount('#app')
+  render: () => h(App),
+})
+  .use(router)
+  .mount('#app')

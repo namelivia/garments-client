@@ -1,12 +1,12 @@
 <template lang="pug">
-    loading(v-if='resizing')
-    image-input(
-      :label="$t('newGarment.image')"
-      :placeholder="$t('newGarment.imageForTheGarment')"
-      :drop-placeholder="$t('newGarment.imageForTheGarment')"
-      @update="onInput"
-      v-else
-    )
+loading(v-if='resizing')
+image-input(
+  :label="$t('newGarment.image')"
+  :placeholder="$t('newGarment.imageForTheGarment')"
+  :drop-placeholder="$t('newGarment.imageForTheGarment')"
+  @update="onInput"
+  v-else
+)
 </template>
 <script>
 import ImageBlobReduce from 'image-blob-reduce'

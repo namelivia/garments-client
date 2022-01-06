@@ -1,39 +1,39 @@
 <template lang="pug">
-    form(@submit="onSubmit" @reset="onReset"  v-if="show")
-        text-input(
-          :name="name"
-          :label="$t('newGarment.name')"
-          :placeholder="$t('newGarment.enterGarmentName')"
-          @update="garment.name = $event"
-          required
-        )
-        garment-type-selector(@selected="onGarmentTypeSelected" :selected="garment.garment_type")
-        place-selector(@selected="onPlaceSelected" :selected="garment.place")
-        text-input(
-          :name="color"
-          :label="$t('newGarment.color')"
-          :placeholder="$t('newGarment.enterGarmentColor')"
-          @update="garment.color = $event"
-          required
-        )
-        text-input(
-          :name="status"
-          :label="$t('newGarment.status')"
-          :placeholder="$t('newGarment.enterGarmentStatus')"
-          @update="garment.status = $event"
-          required
-        )
-        number-input(
-          :name="wear-to-wash"
-          :label="$t('newGarment.wearToWash')"
-          :placeholder="$t('newGarment.enterWearToWash')"
-          @update="garment.wear_to_wash = $event"
-          required
-        )
-        resize-image-upload(@loaded="onImageLoaded")
-        .mt-4
-        submit-button.mr-2(:text="$t('newGarment.submit')")
-        reset-button(:text="$t('newGarment.reset')")
+form(@submit="onSubmit" @reset="onReset"  v-if="show")
+    text-input(
+      :name="name"
+      :label="$t('newGarment.name')"
+      :placeholder="$t('newGarment.enterGarmentName')"
+      @update="garment.name = $event"
+      required
+    )
+    garment-type-selector(@selected="onGarmentTypeSelected" :selected="garment.garment_type")
+    place-selector(@selected="onPlaceSelected" :selected="garment.place")
+    text-input(
+      :name="color"
+      :label="$t('newGarment.color')"
+      :placeholder="$t('newGarment.enterGarmentColor')"
+      @update="garment.color = $event"
+      required
+    )
+    text-input(
+      :name="status"
+      :label="$t('newGarment.status')"
+      :placeholder="$t('newGarment.enterGarmentStatus')"
+      @update="garment.status = $event"
+      required
+    )
+    number-input(
+      :name="wear-to-wash"
+      :label="$t('newGarment.wearToWash')"
+      :placeholder="$t('newGarment.enterWearToWash')"
+      @update="garment.wear_to_wash = $event"
+      required
+    )
+    resize-image-upload(@loaded="onImageLoaded")
+    .mt-4
+    submit-button.mr-2(:text="$t('newGarment.submit')")
+    reset-button(:text="$t('newGarment.reset')")
 </template>
 <script>
 import GarmentTypeSelector from '@/components/GarmentTypeSelector'
