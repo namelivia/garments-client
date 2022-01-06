@@ -3,7 +3,7 @@ import axios from 'axios'
 const getCurrentUser = async function () {
   if (this.state.currentUser === undefined) {
     const currentUser = await axios.get(
-      `${process.env.VUE_APP_API_ENDPOINT}/users/me`,
+      `${import.meta.env.VITE_APP_API_ENDPOINT}/users/me`,
     )
     this.state.currentUser = currentUser.data
   }

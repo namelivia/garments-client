@@ -11,9 +11,9 @@ section
 </template>
 
 <script>
-import GarmentList from './components/GarmentList'
-import GarmentTypeSelector from '@/components/GarmentTypeSelector'
-import PlaceSelector from '@/components/PlaceSelector'
+import GarmentList from '@/views/List/components/GarmentList.vue'
+import GarmentTypeSelector from '@/components/GarmentTypeSelector.vue'
+import PlaceSelector from '@/components/PlaceSelector.vue'
 import store from '@/currentUser'
 export default {
   components: {

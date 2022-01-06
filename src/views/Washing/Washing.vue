@@ -5,7 +5,7 @@ section
 </template>
 
 <script>
-import GarmentList from './components/GarmentList'
+import GarmentList from '@/views/Washing/components/GarmentList.vue'
 export default {
   components: {
     GarmentList: GarmentList,
