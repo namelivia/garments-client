@@ -5,26 +5,27 @@
     "serve": "vue-cli-service serve --port=8080",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test": "jest",
     "codecov": "codecov",
-    "prettier": "prettier"
+    "prettier": "prettier",
+    "test": "jest"
   },
   "dependencies": {
     "axios": "^0.24.0",
     "image-blob-reduce": "^4.1.0",
-    "vue": "^2.6.14",
-    "vue-i18n": "^8.26.8",
-    "vue-router": "^3.5.3",
+    "vue": "^3.0.0-beta.1",
+    "vue-i18n": "^9.2.0-beta.26",
+    "vue-router": "^4.0.12",
     "vue-test-utils": "^1.0.0-beta.11"
   },
   "devDependencies": {
     "@babel/core": "^7.16.7",
     "@babel/preset-env": "^7.16.7",
-    "@namelivia/vue-components": "^0.1.10",
+    "@namelivia/vue-components": "^1.0.0",
     "@tailwindcss/postcss7-compat": "^2.2.17",
     "@testing-library/vue": "^5.8.2",
     "@vue/cli-plugin-eslint": "^4.5.15",
     "@vue/cli-service": "^4.5.15",
+    "@vue/compiler-sfc": "^3.0.0-beta.1",
     "@vue/test-utils": "^1.3.0",
     "autoprefixer": "^9.8.8",
     "babel-core": "^7.0.0-bridge.0",
@@ -44,8 +45,8 @@
     "pug": "^3.0.2",
     "pug-plain-loader": "^1.1.0",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17",
-    "vue-jest": "^3.0.7",
-    "vue-template-compiler": "^2.6.14"
+    "vue-cli-plugin-vue-next": "~0.1.4",
+    "vue-jest": "^3.0.7"
   },
   "lint-staged": {
     "*.(js|vue)": [

@@ -1,12 +1,12 @@
 <template lang="pug">
-    loading(v-if='loading')
-    selector(
-        id="place"
-        :label="$t('newPlace.place')"
-        :options="placeOptions"
-        @selected="onChange"
-        v-else
-      )
+loading(v-if='loading')
+selector(
+    id="place"
+    :label="$t('newPlace.place')"
+    :options="placeOptions"
+    @selected="onChange"
+    v-else
+  )
 </template>
 <script>
 import { getPlaces } from '@/apis/apis'
@@ -18,6 +18,7 @@ export default {
       default: '',
     },
   },
+  emits: ['selected'],
   data() {
     return {
       places: [],

@@ -1,7 +1,7 @@
 <template lang="pug">
-    card.mb-2
-      p.mb-0 {{formattedDate}}
-      p.mb-0 {{message}}
+card.mb-2
+  p.mb-0 {{formattedDate}}
+  p.mb-0 {{message}}
 </template>
 <script>
 export default {

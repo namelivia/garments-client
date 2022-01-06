@@ -1,12 +1,12 @@
 <template lang="pug">
-    loading(v-if='loading')
-    selector(
-        id="garment_type"
-        :label="$t('newGarment.garment_type')"
-        :options="garmentTypeOptions"
-        @selected="onChange"
-        v-else
-      )
+loading(v-if='loading')
+selector(
+    id="garment_type"
+    :label="$t('newGarment.garment_type')"
+    :options="garmentTypeOptions"
+    @selected="onChange"
+    v-else
+  )
 </template>
 <script>
 import { getGarmentTypes } from '@/apis/apis'
@@ -18,6 +18,7 @@ export default {
       default: '',
     },
   },
+  emits: ['selected'],
   data() {
     return {
       garmentTypes: [],

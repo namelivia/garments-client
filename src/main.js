@@ -1,5 +1,4 @@
-import Vue from 'vue'
-import axios from 'axios'
+import { createApp } from 'vue'
 import router from './router'
 import i18n from './i18n'
 import App from './App.vue'
@@ -19,31 +18,34 @@ import {
   NumberInput,
   ImageInput,
   CardGrid,
-  Container,
   Navbar,
+  Container,
+  StyledTable,
+  Pagination,
 } from '@namelivia/vue-components'
 
-Vue.component('Loading', Loading)
-Vue.component('SectionTitle', SectionTitle)
-Vue.component('ResetButton', ResetButton)
-Vue.component('SubmitButton', SubmitButton)
-Vue.component('RegularButton', RegularButton)
-Vue.component('DangerButton', DangerButton)
-Vue.component('SecondaryButton', SecondaryButton)
-Vue.component('Card', Card)
-Vue.component('CardImage', CardImage)
-Vue.component('CardBody', CardBody)
-Vue.component('Selector', Selector)
-Vue.component('TextInput', TextInput)
-Vue.component('NumberInput', NumberInput)
-Vue.component('ImageInput', ImageInput)
-Vue.component('CardGrid', CardGrid)
-Vue.component('Container', Container)
-Vue.component('Navbar', Navbar)
-Vue.prototype.$axios = axios
+const app = createApp(App)
+app.use(router)
+app.use(i18n)
 
-new Vue({
-  router,
-  i18n,
-  render: (h) => h(App),
-}).$mount('#app')
+app.component('Loading', Loading)
+app.component('SectionTitle', SectionTitle)
+app.component('ResetButton', ResetButton)
+app.component('SubmitButton', SubmitButton)
+app.component('RegularButton', RegularButton)
+app.component('DangerButton', DangerButton)
+app.component('SecondaryButton', SecondaryButton)
+app.component('Card', Card)
+app.component('CardImage', CardImage)
+app.component('CardBody', CardBody)
+app.component('Selector', Selector)
+app.component('TextInput', TextInput)
+app.component('NumberInput', NumberInput)
+app.component('ImageInput', ImageInput)
+app.component('CardGrid', CardGrid)
+app.component('Navbar', Navbar)
+app.component('Container', Container)
+app.component('StyledTable', StyledTable)
+app.component('Pagination', Pagination)
+
+app.mount('#app')

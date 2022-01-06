@@ -1,3 +1,3 @@
-import { config } from "@vue/test-utils"
+import { config } from '@vue/test-utils'
 
-config.mocks["$t"] = (msg) => msg
+config.mocks['$t'] = (msg) => msg
