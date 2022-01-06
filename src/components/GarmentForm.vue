@@ -36,8 +36,8 @@ form(@submit="onSubmit" @reset="onReset"  v-if="show")
     reset-button(:text="$t('newGarment.reset')")
 </template>
 <script>
-import GarmentTypeSelector from '@/components/GarmentTypeSelector'
-import PlaceSelector from '@/components/PlaceSelector'
+import GarmentTypeSelector from '@/components/GarmentTypeSelector.vue'
+import PlaceSelector from '@/components/PlaceSelector.vue'
 import { postImage } from '@/apis/apis'
 //import { errorToast } from '@/helpers/ui'
 export default {

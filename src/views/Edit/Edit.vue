@@ -8,7 +8,7 @@ section
 import router from '@/router'
 import { getGarment, putGarment } from '@/apis/apis'
 //import { errorToast, okToast } from '@/helpers/ui'
-import GarmentForm from '@/components/GarmentForm'
+import GarmentForm from '@/components/GarmentForm.vue'
 export default {
   components: {
     GarmentForm,

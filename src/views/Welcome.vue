@@ -12,9 +12,9 @@ section
 </template>
 
 <script>
-import GarmentCard from '@/components/GarmentCard'
-import GarmentTypeSelector from '@/components/GarmentTypeSelector'
-import PlaceSelector from '@/components/PlaceSelector'
+import GarmentCard from '@/components/GarmentCard.vue'
+import GarmentTypeSelector from '@/components/GarmentTypeSelector.vue'
+import PlaceSelector from '@/components/PlaceSelector.vue'
 import { getRandomGarment } from '@/apis/apis'
 //import { errorToast } from '@/helpers/ui'
 import store from '@/currentUser'

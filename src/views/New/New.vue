@@ -6,7 +6,7 @@ section
 
 <script>
 import router from '@/router'
-import GarmentForm from '@/components/GarmentForm'
+import GarmentForm from '@/components/GarmentForm.vue'
 import { postGarment } from '@/apis/apis'
 //import { errorToast, okToast } from '@/helpers/ui'
 export default {

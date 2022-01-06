@@ -12,8 +12,8 @@ section(v-else)
 <script>
 import { getJournal } from '@/apis/apis'
 //import { errorToast } from '@/helpers/ui'
-import JournalEntry from './JournalEntry'
-import AddJournalEntry from './AddJournalEntry'
+import JournalEntry from '@/components/JournalEntry.vue'
+import AddJournalEntry from '@/components/AddJournalEntry.vue'
 export default {
   components: {
     JournalEntry,

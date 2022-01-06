@@ -7,8 +7,8 @@ section
 </template>
 
 <script>
-import Journal from '@/components/Journal'
-import GarmentCardBig from './components/GarmentCardBig'
+import Journal from '@/components/Journal.vue'
+import GarmentCardBig from '@/views/GarmentDetail/components/GarmentCardBig.vue'
 export default {
   components: {
     Journal,

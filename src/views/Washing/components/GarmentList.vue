@@ -11,7 +11,7 @@ section
 </template>
 
 <script>
-import GarmentCard from '@/components/GarmentCard'
+import GarmentCard from '@/components/GarmentCard.vue'
 import { getWashingGarments } from '@/apis/apis'
 //import { errorToast } from '@/helpers/ui'
 export default {
