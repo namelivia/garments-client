@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import router from './router'
-import i18n from './i18n'
+import { setupI18n, loadLocaleMessages, setI18nLanguage } from './i18n'
 import App from './App.vue'
 import {
   SectionTitle,
@@ -25,7 +25,10 @@ import {
 } from '@namelivia/vue-components'
 
 const app = createApp(App)
+const i18n = setupI18n()
 app.use(router)
+await loadLocaleMessages(i18n, import.meta.env.VITE_APP_I18N_LOCALE)
+setI18nLanguage(i18n, import.meta.env.VITE_APP_I18N_LOCALE)
 app.use(i18n)
 
 app.component('Loading', Loading)
