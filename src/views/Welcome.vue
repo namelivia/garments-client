@@ -17,7 +17,7 @@ import GarmentTypeSelector from '@/components/GarmentTypeSelector.vue'
 import PlaceSelector from '@/components/PlaceSelector.vue'
 import { getRandomGarment } from '@/apis/apis'
 //import { errorToast } from '@/helpers/ui'
-import store from '@/currentUser'
+import { store } from '@namelivia/vue-currentuser'
 export default {
   components: {
     garmentCard: GarmentCard,
@@ -39,7 +39,9 @@ export default {
   },
   methods: {
     async getCurrentUser() {
-      const currentUser = await store.getCurrentUser()
+      const currentUser = await store.getCurrentUser(
+        import.meta.env.VITE_APP_API_ENDPOINT,
+      )
       this.form.place = currentUser.place || ''
     },
     onGarmentTypeSelected(selectedGarmentType) {

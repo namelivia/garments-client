@@ -14,7 +14,7 @@ section
 import GarmentList from '@/views/List/components/GarmentList.vue'
 import GarmentTypeSelector from '@/components/GarmentTypeSelector.vue'
 import PlaceSelector from '@/components/PlaceSelector.vue'
-import store from '@/currentUser'
+import { store } from '@namelivia/vue-currentuser'
 export default {
   components: {
     GarmentList: GarmentList,
@@ -34,7 +34,9 @@ export default {
   },
   methods: {
     async getCurrentUser() {
-      const currentUser = await store.getCurrentUser()
+      const currentUser = await store.getCurrentUser(
+        import.meta.env.VITE_APP_API_ENDPOINT,
+      )
       this.form.place = currentUser.place || ''
     },
     onGarmentTypeSelected(selectedGarmentType) {
