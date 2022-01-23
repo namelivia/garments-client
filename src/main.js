@@ -22,6 +22,7 @@ import {
   Container,
   StyledTable,
   Pagination,
+  ResizeImageUpload,
 } from '@namelivia/vue-components'
 
 const app = createApp(App)
@@ -47,5 +48,6 @@ app.component('Navbar', Navbar)
 app.component('Container', Container)
 app.component('StyledTable', StyledTable)
 app.component('Pagination', Pagination)
+app.component('ResizeImageUpload', ResizeImageUpload)
 
 app.mount('#app')
