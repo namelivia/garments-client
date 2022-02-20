@@ -16,15 +16,11 @@
     "vue-router": "^4.0.12"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.5",
-    "@babel/preset-env": "^7.16.11",
     "@namelivia/vue-components": "^1.1.1",
     "@namelivia/vue-currentuser": "^0.0.3",
     "@vitejs/plugin-vue": "^2.2.0",
     "@vue/compiler-sfc": "^3.2.31",
     "autoprefixer": "^10.4.2",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^27.5.1",
     "codecov": "^3.8.3",
     "eslint": "^8.9.0",
     "eslint-config-prettier": "^8.3.0",
@@ -37,7 +33,7 @@
     "prettier": "^2.5.1",
     "pug": "^3.0.2",
     "pug-plain-loader": "^1.1.0",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17",
+    "tailwindcss": "^2.2.17",
     "vite": "^2.8.3"
   },
   "lint-staged": {
