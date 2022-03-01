@@ -13,7 +13,7 @@
     "axios": "^0.25.0",
     "vue": "^3.2.31",
     "vue-i18n": "^9.2.0-beta.30",
-    "vue-router": "^4.0.12"
+    "vue-router": "^4.0.13"
   },
   "devDependencies": {
     "@namelivia/vue-components": "^1.1.1",
