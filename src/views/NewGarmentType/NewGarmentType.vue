@@ -29,6 +29,7 @@ export default {
   },
   methods: {
     async onSubmit(evt) {
+      const toast = useToast()
       try {
         evt.preventDefault()
         await postGarmentType(this.form)
