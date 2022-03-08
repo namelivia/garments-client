@@ -10,7 +10,7 @@ selector(
 </template>
 <script>
 import { getPlaces } from '@/apis/apis'
-//import { errorToast } from '@/helpers/ui'
+import { useToast } from 'vue-toastification'
 export default {
   props: {
     selected: {
@@ -55,7 +55,8 @@ export default {
       try {
         this.places = await getPlaces()
       } catch (err) {
-        //this.$bvToast.toast(`Places can't be retrieved`, errorToast)
+        const toast = useToast()
+        toast.error(`Places can't be retrieved`)
       } finally {
         this.loading = false
       }

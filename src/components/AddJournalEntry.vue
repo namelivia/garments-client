@@ -12,7 +12,7 @@ section
 </template>
 <script>
 import { postJournalEntry } from '@/apis/apis'
-//import { errorToast, okToast } from '@/helpers/ui'
+import { useToast } from 'vue-toastification'
 export default {
   props: {
     garmentId: {
@@ -30,13 +30,14 @@ export default {
   },
   methods: {
     async onSubmit(evt) {
+      const toast = useToast()
       try {
         evt.preventDefault()
         await postJournalEntry(this.garmentId, this.form)
-        //this.$bvToast.toast(`Journal entry added`, okToast)
+        toast.success(`Journal entry added`)
         this.onReset()
       } catch (err) {
-        //this.$bvToast.toast(`Journal entry could not be added`, errorToast)
+        toast.error(`Journal entry could not be added`)
       }
     },
     onReset(evt) {

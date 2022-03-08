@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import router from './router'
 import i18n from './i18n'
 import App from './App.vue'
+import Toast from 'vue-toastification'
 import {
   SectionTitle,
   Loading,
@@ -28,6 +29,7 @@ import {
 const app = createApp(App)
 app.use(router)
 app.use(i18n)
+app.use(Toast)
 
 app.component('Loading', Loading)
 app.component('SectionTitle', SectionTitle)

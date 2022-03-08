@@ -11,7 +11,7 @@ div
 <script>
 import { getImageUrl } from '@/apis/helpers'
 import { wearGarment, washGarment } from '@/apis/apis'
-//import { errorToast, okToast } from '@/helpers/ui'
+import { useToast } from 'vue-toastification'
 export default {
   props: {
     name: {
@@ -37,20 +37,20 @@ export default {
       evt.preventDefault()
       try {
         await wearGarment(this.id)
-        //this.$bvToast.toast(`Wearing Garment ${this.name}`, okToast)
+        toast.success(`Wearing Garment ${this.name}`)
       } catch (err) {
         console.log(err)
-        //this.$bvToast.toast(`Garment could not be worn`, errorToast)
+        toast.error(`Garment could not be worn`)
       }
     },
     async onWash(evt) {
       evt.preventDefault()
       try {
         await washGarment(this.id)
-        //this.$bvToast.toast(`Washing Garment ${this.name}`, okToast)
+        toast.success(`Washing Garment ${this.name}`)
       } catch (err) {
         console.log(err)
-        //this.$bvToast.toast(`Garment could not be washed`, errorToast)
+        toast.error(`Garment could not be washed`)
       }
     },
     onWidth(width) {

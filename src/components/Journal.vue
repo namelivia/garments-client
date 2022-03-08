@@ -11,7 +11,7 @@ section(v-else)
 </template>
 <script>
 import { getJournal } from '@/apis/apis'
-//import { errorToast } from '@/helpers/ui'
+import { useToast } from 'vue-toastification'
 import JournalEntry from '@/components/JournalEntry.vue'
 import AddJournalEntry from '@/components/AddJournalEntry.vue'
 export default {
@@ -43,10 +43,11 @@ export default {
   },
   methods: {
     async loadJournal() {
+      const toast = useToast()
       try {
         this.journal = await getJournal(this.id)
       } catch (err) {
-        //this.$bvToast.toast(`Journal can't be retrieved`, errorToast)
+        toast.error(`Journal can't be retrieved`)
       } finally {
         this.loading = false
       }

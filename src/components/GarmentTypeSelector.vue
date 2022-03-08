@@ -10,7 +10,7 @@ selector(
 </template>
 <script>
 import { getGarmentTypes } from '@/apis/apis'
-//import { errorToast } from '@/helpers/ui'
+import { useToast } from 'vue-toastification'
 export default {
   props: {
     selected: {
@@ -55,7 +55,8 @@ export default {
       try {
         this.garmentTypes = await getGarmentTypes()
       } catch (err) {
-        //this.$bvToast.toast(`Garment Types can't be retrieved`, errorToast)
+        const toast = useToast()
+        toast.error(`Garment Types can't be retrieved`)
       } finally {
         this.loading = false
       }

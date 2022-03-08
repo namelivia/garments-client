@@ -8,20 +8,21 @@ section
 import router from '@/router'
 import GarmentForm from '@/components/GarmentForm.vue'
 import { postGarment } from '@/apis/apis'
-//import { errorToast, okToast } from '@/helpers/ui'
+import { useToast } from 'vue-toastification'
 export default {
   components: {
     GarmentForm,
   },
   methods: {
     async onSubmit(data) {
+      const toast = useToast()
       try {
         await postGarment(data)
         router.replace('/list', () => {
-          //this.$root.$bvToast.toast(`Garment ${data.name} created`, okToast)
+          toast.success(`Garment ${data.name} created`)
         })
       } catch (err) {
-        //this.$bvToast.toast(`Garment could not be created`, errorToast)
+        toast.error(`Garment could not be created`)
       }
     },
   },
