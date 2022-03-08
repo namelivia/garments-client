@@ -35,6 +35,7 @@ export default {
   methods: {
     async onWear(evt) {
       evt.preventDefault()
+      const toast = useToast()
       try {
         await wearGarment(this.id)
         toast.success(`Wearing Garment ${this.name}`)
@@ -45,6 +46,7 @@ export default {
     },
     async onWash(evt) {
       evt.preventDefault()
+      const toast = useToast()
       try {
         await washGarment(this.id)
         toast.success(`Washing Garment ${this.name}`)
