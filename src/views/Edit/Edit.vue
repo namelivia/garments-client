@@ -54,6 +54,7 @@ export default {
       }
     },
     async onSubmit(data) {
+      const toast = useToast()
       try {
         await putGarment(this.garmentId, data)
         toast.succcess(`Garment ${data.name} created`)
