@@ -16,7 +16,7 @@ section(v-else)
 <script>
 import { getGarment, deleteGarment } from '@/apis/apis'
 import { getImageUrl } from '@/apis/helpers'
-//import { errorToast, okToast } from '@/helpers/ui'
+import { useToast } from 'vue-toastification'
 import router from '@/router'
 export default {
   props: {
@@ -49,23 +49,24 @@ export default {
   },
   methods: {
     async loadGarment(garmentId) {
+      const toast = useToast()
       try {
         this.garment = await getGarment(garmentId)
       } catch (err) {
-        //this.$bvToast.toast(`Garment can't be retrieved`, errorToast)
+        toast.error(`Garment can't be retrieved`)
       } finally {
         this.loading = false
       }
     },
     async onDelete(evt) {
+      const toast = useToast()
       evt.preventDefault()
       try {
-        deleteGarment(this.garment.id)
-        router.replace('/list', () => {
-          //this.$root.$bvToast.toast(`Garment removed`, okToast)
-        })
+        await deleteGarment(this.garment.id)
+        toast.success(`Garment removed`)
+        router.replace('/list')
       } catch (err) {
-        //this.$bvToast.toast(`Garment could not be removed`, errorToast)
+        toast.error(`Garment could not be removed`)
       }
     },
   },

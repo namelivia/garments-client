@@ -39,7 +39,7 @@ form(@submit="onSubmit" @reset="onReset"  v-if="show")
 import GarmentTypeSelector from '@/components/GarmentTypeSelector.vue'
 import PlaceSelector from '@/components/PlaceSelector.vue'
 import { postImage } from '@/apis/apis'
-//import { errorToast } from '@/helpers/ui'
+import { useToast } from 'vue-toastification'
 export default {
   components: {
     GarmentTypeSelector,
@@ -99,7 +99,8 @@ export default {
         try {
           this.garment.image = await postImage(this.garment.image)
         } catch (err) {
-          //this.$bvToast.toast(`Image could not be loaded`, errorToast)
+          const toast = useToast()
+          toast.error(`Image could not be loaded`)
         }
       }
     },

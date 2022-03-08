@@ -13,7 +13,7 @@ section
 <script>
 import GarmentCard from '@/components/GarmentCard.vue'
 import { getGarments } from '@/apis/apis'
-//import { errorToast } from '@/helpers/ui'
+import { useToast } from 'vue-toastification'
 export default {
   components: {
     garmentCard: GarmentCard,
@@ -55,7 +55,8 @@ export default {
       try {
         this.garments = await getGarments(this.selectedPlace, this.selectedType)
       } catch (err) {
-        //this.$bvToast.toast(`Garments can't be retrieved`, errorToast)
+        const toast = useToast()
+        toast.error(`Garments can't be retrieved`)
       } finally {
         this.loading = false
       }

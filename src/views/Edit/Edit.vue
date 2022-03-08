@@ -7,7 +7,7 @@ section
 <script>
 import router from '@/router'
 import { getGarment, putGarment } from '@/apis/apis'
-//import { errorToast, okToast } from '@/helpers/ui'
+import { useToast } from 'vue-toastification'
 import GarmentForm from '@/components/GarmentForm.vue'
 export default {
   components: {
@@ -37,6 +37,7 @@ export default {
   },
   methods: {
     async loadGarment() {
+      const toast = useToast()
       try {
         const garment = await getGarment(this.garmentId)
         //TODO: I can't do this using the spread operator
@@ -47,19 +48,19 @@ export default {
         this.form.place = garment.place
         this.form.image = garment.image
       } catch (err) {
-        //this.$bvToast.toast(`Garment can't be retrieved`, errorToast)
+        toast.error(`Garment can't be retrieved`)
       } finally {
         this.loading = false
       }
     },
     async onSubmit(data) {
+      const toast = useToast()
       try {
         await putGarment(this.garmentId, data)
-        router.replace('/list', () => {
-          //this.$root.$bvToast.toast(`Garment ${data.name} created`, okToast)
-        })
+        toast.succcess(`Garment ${data.name} created`)
+        router.replace('/list')
       } catch (err) {
-        //this.$bvToast.toast(`Garment could not be updated`, errorToast)
+        toast.error(`Garment could not be updated`)
       }
     },
   },

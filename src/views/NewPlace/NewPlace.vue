@@ -17,7 +17,7 @@ section
 <script>
 import router from '@/router'
 import { postPlace } from '@/apis/apis'
-//import { errorToast, okToast } from '@/helpers/ui'
+import { useToast } from 'vue-toastification'
 export default {
   data() {
     return {
@@ -29,14 +29,14 @@ export default {
   },
   methods: {
     async onSubmit(evt) {
+      const toast = useToast()
       try {
         evt.preventDefault()
         await postPlace(this.form)
-        router.replace('/list', () => {
-          //this.$root.$bvToast.toast(`Place ${this.form.name} created`, okToast)
-        })
+        toast.success(`Place ${this.form.name} created`)
+        router.replace('/list')
       } catch (err) {
-        //this.$bvToast.toast(`Place could not be created`, errorToast)
+        toast.error(`Place could not be created`)
       }
     },
     onReset(evt) {

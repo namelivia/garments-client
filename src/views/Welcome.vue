@@ -16,7 +16,7 @@ import GarmentCard from '@/components/GarmentCard.vue'
 import GarmentTypeSelector from '@/components/GarmentTypeSelector.vue'
 import PlaceSelector from '@/components/PlaceSelector.vue'
 import { getRandomGarment } from '@/apis/apis'
-//import { errorToast } from '@/helpers/ui'
+import { useToast } from 'vue-toastification'
 import { store } from '@namelivia/vue-currentuser'
 export default {
   components: {
@@ -62,7 +62,8 @@ export default {
           this.form.garment_type,
         )
       } catch (err) {
-        //this.$bvToast.toast(`Random can't be retrieved`, errorToast)
+        const toast = useToast()
+        toast.error(`Random can't be retrieved`)
       } finally {
         this.loading = false
       }

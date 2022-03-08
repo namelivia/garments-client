@@ -17,7 +17,7 @@ section
 <script>
 import router from '@/router'
 import { postGarmentType } from '@/apis/apis'
-//import { errorToast, okToast } from '@/helpers/ui'
+import { useToast } from 'vue-toastification'
 export default {
   data() {
     return {
@@ -29,17 +29,14 @@ export default {
   },
   methods: {
     async onSubmit(evt) {
+      const toast = useToast()
       try {
         evt.preventDefault()
         await postGarmentType(this.form)
-        router.replace('/list', () => {
-          /*`this.$root.$bvToast.toast(
-            `GarmentType ${this.form.name} created`,
-            okToast,
-          )*/
-        })
+        toast.success(`GarmentType ${this.form.name} created`)
+        router.replace('/list')
       } catch (err) {
-        //this.$bvToast.toast(`GarmentType could not be created`, errorToast)
+        toast.error(`GarmentType could not be created`)
       }
     },
     onInput(value) {
