@@ -18,9 +18,8 @@ export default {
       const toast = useToast()
       try {
         await postGarment(data)
-        router.replace('/list', () => {
-          toast.success(`Garment ${data.name} created`)
-        })
+        toast.success(`Garment ${data.name} created`)
+        router.replace('/list')
       } catch (err) {
         toast.error(`Garment could not be created`)
       }

@@ -62,10 +62,9 @@ export default {
       const toast = useToast()
       evt.preventDefault()
       try {
-        deleteGarment(this.garment.id)
-        router.replace('/list', () => {
-          toast.success(`Garment removed`)
-        })
+        await deleteGarment(this.garment.id)
+        toast.success(`Garment removed`)
+        router.replace('/list')
       } catch (err) {
         toast.error(`Garment could not be removed`)
       }

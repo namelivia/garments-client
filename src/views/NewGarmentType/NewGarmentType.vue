@@ -32,9 +32,8 @@ export default {
       try {
         evt.preventDefault()
         await postGarmentType(this.form)
-        router.replace('/list', () => {
-          toast.success(`GarmentType ${this.form.name} created`)
-        })
+        toast.success(`GarmentType ${this.form.name} created`)
+        router.replace('/list')
       } catch (err) {
         toast.error(`GarmentType could not be created`)
       }

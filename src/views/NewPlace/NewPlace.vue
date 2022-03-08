@@ -33,9 +33,8 @@ export default {
       try {
         evt.preventDefault()
         await postPlace(this.form)
-        router.replace('/list', () => {
-          toast.success(`Place ${this.form.name} created`)
-        })
+        toast.success(`Place ${this.form.name} created`)
+        router.replace('/list')
       } catch (err) {
         toast.error(`Place could not be created`)
       }

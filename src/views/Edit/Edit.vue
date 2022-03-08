@@ -56,9 +56,8 @@ export default {
     async onSubmit(data) {
       try {
         await putGarment(this.garmentId, data)
-        router.replace('/list', () => {
-          toast.succcess(`Garment ${data.name} created`)
-        })
+        toast.succcess(`Garment ${data.name} created`)
+        router.replace('/list')
       } catch (err) {
         toast.error(`Garment could not be updated`)
       }
