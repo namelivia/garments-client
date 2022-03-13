@@ -25,6 +25,11 @@ export default {
           href: '/new-garment-type',
         },
         { id: 5, text: this.$i18n.t('navigation.washing'), href: '/washing' },
+        {
+          id: 6,
+          text: this.$i18n.t('navigation.thrown_away'),
+          href: '/thrown_away',
+        },
       ],
     }
   },

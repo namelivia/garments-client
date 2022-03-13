@@ -8,7 +8,7 @@ section
           @update="form.message = $event"
           required
         )
-        submit-button(:text="$t('AddJournalEntry.add')")
+        submit-button(:text="$t('addJournalEntry.add')")
 </template>
 <script>
 import { postJournalEntry } from '@/apis/apis'

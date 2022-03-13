@@ -1,6 +1,8 @@
 import axios from 'axios'
 export const getPlaces = async () => {
-  const response = await axios.get(`${import.meta.env.VITE_APP_API_ENDPOINT}/places`)
+  const response = await axios.get(
+    `${import.meta.env.VITE_APP_API_ENDPOINT}/places`,
+  )
   return response.data
 }
 
@@ -36,14 +38,18 @@ export const getGarment = async (garmentId) => {
 
 export const getRandomGarment = async (selectedPlace, selectedType) => {
   const response = await axios.get(
-    `${import.meta.env.VITE_APP_API_ENDPOINT}/garments/random?place=${selectedPlace}&garment_type=${selectedType}`,
+    `${
+      import.meta.env.VITE_APP_API_ENDPOINT
+    }/garments/random?place=${selectedPlace}&garment_type=${selectedType}`,
   )
   return response.data
 }
 
 export const getGarments = async (selectedPlace, selectedType) => {
   const response = await axios.get(
-    `${import.meta.env.VITE_APP_API_ENDPOINT}/garments?place=${selectedPlace}&garment_type=${selectedType}`,
+    `${
+      import.meta.env.VITE_APP_API_ENDPOINT
+    }/garments?place=${selectedPlace}&garment_type=${selectedType}`,
   )
   return response.data
 }
@@ -51,6 +57,13 @@ export const getGarments = async (selectedPlace, selectedType) => {
 export const getWashingGarments = async () => {
   const response = await axios.get(
     `${import.meta.env.VITE_APP_API_ENDPOINT}/garments/washing`,
+  )
+  return response.data
+}
+
+export const getThrownAwayGarments = async () => {
+  const response = await axios.get(
+    `${import.meta.env.VITE_APP_API_ENDPOINT}/garments/thrown_away`,
   )
   return response.data
 }
@@ -118,6 +131,13 @@ export const wearGarment = async (garmentId) => {
 export const washGarment = async (garmentId) => {
   const response = await axios.post(
     `${import.meta.env.VITE_APP_API_ENDPOINT}/garments/${garmentId}/wash`,
+  )
+  return response.data
+}
+
+export const throwAwayGarment = async (garmentId) => {
+  const response = await axios.post(
+    `${import.meta.env.VITE_APP_API_ENDPOINT}/garments/${garmentId}/throw_away`,
   )
   return response.data
 }

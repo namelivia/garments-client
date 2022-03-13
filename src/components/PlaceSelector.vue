@@ -2,7 +2,7 @@
 loading(v-if='loading')
 selector(
     id="place"
-    :label="$t('newPlace.place')"
+    :label="$t('newGarment.place')"
     :options="placeOptions"
     @selected="onChange"
     v-else

@@ -4,9 +4,9 @@ div
     card-image(:src="imageUrl" :alt="name" @width="onWidth")
     card-body(:title="name")
       regular-button(@click="onWear" :text="$t('garmentCard.wearIt')")
-      regular-button(@click="onWash" :text="$t('garmentCard.washIt')")
+      regular-button.ml-2(@click="onWash" :text="$t('garmentCard.washIt')")
       router-link(:to="{ name: 'garment', params: { garmentId: id}}")
-          secondary-button(:text="$t('garmentCard.details')")
+          secondary-button.ml-2(:text="$t('garmentCard.details')")
 </template>
 <script>
 import { getImageUrl } from '@/apis/helpers'

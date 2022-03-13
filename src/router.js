@@ -46,6 +46,11 @@ const router = createRouter({
       name: 'washing',
       component: () => import('./views/Washing/Washing.vue'),
     },
+    {
+      path: '/thrown_away',
+      name: 'thrown_away',
+      component: () => import('./views/ThrownAway/ThrownAway.vue'),
+    },
   ],
 })
 

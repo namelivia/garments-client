@@ -9,12 +9,13 @@ section(v-else)
     p.mb-0 {{$t("garmentDetails.status")}}: {{ garment.status}}
     p.mb-0 {{$t("garmentDetails.place")}}: {{ garment.place}}
     danger-button(@click="onDelete" :text="$t('garmentDetails.deleteIt')")
+    danger-button.ml-2(@click="onThrowAway" :text="$t('garmentDetails.throwAway')")
     router-link(:to="{ name: 'edit', params: { garmentId: this.garment.id}}")
         secondary-button.ml-2(:text="$t('garmentCard.editIt')")
 </template>
 
 <script>
-import { getGarment, deleteGarment } from '@/apis/apis'
+import { getGarment, deleteGarment, throwAwayGarment } from '@/apis/apis'
 import { getImageUrl } from '@/apis/helpers'
 import { useToast } from 'vue-toastification'
 import router from '@/router'
@@ -67,6 +68,17 @@ export default {
         router.replace('/list')
       } catch (err) {
         toast.error(`Garment could not be removed`)
+      }
+    },
+    async onThrowAway(evt) {
+      const toast = useToast()
+      evt.preventDefault()
+      try {
+        await throwAwayGarment(this.garment.id)
+        toast.success(`Garment thrown away`)
+        router.replace('/thrown_away')
+      } catch (err) {
+        toast.error(`Garment could not be thrown away`)
       }
     },
   },

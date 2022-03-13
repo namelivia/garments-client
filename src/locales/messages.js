@@ -7,6 +7,7 @@ const messages = {
       'new-place': 'New Place',
       'new-garment-type': 'New Type',
       washing: 'Washing',
+      thrown_away: 'Thrown Away',
     },
     welcome: {
       welcome: 'Welcome to the garments app',
@@ -17,9 +18,14 @@ const messages = {
     washing: {
       title: 'Washing Garments',
     },
+    thrown_away: {
+      title: 'Thrown away Garments',
+    },
     garmentCard: {
       details: 'Details',
+      editIt: 'Edit it',
       wearIt: 'Wear it',
+      washIt: 'Wash it',
     },
     garmentDetails: {
       name: 'Name',
@@ -28,6 +34,7 @@ const messages = {
       place: 'Place',
       status: 'Status',
       deleteIt: 'Delete it',
+      throwAway: 'Throw away',
     },
     addJournalEntry: {
       add: 'Add',
@@ -73,6 +80,7 @@ const messages = {
       'new-place': 'Nuevo Lugar',
       'new-garment-type': 'Nuevo Tipo',
       washing: 'Lavando',
+      thrown_away: 'Tirada',
     },
     welcome: {
       welcome: 'Bienvenido a la app de Ropa',
@@ -83,9 +91,14 @@ const messages = {
     washing: {
       title: 'Ropa lavándose',
     },
+    thrown_away: {
+      title: 'Ropa tirada',
+    },
     garmentCard: {
       details: 'Detalles',
+      editIt: 'Editarla',
       wearIt: 'Ponérselo',
+      washIt: 'Lavarla',
     },
     garmentDetails: {
       name: 'Nombre',
@@ -94,6 +107,7 @@ const messages = {
       place: 'Lugar',
       status: 'Estado',
       deleteIt: 'Eliminarla',
+      throwAway: 'Tirarla',
     },
     addJournalEntry: {
       add: 'Añadir',
