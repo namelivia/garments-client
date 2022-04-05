@@ -24,9 +24,14 @@ export default {
           text: this.$i18n.t('navigation.new-garment-type'),
           href: '/new-garment-type',
         },
-        { id: 5, text: this.$i18n.t('navigation.washing'), href: '/washing' },
         {
-          id: 6,
+          id: 5,
+          text: this.$i18n.t('navigation.new-activity'),
+          href: '/new-activity,
+        },
+        { id: 6, text: this.$i18n.t('navigation.washing'), href: '/washing' },
+        {
+          id: 7,
           text: this.$i18n.t('navigation.thrown_away'),
           href: '/thrown_away',
         },
