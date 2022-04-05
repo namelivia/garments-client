@@ -2,6 +2,7 @@
 form(@submit="onSubmit" @reset="onReset"  v-if="show")
     text-input(
       :name="name"
+      :text="garment.name"
       :label="$t('newGarment.name')"
       :placeholder="$t('newGarment.enterGarmentName')"
       @update="garment.name = $event"
@@ -12,6 +13,7 @@ form(@submit="onSubmit" @reset="onReset"  v-if="show")
     activity-selector(@selected="onActivitySelected" :selected="garment.activity")
     text-input(
       :name="color"
+      :text="garment.color"
       :label="$t('newGarment.color')"
       :placeholder="$t('newGarment.enterGarmentColor')"
       @update="garment.color = $event"
@@ -19,6 +21,7 @@ form(@submit="onSubmit" @reset="onReset"  v-if="show")
     )
     text-input(
       :name="status"
+      :text="garment.status"
       :label="$t('newGarment.status')"
       :placeholder="$t('newGarment.enterGarmentStatus')"
       @update="garment.status = $event"
@@ -27,6 +30,8 @@ form(@submit="onSubmit" @reset="onReset"  v-if="show")
     number-input(
       :name="wear-to-wash"
       :label="$t('newGarment.wearToWash')"
+      :amount="garment.wear_to_wash"
+      min="1"
       :placeholder="$t('newGarment.enterWearToWash')"
       @update="garment.wear_to_wash = $event"
       required
@@ -76,6 +81,7 @@ export default {
         color: '',
         place: '',
         activity: '',
+        wear_to_wash: 1,
         image: null,
       },
     }
@@ -129,6 +135,7 @@ export default {
       this.garment.place = ''
       this.garment.activity = ''
       this.garment.status = ''
+      this.garment.wear_to_wash = 1
       this.garment.image = null
       this.show = false
       this.$nextTick(() => {

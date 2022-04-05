@@ -27,7 +27,7 @@ export default {
         {
           id: 5,
           text: this.$i18n.t('navigation.new-activity'),
-          href: '/new-activity,
+          href: '/new-activity',
         },
         { id: 6, text: this.$i18n.t('navigation.washing'), href: '/washing' },
         {
