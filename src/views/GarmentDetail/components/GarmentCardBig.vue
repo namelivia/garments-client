@@ -8,6 +8,7 @@ section(v-else)
     p.mb-0 {{$t("garmentDetails.color")}}: {{ garment.color}}
     p.mb-0 {{$t("garmentDetails.status")}}: {{ garment.status}}
     p.mb-0 {{$t("garmentDetails.place")}}: {{ garment.place}}
+    p.mb-0 {{$t("garmentDetails.activity")}}: {{ garment.activity}}
     danger-button(@click="onDelete" :text="$t('garmentDetails.deleteIt')")
     danger-button.ml-2(@click="onThrowAway" :text="$t('garmentDetails.throwAway')")
     router-link(:to="{ name: 'edit', params: { garmentId: this.garment.id}}")

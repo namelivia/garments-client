@@ -2,6 +2,7 @@
 section
     section-title(:text="$t('welcome.welcome')")
     place-selector(@selected="onPlaceSelected" :selected="form.place")
+    activity-selector(@selected="onActivitySelected" :selected="form.activity")
     garment-type-selector(@selected="onGarmentTypeSelected")
     garment-card(
         v-if="randomGarment !== null"
@@ -15,6 +16,7 @@ section
 import GarmentCard from '@/components/GarmentCard.vue'
 import GarmentTypeSelector from '@/components/GarmentTypeSelector.vue'
 import PlaceSelector from '@/components/PlaceSelector.vue'
+import ActivitySelector from '@/components/ActivitySelector.vue'
 import { getRandomGarment } from '@/apis/apis'
 import { useToast } from 'vue-toastification'
 import { store } from '@namelivia/vue-currentuser'
@@ -23,13 +25,15 @@ export default {
     garmentCard: GarmentCard,
     GarmentTypeSelector: GarmentTypeSelector,
     PlaceSelector: PlaceSelector,
+    ActivitySelector: ActivitySelector,
   },
   data: function () {
     return {
       randomGarment: null,
       form: {
-        garment_type: '',
-        place: '',
+        garment_type: null,
+        place: null,
+        activity: null,
       },
       loading: true,
     }
@@ -52,14 +56,16 @@ export default {
       this.form.place = selectedPlace
       this.loadRandom()
     },
+    onActivitySelected(selectedActivity) {
+      this.form.activity = selectedActivity
+      this.loadRandom()
+    },
     async loadRandom() {
-      if (this.form.place === '' || this.form.garment_type === '') {
-        return
-      }
       try {
         this.randomGarment = await getRandomGarment(
           this.form.place,
           this.form.garment_type,
+          this.form.activity,
         )
       } catch (err) {
         const toast = useToast()

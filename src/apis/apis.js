@@ -51,20 +51,38 @@ export const getGarment = async (garmentId) => {
   return response.data
 }
 
-export const getRandomGarment = async (selectedPlace, selectedType) => {
+export const getRandomGarment = async (
+  selectedPlace,
+  selectedType,
+  selectedActivity,
+) => {
   const response = await axios.get(
-    `${
-      import.meta.env.VITE_APP_API_ENDPOINT
-    }/garments/random?place=${selectedPlace}&garment_type=${selectedType}`,
+    `${import.meta.env.VITE_APP_API_ENDPOINT}/garments/random`,
+    {
+      params: {
+        place: selectedPlace,
+        garment_type: selectedType,
+        activity: selectedActivity,
+      },
+    },
   )
   return response.data
 }
 
-export const getGarments = async (selectedPlace, selectedType) => {
+export const getGarments = async (
+  selectedPlace,
+  selectedType,
+  selectedActivity,
+) => {
   const response = await axios.get(
-    `${
-      import.meta.env.VITE_APP_API_ENDPOINT
-    }/garments?place=${selectedPlace}&garment_type=${selectedType}`,
+    `${import.meta.env.VITE_APP_API_ENDPOINT}/garments`,
+    {
+      params: {
+        place: selectedPlace,
+        garment_type: selectedType,
+        activity: selectedActivity,
+      },
+    },
   )
   return response.data
 }

@@ -9,6 +9,7 @@ form(@submit="onSubmit" @reset="onReset"  v-if="show")
     )
     garment-type-selector(@selected="onGarmentTypeSelected" :selected="garment.garment_type")
     place-selector(@selected="onPlaceSelected" :selected="garment.place")
+    activity-selector(@selected="onActivitySelected" :selected="garment.activity")
     text-input(
       :name="color"
       :label="$t('newGarment.color')"
@@ -38,12 +39,14 @@ form(@submit="onSubmit" @reset="onReset"  v-if="show")
 <script>
 import GarmentTypeSelector from '@/components/GarmentTypeSelector.vue'
 import PlaceSelector from '@/components/PlaceSelector.vue'
+import ActivitySelector from '@/components/ActivitySelector.vue'
 import { postImage } from '@/apis/apis'
 import { useToast } from 'vue-toastification'
 export default {
   components: {
     GarmentTypeSelector,
     PlaceSelector,
+    ActivitySelector,
   },
   props: {
     initialData: {
@@ -55,6 +58,7 @@ export default {
           status: '',
           color: '',
           place: '',
+          activity: '',
           image: null,
           wear_to_wash: 1,
         }
@@ -71,6 +75,7 @@ export default {
         status: '',
         color: '',
         place: '',
+        activity: '',
         image: null,
       },
     }
@@ -89,6 +94,9 @@ export default {
     },
     onPlaceSelected(selectedPlace) {
       this.garment.place = selectedPlace
+    },
+    onActivitySelected(selectedActivity) {
+      this.garment.activity = selectedActivity
     },
     onImageLoaded(newImage) {
       this.garment.image = newImage
@@ -119,6 +127,7 @@ export default {
       this.garment.garment_type = ''
       this.garment.color = ''
       this.garment.place = ''
+      this.garment.activity = ''
       this.garment.status = ''
       this.garment.image = null
       this.show = false

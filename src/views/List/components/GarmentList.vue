@@ -23,6 +23,10 @@ export default {
       type: String,
       default: null,
     },
+    activity: {
+      type: String,
+      default: null,
+    },
     garmentType: {
       type: String,
       default: null,
@@ -33,12 +37,17 @@ export default {
       garments: [],
       loading: false,
       selectedPlace: null,
+      selectedActivity: null,
       selectedType: null,
     }
   },
   watch: {
     place: function (newPlace) {
       this.selectedPlace = newPlace
+      this.loadList()
+    },
+    activity: function (newActivity) {
+      this.selectedActivity = newActivity
       this.loadList()
     },
     garmentType: function (newType) {
@@ -53,7 +62,11 @@ export default {
         return null
       }
       try {
-        this.garments = await getGarments(this.selectedPlace, this.selectedType)
+        this.garments = await getGarments(
+          this.selectedPlace,
+          this.selectedType,
+          this.selectedActivity,
+        )
       } catch (err) {
         const toast = useToast()
         toast.error(`Garments can't be retrieved`)
