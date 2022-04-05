@@ -14,6 +14,21 @@ export const postPlace = async (data) => {
   return response.data
 }
 
+export const getActivities = async () => {
+  const response = await axios.get(
+    `${import.meta.env.VITE_APP_API_ENDPOINT}/activities`,
+  )
+  return response.data
+}
+
+export const postActivity = async (data) => {
+  const response = await axios.post(
+    `${import.meta.env.VITE_APP_API_ENDPOINT}/activities`,
+    data,
+  )
+  return response.data
+}
+
 export const getGarmentTypes = async () => {
   const response = await axios.get(
     `${import.meta.env.VITE_APP_API_ENDPOINT}/garment_types`,
