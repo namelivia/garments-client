@@ -4,6 +4,7 @@ selector(
     id="activity"
     :label="$t('newGarment.activity')"
     :options="activityOptions"
+    :initialValue="activity"
     @selected="onChange"
     v-else
   )
@@ -28,7 +29,7 @@ export default {
   },
   computed: {
     activityOptions: function () {
-      let options = [{ value: '', text: 'Select a activity', disabled: true }]
+      let options = [{ value: '', text: 'Select an activity', disabled: true }]
       return options.concat(
         this.activities.map((activity) => {
           return {

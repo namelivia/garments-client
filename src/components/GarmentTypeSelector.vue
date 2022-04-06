@@ -4,6 +4,7 @@ selector(
     id="garment_type"
     :label="$t('newGarment.garment_type')"
     :options="garmentTypeOptions"
+    :initialValue="garmentType"
     @selected="onChange"
     v-else
   )

@@ -27,6 +27,8 @@ export default {
         status: '',
         color: '',
         place: '',
+        activity: '',
+        wear_to_wash: 1,
         image: null,
       },
       show: true,
@@ -46,6 +48,8 @@ export default {
         this.form.color = garment.color
         this.form.status = garment.status
         this.form.place = garment.place
+        this.form.activity = garment.activity
+        this.form.wear_to_wash = garment.wear_to_wash
         this.form.image = garment.image
       } catch (err) {
         toast.error(`Garment can't be retrieved`)
@@ -57,9 +61,10 @@ export default {
       const toast = useToast()
       try {
         await putGarment(this.garmentId, data)
-        toast.succcess(`Garment ${data.name} created`)
+        toast.success(`Garment ${data.name} updated`)
         router.replace('/list')
       } catch (err) {
+        console.log(err)
         toast.error(`Garment could not be updated`)
       }
     },

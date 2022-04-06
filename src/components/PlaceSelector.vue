@@ -4,6 +4,7 @@ selector(
     id="place"
     :label="$t('newGarment.place')"
     :options="placeOptions"
+    :initialValue="place"
     @selected="onChange"
     v-else
   )
