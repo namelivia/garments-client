@@ -30,7 +30,16 @@ export default {
   data: function () {
     return {
       imageUrl: null,
+      imageWidth: undefined,
     }
+  },
+  watch: {
+    imagePath: {
+      immediate: true,
+      handler: function () {
+        this.onWidth(this.imageWidth)
+      },
+    },
   },
   methods: {
     async onWear(evt) {
@@ -56,6 +65,7 @@ export default {
       }
     },
     onWidth(width) {
+      this.imageWidth = width
       this.imageUrl = getImageUrl(this.imagePath, width)
     },
   },
