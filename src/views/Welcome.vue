@@ -34,6 +34,7 @@ export default {
         garment_type: null,
         place: null,
         activity: null,
+        image: null,
       },
       loading: true,
     }
@@ -66,6 +67,7 @@ export default {
           this.form.place,
           this.form.garment_type,
           this.form.activity,
+          this.form.image,
         )
       } catch (err) {
         const toast = useToast()
