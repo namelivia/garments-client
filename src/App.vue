@@ -1,6 +1,13 @@
 <template lang="pug">
 .h-screen
-  navbar(:links="links" :locale="$i18n.locale" :current-user-email="currentUserEmail")
+  navbar(
+    :links="links"
+    :locale="$i18n.locale"
+    :current-user-email="currentUserEmail"
+    title="Garments App"
+    imageBig="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
+    imageSmall="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
+  )
   container
       router-view
 </template>
