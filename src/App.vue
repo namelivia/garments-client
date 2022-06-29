@@ -5,8 +5,8 @@
     :locale="$i18n.locale"
     :current-user-email="currentUserEmail"
     title="Garments App"
-    imageBig="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
-    imageSmall="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
+    :imageBig="imageBigUrl"
+    :imageSmall="imageSmallUrl"
   )
   container
       router-view
@@ -44,6 +44,14 @@ export default {
         },
       ],
     }
+  },
+  computed: {
+    imageBigUrl: function () {
+      return new URL('assets/images/logo-big.svg', import.meta.url).href
+    },
+    imageSmallUrl: function () {
+      return new URL('assets/images/logo-small.svg', import.meta.url).href
+    },
   },
   mounted() {
     this.getCurrentUser()
