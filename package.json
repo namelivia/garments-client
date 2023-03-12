@@ -21,7 +21,7 @@
     "@namelivia/vue-currentuser": "^0.0.4",
     "@vitejs/plugin-vue": "^2.3.4",
     "@vue/compiler-sfc": "^3.2.45",
-    "autoprefixer": "^10.4.13",
+    "autoprefixer": "^10.4.14",
     "codecov": "^3.8.3",
     "eslint": "^8.36.0",
     "eslint-config-prettier": "^8.7.0",
