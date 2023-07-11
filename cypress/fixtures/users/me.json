@@ -1,0 +1,19 @@
+{
+    "aud":"plants.localhost.pomerium.io",
+    "email":"email@test.com",
+    "exp":7401749362.0,
+    "family_name":"Surname",
+    "given_name":"Name",
+    "groups":[],
+    "iat":4829382719.0,
+    "iss":"plants.localhost.pomerium.io",
+    "jti":"6b544f45-a98c-4401-a73e-78cefac08fd0",
+    "locale":"en",
+    "name":"Name",
+    "picture":"https://picsum.photos/200",
+    "sid":"6f2c412a-6caa-4a1d-941b-03c3234eb10c",
+    "sub":"739183756417284923153",
+    "user":"739183756417284923153",
+    "id":1,
+    "user_id":"provider/739183756417284923153"
+}
