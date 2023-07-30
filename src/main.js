@@ -15,6 +15,7 @@ import {
   CardImage,
   CardBody,
   Selector,
+  Spinner,
   TextInput,
   NumberInput,
   ImageInput,
@@ -32,6 +33,7 @@ app.use(i18n)
 app.use(Toast)
 
 app.component('Loading', Loading)
+app.component('Spinner', Spinner)
 app.component('SectionTitle', SectionTitle)
 app.component('ResetButton', ResetButton)
 app.component('SubmitButton', SubmitButton)

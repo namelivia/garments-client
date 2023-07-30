@@ -1,7 +1,7 @@
 <template lang="pug">
 section
     section-title(text="Add new garment")
-    garment-form(@submit="onSubmit")
+    garment-form(@submit="onSubmit" :waiting="waiting")
 </template>
 
 <script>
@@ -13,15 +13,23 @@ export default {
   components: {
     GarmentForm,
   },
+  data() {
+    return {
+      waiting: false,
+    }
+  },
   methods: {
     async onSubmit(data) {
       const toast = useToast()
       try {
+        this.waiting = true
         await postGarment(data)
         toast.success(`Garment ${data.name} created`)
         router.replace('/list')
       } catch (err) {
         toast.error(`Garment could not be created`)
+      } finally {
+        this.waiting = false
       }
     },
   },

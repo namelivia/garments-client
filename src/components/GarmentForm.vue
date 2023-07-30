@@ -4,17 +4,19 @@ form(@submit="onSubmit" @reset="onReset"  v-if="show")
       id="name"
       :text="garment.name"
       :label="$t('newGarment.name')"
+      :disabled="waiting"
       :placeholder="$t('newGarment.enterGarmentName')"
       @update="garment.name = $event"
       required
     )
-    garment-type-selector(@selected="onGarmentTypeSelected" :selected="garment.garment_type")
-    place-selector(@selected="onPlaceSelected" :selected="garment.place")
-    activity-selector(@selected="onActivitySelected" :selected="garment.activity")
+    garment-type-selector(@selected="onGarmentTypeSelected" :selected="garment.garment_type" :disabled="waiting")
+    place-selector(@selected="onPlaceSelected" :selected="garment.place" :disabled="waiting")
+    activity-selector(@selected="onActivitySelected" :selected="garment.activity" :disabled="waiting")
     text-input(
       id="color"
       :text="garment.color"
       :label="$t('newGarment.color')"
+      :disabled="waiting"
       :placeholder="$t('newGarment.enterGarmentColor')"
       @update="garment.color = $event"
       required
@@ -23,6 +25,7 @@ form(@submit="onSubmit" @reset="onReset"  v-if="show")
       id="status"
       :text="garment.status"
       :label="$t('newGarment.status')"
+      :disabled="waiting"
       :placeholder="$t('newGarment.enterGarmentStatus')"
       @update="garment.status = $event"
       required
@@ -31,6 +34,7 @@ form(@submit="onSubmit" @reset="onReset"  v-if="show")
       id="wear-to-wash"
       :label="$t('newGarment.wearToWash')"
       :amount="garment.wear_to_wash"
+      :disabled="waiting"
       min="1"
       :placeholder="$t('newGarment.enterWearToWash')"
       @update="garment.wear_to_wash = $event"
@@ -38,7 +42,7 @@ form(@submit="onSubmit" @reset="onReset"  v-if="show")
     )
     resize-image-upload(@loaded="onImageLoaded")
     .mt-4
-    submit-button.mr-2(:text="$t('newGarment.submit')")
+    submit-button.mr-2(:text="$t('newGarment.submit')" :disabled="waiting")
     reset-button(:text="$t('newGarment.reset')")
 </template>
 <script>
@@ -68,6 +72,9 @@ export default {
           wear_to_wash: 1,
         }
       },
+    },
+    waiting: {
+      type: Boolean,
     },
   },
   emits: ['submit'],
