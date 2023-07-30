@@ -1,7 +1,7 @@
 <template lang="pug">
 form(@submit="onSubmit" @reset="onReset"  v-if="show")
     text-input(
-      :name="name"
+      id="name"
       :text="garment.name"
       :label="$t('newGarment.name')"
       :placeholder="$t('newGarment.enterGarmentName')"
@@ -12,7 +12,7 @@ form(@submit="onSubmit" @reset="onReset"  v-if="show")
     place-selector(@selected="onPlaceSelected" :selected="garment.place")
     activity-selector(@selected="onActivitySelected" :selected="garment.activity")
     text-input(
-      :name="color"
+      id="color"
       :text="garment.color"
       :label="$t('newGarment.color')"
       :placeholder="$t('newGarment.enterGarmentColor')"
@@ -20,7 +20,7 @@ form(@submit="onSubmit" @reset="onReset"  v-if="show")
       required
     )
     text-input(
-      :name="status"
+      id="status"
       :text="garment.status"
       :label="$t('newGarment.status')"
       :placeholder="$t('newGarment.enterGarmentStatus')"
@@ -28,7 +28,7 @@ form(@submit="onSubmit" @reset="onReset"  v-if="show")
       required
     )
     number-input(
-      :name="wear-to-wash"
+      id="wear-to-wash"
       :label="$t('newGarment.wearToWash')"
       :amount="garment.wear_to_wash"
       min="1"

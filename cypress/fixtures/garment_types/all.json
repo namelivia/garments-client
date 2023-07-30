@@ -1,1 +1,5 @@
-[]
+[
+    {"id": 1, "name": "pants"},
+    {"id": 2, "name": "shirts"},
+    {"id": 3, "name": "jackets"}
+]
