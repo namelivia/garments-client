@@ -6,11 +6,12 @@ section
           :name="name"
           :label="$t('newPlace.name')"
           :placeholder="$t('newPlace.enterPlaceName')"
+          :disabled="waiting"
           @update="form.name = $event"
           required
         )
         .mt-4
-        submit-button.mr-2(:text="$t('newPlace.submit')")
+        submit-button.mr-2(:text="$t('newPlace.submit')" :disabled="waiting")
         reset-button(:text="$t('newPlace.reset')")
 </template>
 
@@ -25,18 +26,22 @@ export default {
         name: '',
       },
       show: true,
+      waiting: false,
     }
   },
   methods: {
     async onSubmit(evt) {
       const toast = useToast()
       try {
+        this.waiting = true
         evt.preventDefault()
         await postPlace(this.form)
         toast.success(`Place ${this.form.name} created`)
         router.replace('/list')
       } catch (err) {
         toast.error(`Place could not be created`)
+      } finally {
+        this.waiting = false
       }
     },
     onReset(evt) {

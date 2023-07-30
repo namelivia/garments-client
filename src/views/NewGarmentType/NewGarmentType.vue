@@ -6,11 +6,12 @@ section
           :name="name"
           :label="$t('newGarmentType.name')"
           :placeholder="$t('newGarmentType.enterGarmentTypeName')"
+          :disabled=waiting
           @update="onInput"
           required
         )
         .mt-4
-        submit-button.mr-2(:text="$t('newGarmentType.submit')")
+        submit-button.mr-2(:text="$t('newGarmentType.submit')" :disabled="waiting")
         reset-button(:text="$t('newGarmentType.reset')")
 </template>
 
@@ -25,18 +26,22 @@ export default {
         name: '',
       },
       show: true,
+      waiting: true,
     }
   },
   methods: {
     async onSubmit(evt) {
       const toast = useToast()
       try {
+        this.waiting = true
         evt.preventDefault()
         await postGarmentType(this.form)
         toast.success(`GarmentType ${this.form.name} created`)
         router.replace('/list')
       } catch (err) {
         toast.error(`GarmentType could not be created`)
+      } finally {
+        this.waiting = false
       }
     },
     onInput(value) {

@@ -6,11 +6,12 @@ section
           :name="name"
           :label="$t('newActivity.name')"
           :activityholder="$t('newActivity.enterActivityName')"
+          :disabled="waiting"
           @update="form.name = $event"
           required
         )
         .mt-4
-        submit-button.mr-2(:text="$t('newActivity.submit')")
+        submit-button.mr-2(:text="$t('newActivity.submit')" :disabled="waiting")
         reset-button(:text="$t('newActivity.reset')")
 </template>
 
@@ -25,18 +26,22 @@ export default {
         name: '',
       },
       show: true,
+      waiting: false,
     }
   },
   methods: {
     async onSubmit(evt) {
       const toast = useToast()
       try {
+        this.waiting = true
         evt.preventDefault()
         await postActivity(this.form)
         toast.success(`Activity ${this.form.name} created`)
         router.replace('/list')
       } catch (err) {
         toast.error(`Activity could not be created`)
+      } finally {
+        this.waiting = false
       }
     },
     onReset(evt) {
