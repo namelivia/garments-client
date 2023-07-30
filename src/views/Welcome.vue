@@ -62,6 +62,13 @@ export default {
     },
     async loadRandom() {
       try {
+        if (
+          this.form.place === null ||
+          this.form.garment_type === null ||
+          this.form.activity === null
+        ) {
+          return null
+        }
         this.randomGarment = await getRandomGarment(
           this.form.place,
           this.form.garment_type,

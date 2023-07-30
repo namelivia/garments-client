@@ -6,6 +6,8 @@ section
             v-for='garment in garments' :key='garment.id'
             :id="garment.id"
             :name="garment.name"
+            :washing="garment.washing"
+            :thrown_away="garment.thrown_away"
             :image-path="garment.image"
         )
 </template>

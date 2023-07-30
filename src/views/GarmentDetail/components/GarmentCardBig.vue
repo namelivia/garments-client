@@ -9,8 +9,12 @@ section(v-else)
     p.mb-0 {{$t("garmentDetails.status")}}: {{ garment.status}}
     p.mb-0 {{$t("garmentDetails.place")}}: {{ garment.place}}
     p.mb-0 {{$t("garmentDetails.activity")}}: {{ garment.activity}}
+    p.mb-0 {{$t("garmentDetails.total_worn")}}: {{ garment.worn}}
+    p.mb-0 {{$t("garmentDetails.worn")}}: {{ garment.total_worn}}
+    p.mb-0 {{$t("garmentDetails.washing")}}: {{ garment.washing}}
+    p.mb-0 {{$t("garmentDetails.thrown_away")}}: {{ garment.thrown_away}}
     danger-button(@click="onDelete" :text="$t('garmentDetails.deleteIt')")
-    danger-button.ml-2(@click="onThrowAway" :text="$t('garmentDetails.throwAway')")
+    danger-button.ml-2(@click="onThrowAway" :text="$t('garmentDetails.throwAway')" v-if="!garment.thrown_away")
     router-link(:to="{ name: 'edit', params: { garmentId: this.garment.id}}")
         secondary-button.ml-2(:text="$t('garmentCard.editIt')")
 </template>

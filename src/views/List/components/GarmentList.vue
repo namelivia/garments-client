@@ -6,6 +6,7 @@ section
             v-for='garment in garments' :key='garment.id'
             :id="garment.id"
             :name="garment.name"
+            :washing="garment.washing"
             :image-path="garment.image"
         )
 </template>
@@ -58,7 +59,7 @@ export default {
   methods: {
     async loadList() {
       this.loading = true
-      if (!this.selectedType || !this.selectedType) {
+      if (!this.selectedType || !this.selectedActivity || !this.selectedPlace) {
         return null
       }
       try {

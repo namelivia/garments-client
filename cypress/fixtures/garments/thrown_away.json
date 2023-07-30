@@ -1,0 +1,34 @@
+[
+   {
+      "name":"Some pants thrown away",
+      "garment_type":"pants",
+      "color":"brown",
+      "status":"Ok",
+      "place":"home",
+      "activity":"casual",
+      "wear_to_wash":5,
+      "image":null,
+      "id":1,
+      "worn":1,
+      "total_worn":5,
+      "washing":true,
+      "thrown_away":true,
+      "journaling_key":"0ce68a9c-7db9-4bef-aa72-b53dc4a284f3"
+   },
+   {
+      "name":"Some jeans thrown away",
+      "garment_type":"pants",
+      "color":"blue",
+      "status":"Ok",
+      "place":"home",
+      "activity":"casual",
+      "wear_to_wash":10,
+      "image":null,
+      "id":2,
+      "worn":1,
+      "total_worn":12,
+      "washing":false,
+      "thrown_away":true,
+      "journaling_key":"35f3bf59-6adb-4063-b255-167dbb070815"
+   }
+]

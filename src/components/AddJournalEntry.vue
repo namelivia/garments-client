@@ -2,13 +2,14 @@
 section
     form(@submit="onSubmit" @reset="onReset"  v-if="show")
         text-input(
-          :name="message"
+          id="message"
           :label="$t('addJournalEntry.insertEntryManually')"
           :placeholder="$t('addJournalEntry.messageContent')"
+          :disabled="waiting"
           @update="form.message = $event"
           required
         )
-        submit-button(:text="$t('addJournalEntry.add')")
+        submit-button(:text="$t('addJournalEntry.add')" :disabled="waiting")
 </template>
 <script>
 import { postJournalEntry } from '@/apis/apis'
@@ -26,18 +27,22 @@ export default {
         message: '',
       },
       show: true,
+      waiting: false,
     }
   },
   methods: {
     async onSubmit(evt) {
       const toast = useToast()
       try {
+        this.waiting = true
         evt.preventDefault()
         await postJournalEntry(this.garmentId, this.form)
         toast.success(`Journal entry added`)
         this.onReset()
       } catch (err) {
         toast.error(`Journal entry could not be added`)
+      } finally {
+        this.waiting = false
       }
     },
     onReset(evt) {
