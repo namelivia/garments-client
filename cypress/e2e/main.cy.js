@@ -40,6 +40,35 @@ describe('e2e tests', () => {
     cy.contains('Wear it')
   })
 
+  it('when only one place is returned, it will be preselected', () => {
+    cy.intercept('GET', 'https://garments.localhost.pomerium.io/api/users/me', {
+      fixture: 'users/me',
+    }).as('getMe')
+    cy.intercept('GET', 'https://garments.localhost.pomerium.io/api/places', {
+      fixture: 'places/only_one',
+    }).as('getPlaces')
+    cy.intercept(
+      'GET',
+      'https://garments.localhost.pomerium.io/api/activities',
+      {
+        fixture: 'activities/all',
+      },
+    ).as('getActivities')
+    cy.intercept(
+      'GET',
+      'https://garments.localhost.pomerium.io/api/garment_types',
+      {
+        fixture: 'garment_types/all',
+      },
+    ).as('getGarmentTypes')
+
+    // Page loading
+    cy.visit('/')
+
+    // The only place is preselected
+    cy.get('select[id="place"]').should('have.value', 'home')
+  })
+
   it('create a new garment without picture', () => {
     cy.intercept('GET', 'https://garments.localhost.pomerium.io/api/users/me', {
       fixture: 'users/me',

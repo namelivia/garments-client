@@ -55,7 +55,6 @@ export default {
     async loadGarmentTypes() {
       try {
         this.garmentTypes = await getGarmentTypes()
-        console.log(this.garmentTypes)
       } catch (err) {
         const toast = useToast()
         toast.error(`Garment Types can't be retrieved`)
