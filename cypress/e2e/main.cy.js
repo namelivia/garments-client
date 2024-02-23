@@ -203,4 +203,35 @@ describe('e2e tests', () => {
     // The list of thrown away garments is displayed
     cy.visit('/thrown_away')
   })
+
+  it('send garment to wash', () => {
+    cy.intercept('GET', 'https://garments.localhost.pomerium.io/api/users/me', {
+      fixture: 'users/me',
+    }).as('getMe')
+    cy.intercept(
+      'GET',
+      'https://garments.localhost.pomerium.io/api/garments/1',
+      {
+        fixture: 'garments/detail',
+      },
+    ).as('getGarment')
+    cy.intercept(
+      'GET',
+      'https://garments.localhost.pomerium.io/api/garments/1/journal',
+      {
+        fixture: 'garments/journal',
+      },
+    ).as('getGarmentJournal')
+    cy.intercept(
+      'POST',
+      'https://garments.localhost.pomerium.io/api/garments/1/send_to_wash',
+      {
+        statusCode: 200,
+        delay: 5000,
+      },
+    ).as('sendToWash')
+
+    cy.visit('/garment/1')
+    cy.get('button[name="send-to-wash"]').click()
+  })
 })

@@ -25,6 +25,7 @@ const messages = {
     garmentCard: {
       details: 'Details',
       editIt: 'Edit it',
+      sendToWash: 'Send to wash',
       wearIt: 'Wear it',
       washIt: 'Wash it',
     },
@@ -41,6 +42,7 @@ const messages = {
       thrown_away: 'Thrown away',
       deleteIt: 'Delete it',
       throwAway: 'Throw away',
+      sendToWash: 'Send to wash',
     },
     addJournalEntry: {
       add: 'Add',
@@ -104,6 +106,7 @@ const messages = {
     garmentCard: {
       details: 'Detalles',
       editIt: 'Editarla',
+      sendToWash: 'Enviar a lavar',
       wearIt: 'Ponérselo',
       washIt: 'Lavarla',
     },
@@ -120,6 +123,7 @@ const messages = {
       thrown_away: 'Tirada',
       deleteIt: 'Eliminarla',
       throwAway: 'Tirarla',
+      sendToWash: 'Enviar a lavar',
     },
     addJournalEntry: {
       add: 'Añadir',

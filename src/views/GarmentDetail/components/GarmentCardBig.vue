@@ -13,6 +13,7 @@ section(v-else)
     p.mb-0 {{$t("garmentDetails.worn")}}: {{ garment.total_worn}}
     p.mb-0 {{$t("garmentDetails.washing")}}: {{ garment.washing}}
     p.mb-0 {{$t("garmentDetails.thrown_away")}}: {{ garment.thrown_away}}
+    regular-button.ml-2(name="send-to-wash" @click="onSendToWash" :text="$t('garmentDetails.sendToWash')" v-if="!garment.washing")
     danger-button(@click="onDelete" :text="$t('garmentDetails.deleteIt')")
     danger-button.ml-2(@click="onThrowAway" :text="$t('garmentDetails.throwAway')" v-if="!garment.thrown_away")
     router-link(:to="{ name: 'edit', params: { garmentId: this.garment.id}}")
@@ -20,7 +21,12 @@ section(v-else)
 </template>
 
 <script>
-import { getGarment, deleteGarment, throwAwayGarment } from '@/apis/apis'
+import {
+  getGarment,
+  deleteGarment,
+  sendToWashGarment,
+  throwAwayGarment,
+} from '@/apis/apis'
 import { getImageUrl } from '@/apis/helpers'
 import { useToast } from 'vue-toastification'
 import router from '@/router'
@@ -73,6 +79,17 @@ export default {
         router.replace('/list')
       } catch (err) {
         toast.error(`Garment could not be removed`)
+      }
+    },
+    async onSendToWash(evt) {
+      evt.preventDefault()
+      const toast = useToast()
+      try {
+        await sendToWashGarment(this.garment.id)
+        toast.success(`Garment ${this.garment.name} sent to wash`)
+      } catch (err) {
+        console.log(err)
+        toast.error(`Garment could not be sent to wash`)
       }
     },
     async onThrowAway(evt) {
