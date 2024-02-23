@@ -6,12 +6,13 @@ div
       div(class="inline" v-if="!thrown_away")
           regular-button(@click="onWear" :text="$t('garmentCard.wearIt')" v-if="!washing")
           regular-button.ml-2(@click="onWash" :text="$t('garmentCard.washIt')" v-if="washing")
+          regular-button.ml-2(name="send-to-wash" @click="onSendToWash" :text="$t('garmentCard.sendToWash')" v-if="!washing")
       router-link(:to="{ name: 'garment', params: { garmentId: id}}")
           secondary-button.ml-2(:text="$t('garmentCard.details')")
 </template>
 <script>
 import { getImageUrl } from '@/apis/helpers'
-import { wearGarment, washGarment } from '@/apis/apis'
+import { sendToWashGarment, wearGarment, washGarment } from '@/apis/apis'
 import { useToast } from 'vue-toastification'
 export default {
   props: {
@@ -58,6 +59,17 @@ export default {
       } catch (err) {
         console.log(err)
         toast.error(`Garment could not be worn`)
+      }
+    },
+    async onSendToWash(evt) {
+      evt.preventDefault()
+      const toast = useToast()
+      try {
+        await sendToWashGarment(this.id)
+        toast.success(`Garment ${this.name} sent to wash`)
+      } catch (err) {
+        console.log(err)
+        toast.error(`Garment could not be sent to wash`)
       }
     },
     async onWash(evt) {

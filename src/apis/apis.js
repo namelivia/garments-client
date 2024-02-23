@@ -168,6 +168,15 @@ export const washGarment = async (garmentId) => {
   return response.data
 }
 
+export const sendToWashGarment = async (garmentId) => {
+  const response = await axios.post(
+    `${
+      import.meta.env.VITE_APP_API_ENDPOINT
+    }/garments/${garmentId}/send_to_wash`,
+  )
+  return response.data
+}
+
 export const throwAwayGarment = async (garmentId) => {
   const response = await axios.post(
     `${import.meta.env.VITE_APP_API_ENDPOINT}/garments/${garmentId}/throw_away`,
