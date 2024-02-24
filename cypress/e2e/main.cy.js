@@ -4,7 +4,7 @@ describe('e2e tests', () => {
       fixture: 'users/me',
     }).as('getMe')
     cy.intercept('GET', 'https://garments.localhost.pomerium.io/api/places', {
-      fixture: 'places/all',
+      fixture: 'places/only_one',
     }).as('getPlaces')
     cy.intercept(
       'GET',
@@ -34,7 +34,6 @@ describe('e2e tests', () => {
 
     // Asking for a random garment
     cy.get('select[id="garment_type"]').select(1)
-    cy.get('select[id="place"]').select(1)
     cy.get('select[id="activity"]').select(1)
     cy.contains('Everyday pants')
     cy.contains('Wear it')
