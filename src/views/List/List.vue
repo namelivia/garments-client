@@ -41,7 +41,7 @@ export default {
       const currentUser = await store.getCurrentUser(
         import.meta.env.VITE_APP_API_ENDPOINT,
       )
-      this.form.place = currentUser.place || ''
+      this.form.place = currentUser.place || null
     },
     onGarmentTypeSelected(selectedGarmentType) {
       this.form.garment_type = selectedGarmentType
