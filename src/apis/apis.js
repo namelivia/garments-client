@@ -183,3 +183,16 @@ export const throwAwayGarment = async (garmentId) => {
   )
   return response.data
 }
+
+export const getOutfit = async (selectedPlace, selectedActivity) => {
+  const response = await axios.get(
+    `${import.meta.env.VITE_APP_API_ENDPOINT}/outfits`,
+    {
+      params: {
+        place: selectedPlace,
+        activity: selectedActivity,
+      },
+    },
+  )
+  return response.data
+}
