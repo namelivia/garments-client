@@ -3,35 +3,29 @@ section
     section-title(:text="$t('welcome.welcome')")
     place-selector(@selected="onPlaceSelected" :selected="form.place")
     activity-selector(@selected="onActivitySelected" :selected="form.activity")
-    garment-type-selector(@selected="onGarmentTypeSelected")
-    garment-card(
-        v-if="randomGarment !== null"
-        :id="randomGarment.id"
-        :name="randomGarment.name"
-        :image-path="randomGarment.image"
+    outfit-card(
+        v-if="outfit !== null"
+        :garments="outfit.garments"
     )
 </template>
 
 <script>
-import GarmentCard from '@/components/GarmentCard.vue'
-import GarmentTypeSelector from '@/components/GarmentTypeSelector.vue'
+import OutfitCard from '@/components/OutfitCard.vue'
 import PlaceSelector from '@/components/PlaceSelector.vue'
 import ActivitySelector from '@/components/ActivitySelector.vue'
-import { getRandomGarment } from '@/apis/apis'
+import { getOutfit } from '@/apis/apis'
 import { useToast } from 'vue-toastification'
 import { store } from '@namelivia/vue-currentuser'
 export default {
   components: {
-    garmentCard: GarmentCard,
-    GarmentTypeSelector: GarmentTypeSelector,
+    outfitCard: OutfitCard,
     PlaceSelector: PlaceSelector,
     ActivitySelector: ActivitySelector,
   },
   data: function () {
     return {
-      randomGarment: null,
+      outfit: null,
       form: {
-        garment_type: null,
         place: null,
         activity: null,
       },
@@ -48,35 +42,23 @@ export default {
       )
       this.form.place = currentUser.place || null
     },
-    onGarmentTypeSelected(selectedGarmentType) {
-      this.form.garment_type = selectedGarmentType
-      this.loadRandom()
-    },
     onPlaceSelected(selectedPlace) {
       this.form.place = selectedPlace
-      this.loadRandom()
+      this.getOutfit()
     },
     onActivitySelected(selectedActivity) {
       this.form.activity = selectedActivity
-      this.loadRandom()
+      this.getOutfit()
     },
-    async loadRandom() {
+    async getOutfit() {
       try {
-        if (
-          this.form.place === null ||
-          this.form.garment_type === null ||
-          this.form.activity === null
-        ) {
+        if (this.form.place === null || this.form.activity === null) {
           return null
         }
-        this.randomGarment = await getRandomGarment(
-          this.form.place,
-          this.form.garment_type,
-          this.form.activity,
-        )
+        this.outfit = await getOutfit(this.form.place, this.form.activity)
       } catch (err) {
         const toast = useToast()
-        toast.error(`Random can't be retrieved`)
+        toast.error(`Outfit can't be retrieved`)
       } finally {
         this.loading = false
       }

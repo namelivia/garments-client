@@ -15,27 +15,20 @@ describe('e2e tests', () => {
     ).as('getActivities')
     cy.intercept(
       'GET',
-      'https://garments.localhost.pomerium.io/api/garment_types',
+      'https://garments.localhost.pomerium.io/api/outfits/new?place=home&activity=casual',
       {
-        fixture: 'garment_types/all',
+        fixture: 'outfits/new',
       },
-    ).as('getGarmentTypes')
-    cy.intercept(
-      'GET',
-      'https://garments.localhost.pomerium.io/api/garments/random?place=home&garment_type=pants&activity=casual',
-      {
-        fixture: 'garments/random',
-      },
-    ).as('getRandomGarment')
+    ).as('getNewOutfit')
 
     // Page loading
     cy.visit('/')
     cy.contains('Welcome to the garments app')
 
-    // Asking for a random garment
-    cy.get('select[id="garment_type"]').select(1)
+    // Asking for a new outfit
     cy.get('select[id="activity"]').select(1)
     cy.contains('Everyday pants')
+    cy.contains('Everyday socks')
     cy.contains('Wear it')
   })
 
