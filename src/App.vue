@@ -24,25 +24,26 @@ export default {
       currentUserPicture: undefined,
       links: [
         { id: 1, text: this.$i18n.t('navigation.list'), href: '/list' },
-        { id: 2, text: this.$i18n.t('navigation.new'), href: '/new' },
+        { id: 2, text: this.$i18n.t('navigation.random'), href: '/random' },
+        { id: 3, text: this.$i18n.t('navigation.new'), href: '/new' },
         {
-          id: 3,
+          id: 4,
           text: this.$i18n.t('navigation.new-place'),
           href: '/new-place',
         },
         {
-          id: 4,
+          id: 5,
           text: this.$i18n.t('navigation.new-garment-type'),
           href: '/new-garment-type',
         },
         {
-          id: 5,
+          id: 6,
           text: this.$i18n.t('navigation.new-activity'),
           href: '/new-activity',
         },
-        { id: 6, text: this.$i18n.t('navigation.washing'), href: '/washing' },
+        { id: 7, text: this.$i18n.t('navigation.washing'), href: '/washing' },
         {
-          id: 7,
+          id: 8,
           text: this.$i18n.t('navigation.thrown_away'),
           href: '/thrown_away',
         },

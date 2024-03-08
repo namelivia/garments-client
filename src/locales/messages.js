@@ -3,6 +3,7 @@ const messages = {
     navigation: {
       title: 'Garments App',
       list: 'List',
+      random: 'Random',
       new: 'New',
       'new-place': 'New Place',
       'new-garment-type': 'New Type',
@@ -15,6 +16,9 @@ const messages = {
     },
     list: {
       title: 'Garment list',
+    },
+    random: {
+      title: 'Random Garment',
     },
     washing: {
       title: 'Washing Garments',
@@ -84,6 +88,7 @@ const messages = {
     navigation: {
       title: 'App Ropa',
       list: 'Lista',
+      random: 'Aleatorio',
       new: 'Nueva',
       'new-place': 'Nuevo Lugar',
       'new-garment-type': 'Nuevo Tipo',
@@ -96,6 +101,9 @@ const messages = {
     },
     list: {
       title: 'Lista de ropa',
+    },
+    random: {
+      title: 'Ropa aleatória',
     },
     washing: {
       title: 'Ropa lavándose',
