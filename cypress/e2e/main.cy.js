@@ -210,6 +210,46 @@ describe('e2e tests', () => {
     cy.contains('Wash it')
   })
 
+  it('random garment selector', () => {
+    cy.intercept('GET', 'https://garments.localhost.pomerium.io/api/users/me', {
+      fixture: 'users/me',
+    }).as('getMe')
+    cy.intercept('GET', 'https://garments.localhost.pomerium.io/api/places', {
+      fixture: 'places/only_one',
+    }).as('getPlaces')
+    cy.intercept(
+      'GET',
+      'https://garments.localhost.pomerium.io/api/activities',
+      {
+        fixture: 'activities/all',
+      },
+    ).as('getActivities')
+    cy.intercept(
+      'GET',
+      'https://garments.localhost.pomerium.io/api/garment_types',
+      {
+        fixture: 'garment_types/all',
+      },
+    ).as('getGarmentTypes')
+    cy.intercept(
+      'GET',
+      'https://garments.localhost.pomerium.io/api/garments/random?place=home&garment_type=pants&activity=casual',
+      {
+        fixture: 'garments/random',
+      },
+    ).as('getRandomGarment')
+
+    // Page loading
+    cy.visit('/random')
+    cy.contains('Random Garment')
+
+    // Asking for a random garment
+    cy.get('select[id="garment_type"]').select(1)
+    cy.get('select[id="activity"]').select(1)
+    cy.contains('Everyday pants')
+    cy.contains('Wear it')
+  })
+
   it('view thrown away garments', () => {
     cy.intercept('GET', 'https://garments.localhost.pomerium.io/api/users/me', {
       fixture: 'users/me',
