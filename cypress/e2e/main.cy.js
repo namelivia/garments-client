@@ -1,5 +1,5 @@
 describe('e2e tests', () => {
-  it.only('welcome page', () => {
+  it('welcome page', () => {
     cy.intercept('GET', 'https://garments.localhost.pomerium.io/api/users/me', {
       fixture: 'users/me',
     }).as('getMe')
