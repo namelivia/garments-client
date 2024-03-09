@@ -3,6 +3,12 @@ section
     section-title(:text="$t('welcome.welcome')")
     place-selector(@selected="onPlaceSelected" :selected="form.place")
     activity-selector(@selected="onActivitySelected" :selected="form.activity")
+    regular-button(
+        v-if="outfit !== null"
+        name="wear-outfit"
+        @click="onWear"
+        :text="$t('welcome.wear')"
+    )
     outfit-card(
         v-if="outfit !== null"
         :garments="outfit.garments"
@@ -13,7 +19,7 @@ section
 import OutfitCard from '@/components/OutfitCard.vue'
 import PlaceSelector from '@/components/PlaceSelector.vue'
 import ActivitySelector from '@/components/ActivitySelector.vue'
-import { getOutfit } from '@/apis/apis'
+import { getOutfit, wearOutfit } from '@/apis/apis'
 import { useToast } from 'vue-toastification'
 import { store } from '@namelivia/vue-currentuser'
 export default {
@@ -49,6 +55,17 @@ export default {
     onActivitySelected(selectedActivity) {
       this.form.activity = selectedActivity
       this.getOutfit()
+    },
+    async onWear(evt) {
+      const toast = useToast()
+      evt.preventDefault()
+      try {
+        const response = await wearOutfit(this.outfit.id)
+        toast.success(`Wearing outfit`)
+      } catch (err) {
+        console.log(err)
+        toast.error(`Error wearing outfit`)
+      }
     },
     async getOutfit() {
       try {

@@ -13,6 +13,7 @@ const messages = {
     },
     welcome: {
       welcome: 'Welcome to the garments app',
+      wear: 'Wear',
     },
     list: {
       title: 'Garment list',
@@ -98,6 +99,7 @@ const messages = {
     },
     welcome: {
       welcome: 'Bienvenido a la app de Ropa',
+      wear: 'Vestir',
     },
     list: {
       title: 'Lista de ropa',

@@ -196,3 +196,10 @@ export const getOutfit = async (selectedPlace, selectedActivity) => {
   )
   return response.data
 }
+
+export const wearOutfit = async (outfitId) => {
+  const response = await axios.post(
+    `${import.meta.env.VITE_APP_API_ENDPOINT}/outfits/${outfitId}/wear`,
+  )
+  return response.data
+}

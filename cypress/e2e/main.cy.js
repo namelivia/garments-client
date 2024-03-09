@@ -1,5 +1,5 @@
 describe('e2e tests', () => {
-  it('welcome page', () => {
+  it.only('welcome page', () => {
     cy.intercept('GET', 'https://garments.localhost.pomerium.io/api/users/me', {
       fixture: 'users/me',
     }).as('getMe')
@@ -20,6 +20,13 @@ describe('e2e tests', () => {
         fixture: 'outfits/new',
       },
     ).as('getNewOutfit')
+    cy.intercept(
+      'POST',
+      'https://garments.localhost.pomerium.io/api/outfits/1/wear',
+      {
+        fixture: 'outfits/new',
+      },
+    ).as('wearOutfit')
 
     // Page loading
     cy.visit('/')
@@ -29,7 +36,8 @@ describe('e2e tests', () => {
     cy.get('select[id="activity"]').select(1)
     cy.contains('Everyday pants')
     cy.contains('Everyday socks')
-    cy.contains('Wear it')
+    cy.contains('Wear')
+    cy.get('button[name="wear-outfit"]').click()
   })
 
   it('when only one place is returned, it will be preselected', () => {
