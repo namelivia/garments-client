@@ -5,17 +5,16 @@ div
             v-for='garment in garments' :key='garment.id'
             :id="garment.id"
             :name="garment.name"
-            :washing="garment.washing"
             :image-path="garment.image"
         )
 </template>
 <script>
-import GarmentCard from '@/components/GarmentCard.vue'
+import OutfitGarmentCard from '@/components/OutfitGarmentCard.vue'
 import { getImageUrl } from '@/apis/helpers'
 import { useToast } from 'vue-toastification'
 export default {
   components: {
-    garmentCard: GarmentCard,
+    garmentCard: OutfitGarmentCard,
   },
   props: {
     garments: {
