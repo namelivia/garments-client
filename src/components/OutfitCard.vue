@@ -4,6 +4,7 @@ div
         garment-card(
             v-for='garment in garments' :key='garment.id'
             :id="garment.id"
+            :outfit-id="id"
             :name="garment.name"
             :image-path="garment.image"
         )
@@ -17,6 +18,10 @@ export default {
     garmentCard: OutfitGarmentCard,
   },
   props: {
+    id: {
+      type: Number,
+      default: 0,
+    },
     garments: {
       //type: ,
       default: [],

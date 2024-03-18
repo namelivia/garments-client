@@ -11,6 +11,7 @@ section
     )
     outfit-card(
         v-if="outfit !== null"
+        :id="outfit.id"
         :garments="outfit.garments"
     )
 </template>

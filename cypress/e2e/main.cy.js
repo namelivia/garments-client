@@ -1,5 +1,5 @@
 describe('e2e tests', () => {
-  it('welcome page', () => {
+  it.only('welcome page', () => {
     cy.intercept('GET', 'https://garments.localhost.pomerium.io/api/users/me', {
       fixture: 'users/me',
     }).as('getMe')
@@ -22,6 +22,13 @@ describe('e2e tests', () => {
     ).as('getNewOutfit')
     cy.intercept(
       'POST',
+      'https://garments.localhost.pomerium.io/api/outfits/1/reject/1',
+      {
+        statusCode: 200,
+      },
+    ).as('rejectOutfitGarment')
+    cy.intercept(
+      'POST',
       'https://garments.localhost.pomerium.io/api/outfits/1/wear',
       {
         fixture: 'outfits/new',
@@ -36,6 +43,10 @@ describe('e2e tests', () => {
     cy.get('select[id="activity"]').select(1)
     cy.contains('Everyday pants')
     cy.contains('Everyday socks')
+    // Reject garment id 1
+    cy.get('button[name="reject-1"]').click()
+
+    // Wear the outfit
     cy.contains('Wear')
     cy.get('button[name="wear-outfit"]').click()
   })

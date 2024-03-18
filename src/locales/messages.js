@@ -27,6 +27,10 @@ const messages = {
     thrown_away: {
       title: 'Thrown away Garments',
     },
+    outfitGarmentCard: {
+      reject: 'Reject',
+      details: 'Details',
+    },
     garmentCard: {
       details: 'Details',
       editIt: 'Edit it',
@@ -119,6 +123,10 @@ const messages = {
       sendToWash: 'Enviar a lavar',
       wearIt: 'Ponérselo',
       washIt: 'Lavarla',
+    },
+    outfitGarmentCard: {
+      reject: 'Rechazar',
+      details: 'Detalles',
     },
     garmentDetails: {
       name: 'Nombre',
