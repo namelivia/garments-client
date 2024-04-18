@@ -5,6 +5,7 @@ section
         outfit-card(
             v-for='outfit in outfits' :key='outfit.id'
             :id="outfit.id"
+            :activity="outfit.activity"
             :garments="outfit.garments"
         )
 </template>

@@ -1,5 +1,6 @@
 <template lang="pug">
 div
+    h1 {{ activity }}
     card-grid
         garment-card(
             v-for='garment in garments' :key='garment.id'
@@ -21,6 +22,10 @@ export default {
     id: {
       type: Number,
       default: 0,
+    },
+    activity: {
+      type: String,
+      default: '',
     },
     garments: {
       //type: ,
