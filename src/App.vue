@@ -47,6 +47,11 @@ export default {
           text: this.$i18n.t('navigation.thrown_away'),
           href: '/thrown_away',
         },
+        {
+          id: 9,
+          text: this.$i18n.t('navigation.today'),
+          href: '/today',
+        },
       ],
     }
   },

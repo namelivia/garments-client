@@ -210,3 +210,10 @@ export const rejectOutfitGarment = async (outfitId, garmentId) => {
   )
   return response.data
 }
+
+export const getTodaysOutfits = async () => {
+  const response = await axios.get(
+    `${import.meta.env.VITE_APP_API_ENDPOINT}/outfits/today`,
+  )
+  return response.data
+}

@@ -61,6 +61,11 @@ const router = createRouter({
       name: 'thrown_away',
       component: () => import('./views/ThrownAway/ThrownAway.vue'),
     },
+    {
+      path: '/today',
+      name: 'today',
+      component: () => import('./views/Today/Today.vue'),
+    },
   ],
 })
 

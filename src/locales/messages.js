@@ -10,6 +10,7 @@ const messages = {
       'new-activity': 'New Activity',
       washing: 'Washing',
       thrown_away: 'Thrown Away',
+      today: 'Today',
     },
     welcome: {
       welcome: 'Welcome to the garments app',
@@ -26,6 +27,9 @@ const messages = {
     },
     thrown_away: {
       title: 'Thrown away Garments',
+    },
+    today: {
+      title: 'Today',
     },
     outfitGarmentCard: {
       reject: 'Reject',
@@ -100,6 +104,7 @@ const messages = {
       'new-activity': 'Nueva Actividad',
       washing: 'Lavando',
       thrown_away: 'Tirada',
+      today: 'Hoy',
     },
     welcome: {
       welcome: 'Bienvenido a la app de Ropa',
@@ -116,6 +121,9 @@ const messages = {
     },
     thrown_away: {
       title: 'Ropa tirada',
+    },
+    today: {
+      title: 'Hoy',
     },
     garmentCard: {
       details: 'Detalles',
