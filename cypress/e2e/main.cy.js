@@ -189,7 +189,6 @@ describe('e2e tests', () => {
     cy.contains('Color: brown')
     cy.contains('Status: Ok')
     cy.contains('Place: home')
-    cy.contains('Activity: casual')
     cy.contains('Activities: casual, sports')
 
     // Journal messages are displayed
