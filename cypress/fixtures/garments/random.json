@@ -12,5 +12,9 @@
   "total_worn":5,
   "washing":true,
   "thrown_away":false,
-  "journaling_key":"0ce68a9c-7db9-4bef-aa72-b53dc4a284f3"
+  "journaling_key":"0ce68a9c-7db9-4bef-aa72-b53dc4a284f3",
+  "activities": [{
+    "id": 1,
+    "name": "casual"
+  }]
 }

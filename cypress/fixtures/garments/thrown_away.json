@@ -13,7 +13,11 @@
       "total_worn":5,
       "washing":true,
       "thrown_away":true,
-      "journaling_key":"0ce68a9c-7db9-4bef-aa72-b53dc4a284f3"
+      "journaling_key":"0ce68a9c-7db9-4bef-aa72-b53dc4a284f3",
+      "activities": [{
+        "id": 1,
+        "name": "casual"
+      }]
    },
    {
       "name":"Some jeans thrown away",
@@ -29,6 +33,10 @@
       "total_worn":12,
       "washing":false,
       "thrown_away":true,
-      "journaling_key":"35f3bf59-6adb-4063-b255-167dbb070815"
+      "journaling_key":"35f3bf59-6adb-4063-b255-167dbb070815",
+      "activities": [{
+        "id": 1,
+        "name": "casual"
+      }]
    }
 ]
