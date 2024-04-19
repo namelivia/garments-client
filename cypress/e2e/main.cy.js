@@ -315,7 +315,7 @@ describe('e2e tests', () => {
     cy.get('button[name="send-to-wash"]').click()
   })
 
-  it.only('view todays outfit', () => {
+  it('view todays outfit', () => {
     cy.intercept('GET', 'https://garments.localhost.pomerium.io/api/users/me', {
       fixture: 'users/me',
     }).as('getMe')
