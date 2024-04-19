@@ -190,6 +190,7 @@ describe('e2e tests', () => {
     cy.contains('Status: Ok')
     cy.contains('Place: home')
     cy.contains('Activity: casual')
+    cy.contains('Activities: casual, sports')
 
     // Journal messages are displayed
     cy.contains('11/2/2022, 9:12:23 PM')

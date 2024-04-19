@@ -9,6 +9,7 @@ section(v-else)
     p.mb-0 {{$t("garmentDetails.status")}}: {{ garment.status}}
     p.mb-0 {{$t("garmentDetails.place")}}: {{ garment.place}}
     p.mb-0 {{$t("garmentDetails.activity")}}: {{ garment.activity}}
+    p.mb-0 {{$t("garmentDetails.activities")}}: {{ activitiesList }}
     p.mb-0 {{$t("garmentDetails.total_worn")}}: {{ garment.worn}}
     p.mb-0 {{$t("garmentDetails.worn")}}: {{ garment.total_worn}}
     p.mb-0 {{$t("garmentDetails.washing")}}: {{ garment.washing}}
@@ -49,6 +50,9 @@ export default {
         return getImageUrl(this.garment.image)
       }
       return null
+    },
+    activitiesList: function () {
+      return this.garment.activities.map((activity) => activity.name).join(', ')
     },
   },
   watch: {

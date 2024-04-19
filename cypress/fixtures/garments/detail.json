@@ -16,5 +16,8 @@
   "activities": [{
     "id": 1,
     "name": "casual"
+  }, {
+    "id": 2,
+    "name": "sports"
   }]
 }
