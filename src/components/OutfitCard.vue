@@ -8,6 +8,7 @@ div
             :outfit-id="id"
             :name="garment.name"
             :image-path="garment.image"
+            @rejected="onGarmentRejected"
         )
 </template>
 <script>
@@ -30,6 +31,11 @@ export default {
     garments: {
       //type: ,
       default: [],
+    },
+  },
+  methods: {
+    async onGarmentRejected(newOutfit) {
+      this.$emit('rejected', newOutfit)
     },
   },
 }

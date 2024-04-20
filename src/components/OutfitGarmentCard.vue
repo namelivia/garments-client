@@ -44,13 +44,15 @@ export default {
       },
     },
   },
+  emits: ['rejected'],
   methods: {
     async onReject(evt) {
       evt.preventDefault()
       const toast = useToast()
       try {
-        await rejectOutfitGarment(this.outfitId, this.id)
+        const newOutfit = await rejectOutfitGarment(this.outfitId, this.id)
         toast.success(`Rejecting outfit garment ${this.name}`)
+        this.$emit('rejected', newOutfit)
       } catch (err) {
         console.log(err)
         toast.error(`Garment could not be rejected`)

@@ -1,0 +1,44 @@
+{
+    "id": 1,
+    "activity": "casual",
+    "worn_on": null,
+    "garments": [{
+      "name":"Everyday pants",
+      "garment_type":"pants",
+      "color":"brown",
+      "status":"Ok",
+      "place":"home",
+      "activity":"casual",
+      "wear_to_wash":5,
+      "image":null,
+      "id":1,
+      "worn":1,
+      "total_worn":5,
+      "washing":false,
+      "thrown_away":false,
+      "journaling_key":"0ce68a9c-7db9-4bef-aa72-b53dc4a284f3",
+      "activities": [{
+        "id": 1,
+        "name": "casual"
+      }]
+    }, {
+      "name":"Different socks",
+      "garment_type":"socks",
+      "color":"brown",
+      "status":"Ok",
+      "place":"home",
+      "activity":"casual",
+      "wear_to_wash":5,
+      "image":null,
+      "id":3,
+      "worn":1,
+      "total_worn":5,
+      "washing":false,
+      "thrown_away":false,
+      "journaling_key":"0ce68a9c-7db9-4bef-aa72-b53dc4a28423",
+      "activities": [{
+        "id": 1,
+        "name": "casual"
+      }]
+    }]
+}

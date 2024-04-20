@@ -14,6 +14,7 @@ section
         :id="outfit.id"
         :activity="outfit.activity"
         :garments="outfit.garments"
+        @rejected="onGarmentRejected"
     )
 </template>
 
@@ -68,6 +69,9 @@ export default {
         console.log(err)
         toast.error(`Error wearing outfit`)
       }
+    },
+    async onGarmentRejected(newOutfit) {
+      this.outfit = newOutfit
     },
     async getOutfit() {
       try {

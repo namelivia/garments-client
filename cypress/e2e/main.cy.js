@@ -24,7 +24,7 @@ describe('e2e tests', () => {
       'POST',
       'https://garments.localhost.pomerium.io/api/outfits/1/reject/1',
       {
-        statusCode: 200,
+        fixture: 'outfits/reject',
       },
     ).as('rejectOutfitGarment')
     cy.intercept(
@@ -45,6 +45,8 @@ describe('e2e tests', () => {
     cy.contains('Everyday socks')
     // Reject garment id 1
     cy.get('button[name="reject-1"]').click()
+
+    cy.contains('Different socks')
 
     // Wear the outfit
     cy.contains('Wear')
