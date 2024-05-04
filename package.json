@@ -21,7 +21,7 @@
     "@namelivia/vue-components": "^1.6.3",
     "@namelivia/vue-currentuser": "^0.0.4",
     "@vitejs/plugin-vue": "^2.3.4",
-    "@vue/compiler-sfc": "^3.4.25",
+    "@vue/compiler-sfc": "^3.4.26",
     "autoprefixer": "^10.4.19",
     "codecov": "^3.8.3",
     "cypress": "^13.8.1",
