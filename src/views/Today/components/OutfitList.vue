@@ -6,6 +6,7 @@ section
             v-for='outfit in outfits' :key='outfit.id'
             :id="outfit.id"
             :activity="outfit.activity"
+            :weather="outfit.weather"
             :garments="outfit.garments"
         )
 </template>

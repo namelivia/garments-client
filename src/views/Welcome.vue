@@ -13,6 +13,7 @@ section
         v-if="outfit !== null"
         :id="outfit.id"
         :activity="outfit.activity"
+        :weather="outfit.weather"
         :garments="outfit.garments"
         @rejected="onGarmentRejected"
     )

@@ -1,6 +1,7 @@
 <template lang="pug">
 div
     h1 {{ activity }}
+    h1 {{ weather }}
     card-grid
         garment-card(
             v-for='garment in garments' :key='garment.id'
@@ -25,6 +26,10 @@ export default {
       default: 0,
     },
     activity: {
+      type: String,
+      default: '',
+    },
+    weather: {
       type: String,
       default: '',
     },

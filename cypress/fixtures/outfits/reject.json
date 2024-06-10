@@ -1,6 +1,7 @@
 {
     "id": 1,
     "activity": "casual",
+    "weather": "hot",
     "worn_on": null,
     "garments": [{
       "name":"Everyday pants",
