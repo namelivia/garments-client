@@ -2,6 +2,7 @@
 section
     section-title(:text="$t('welcome.welcome')")
     place-selector(@selected="onPlaceSelected" :selected="form.place")
+    span {{ this.weather }}
     activity-selector(@selected="onActivitySelected" :selected="form.activity")
     regular-button(
         v-if="outfit !== null"
@@ -23,7 +24,7 @@ section
 import OutfitCard from '@/components/OutfitCard.vue'
 import PlaceSelector from '@/components/PlaceSelector.vue'
 import ActivitySelector from '@/components/ActivitySelector.vue'
-import { getOutfit, wearOutfit } from '@/apis/apis'
+import { getOutfit, getWeatherForPlace, wearOutfit } from '@/apis/apis'
 import { useToast } from 'vue-toastification'
 import { store } from '@namelivia/vue-currentuser'
 export default {
@@ -35,6 +36,7 @@ export default {
   data: function () {
     return {
       outfit: null,
+      weather: null,
       form: {
         place: null,
         activity: null,
@@ -54,6 +56,7 @@ export default {
     },
     onPlaceSelected(selectedPlace) {
       this.form.place = selectedPlace
+      this.getWeatherForCurrentPlace()
       this.getOutfit()
     },
     onActivitySelected(selectedActivity) {
@@ -73,6 +76,18 @@ export default {
     },
     async onGarmentRejected(newOutfit) {
       this.outfit = newOutfit
+    },
+    async getWeatherForCurrentPlace() {
+      try {
+        if (this.form.place === null) {
+          return null
+        }
+        this.weather = await getWeatherForPlace(this.form.place)
+      } catch (err) {
+        console.log(err)
+        const toast = useToast()
+        toast.error(`Weather can't be retrieved`)
+      }
     },
     async getOutfit() {
       try {
