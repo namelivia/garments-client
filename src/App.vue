@@ -52,6 +52,11 @@ export default {
           text: this.$i18n.t('navigation.today'),
           href: '/today',
         },
+        {
+          id: 10,
+          text: this.$i18n.t('navigation.rules'),
+          href: '/rules',
+        },
       ],
     }
   },

@@ -66,6 +66,11 @@ const router = createRouter({
       name: 'today',
       component: () => import('./views/Today/Today.vue'),
     },
+    {
+      path: '/rules',
+      name: 'rules',
+      component: () => import('./views/Rules/Rules.vue'),
+    },
   ],
 })
 
