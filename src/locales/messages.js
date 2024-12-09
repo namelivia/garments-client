@@ -11,6 +11,7 @@ const messages = {
       washing: 'Washing',
       thrown_away: 'Thrown Away',
       today: 'Today',
+      rules: 'Rules',
     },
     welcome: {
       welcome: 'Welcome to the garments app',
@@ -106,6 +107,7 @@ const messages = {
       washing: 'Lavando',
       thrown_away: 'Tirada',
       today: 'Hoy',
+      rules: 'Reglas',
     },
     welcome: {
       welcome: 'Bienvenido a la app de Ropa',
