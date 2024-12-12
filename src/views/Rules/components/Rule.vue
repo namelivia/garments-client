@@ -1,5 +1,5 @@
 <template lang="pug">
-    li {{ rule.weather }} -> {{ rule.garment_type.name }} -> {{ rule.activity.name }}
+    li {{ rule.weather }} -> {{ rule.activity.name }} -> {{ rule.garment_type.name }}
 </template>
 <script>
 export default {

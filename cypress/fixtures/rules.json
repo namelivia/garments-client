@@ -1,0 +1,158 @@
+[
+  {
+    "activity_id": 3,
+    "garment_type_id": 4,
+    "weather": "cold",
+    "garment_type": {
+      "name": "pijama",
+      "id": 4
+    },
+    "activity": {
+      "name": "Sleep",
+      "id": 3
+    }
+  },
+  {
+    "activity_id": 1,
+    "garment_type_id": 1,
+    "weather": "cold",
+    "garment_type": {
+      "name": "socks",
+      "id": 1
+    },
+    "activity": {
+      "name": "Everyday",
+      "id": 1
+    }
+  },
+  {
+    "activity_id": 1,
+    "garment_type_id": 3,
+    "weather": "cold",
+    "garment_type": {
+      "name": "underpants",
+      "id": 3
+    },
+    "activity": {
+      "name": "Everyday",
+      "id": 1
+    }
+  },
+  {
+    "activity_id": 1,
+    "garment_type_id": 10,
+    "weather": "cold",
+    "garment_type": {
+      "name": "tshirt",
+      "id": 10
+    },
+    "activity": {
+      "name": "Everyday",
+      "id": 1
+    }
+  },
+  {
+    "activity_id": 1,
+    "garment_type_id": 9,
+    "weather": "cold",
+    "garment_type": {
+      "name": "shoe",
+      "id": 9
+    },
+    "activity": {
+      "name": "Everyday",
+      "id": 1
+    }
+  },
+  {
+    "activity_id": 1,
+    "garment_type_id": 6,
+    "weather": "cold",
+    "garment_type": {
+      "name": "pants",
+      "id": 6
+    },
+    "activity": {
+      "name": "Everyday",
+      "id": 1
+    }
+  },
+  {
+    "activity_id": 2,
+    "garment_type_id": 1,
+    "weather": "cold",
+    "garment_type": {
+      "name": "socks",
+      "id": 1
+    },
+    "activity": {
+      "name": "Sports",
+      "id": 2
+    }
+  },
+  {
+    "activity_id": 2,
+    "garment_type_id": 3,
+    "weather": "cold",
+    "garment_type": {
+      "name": "underpants",
+      "id": 3
+    },
+    "activity": {
+      "name": "Sports",
+      "id": 2
+    }
+  },
+  {
+    "activity_id": 2,
+    "garment_type_id": 10,
+    "weather": "cold",
+    "garment_type": {
+      "name": "tshirt",
+      "id": 10
+    },
+    "activity": {
+      "name": "Sports",
+      "id": 2
+    }
+  },
+  {
+    "activity_id": 2,
+    "garment_type_id": 9,
+    "weather": "cold",
+    "garment_type": {
+      "name": "shoe",
+      "id": 9
+    },
+    "activity": {
+      "name": "Sports",
+      "id": 2
+    }
+  },
+  {
+    "activity_id": 2,
+    "garment_type_id": 13,
+    "weather": "cold",
+    "garment_type": {
+      "name": "shorts",
+      "id": 13
+    },
+    "activity": {
+      "name": "Sports",
+      "id": 2
+    }
+  },
+  {
+    "activity_id": 1,
+    "garment_type_id": 13,
+    "weather": "hot",
+    "garment_type": {
+      "name": "shorts",
+      "id": 13
+    },
+    "activity": {
+      "name": "Everyday",
+      "id": 1
+    }
+  }
+]

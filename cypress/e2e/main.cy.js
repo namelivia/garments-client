@@ -334,4 +334,16 @@ describe('e2e tests', () => {
     cy.contains('Everyday pants')
     cy.contains('Everyday socks')
   })
+
+  it('view configuration rules', () => {
+    cy.intercept('GET', 'https://garments.localhost.pomerium.io/api/users/me', {
+      fixture: 'users/me',
+    }).as('getMe')
+    cy.intercept('GET', 'https://garments.localhost.pomerium.io/api/rules', {
+      fixture: 'rules',
+    }).as('getRules')
+    // Page loading
+    cy.visit('/rules')
+    cy.contains('Rules')
+  })
 })
