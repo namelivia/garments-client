@@ -5,6 +5,14 @@ section
         garment-type-selector(@selected="onGarmentTypeSelected" :selected="form.garment_type" :disabled="waiting")
         place-selector(@selected="onPlaceSelected" :selected="form.place" :disabled="waiting")
         activity-selector(@selected="onActivitySelected" :selected="form.activity" :disabled="waiting")
+        text-input(
+          :weather="weather"
+          :label="$t('newRule.weather')"
+          :placeholder="$t('newRule.enterWeather')"
+          :disabled="waiting"
+          @update="form.weather = $event"
+          required
+        )
         .mt-4
         submit-button.mr-2(:text="$t('newRule.submit')" :disabled="waiting")
         reset-button(:text="$t('newRule.reset')")
@@ -26,6 +34,7 @@ export default {
       form: {
         activity: '',
         garment_type: '',
+        weather: '',
       },
       show: true,
       waiting: false,
@@ -61,6 +70,7 @@ export default {
       }
       this.form.activity = ''
       this.form.garment_type = ''
+      this.form.weather = ''
       this.show = false
       this.$nextTick(() => {
         this.show = true

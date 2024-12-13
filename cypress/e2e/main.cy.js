@@ -367,6 +367,6 @@ describe('e2e tests', () => {
     ).as('getGarmentTypes')
     // Page loading
     cy.visit('/new-rule')
-    cy.contains('Rules')
+    cy.contains('Add Rule')
   })
 })
