@@ -57,6 +57,11 @@ export default {
           text: this.$i18n.t('navigation.rules'),
           href: '/rules',
         },
+        {
+          id: 11,
+          text: this.$i18n.t('navigation.new-rule'),
+          href: '/new-rule',
+        },
       ],
     }
   },

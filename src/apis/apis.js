@@ -231,3 +231,11 @@ export const getRules = async () => {
   )
   return response.data
 }
+
+export const postRule = async (data) => {
+  const response = await axios.post(
+    `${import.meta.env.VITE_APP_API_ENDPOINT}/rules`,
+    data,
+  )
+  return response.data
+}

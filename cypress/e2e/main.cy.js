@@ -335,7 +335,7 @@ describe('e2e tests', () => {
     cy.contains('Everyday socks')
   })
 
-  it.only('view configuration rules', () => {
+  it('view configuration rules', () => {
     cy.intercept('GET', 'https://garments.localhost.pomerium.io/api/users/me', {
       fixture: 'users/me',
     }).as('getMe')
@@ -344,6 +344,29 @@ describe('e2e tests', () => {
     }).as('getRules')
     // Page loading
     cy.visit('/rules')
+    cy.contains('Rules')
+  })
+
+  it.only('Add new rule', () => {
+    cy.intercept('GET', 'https://garments.localhost.pomerium.io/api/users/me', {
+      fixture: 'users/me',
+    }).as('getMe')
+    cy.intercept(
+      'GET',
+      'https://garments.localhost.pomerium.io/api/activities',
+      {
+        fixture: 'activities/all',
+      },
+    ).as('getActivities')
+    cy.intercept(
+      'GET',
+      'https://garments.localhost.pomerium.io/api/garment_types',
+      {
+        fixture: 'garment_types/all',
+      },
+    ).as('getGarmentTypes')
+    // Page loading
+    cy.visit('/new-rule')
     cy.contains('Rules')
   })
 })
