@@ -2,16 +2,16 @@
 section
     section-title(text="Rules")
     ul
-        rule(v-for="rule in rules" :rule="rule")
+        weather(v-for="(rules, weather) in rules" :key="weather" :weather="weather" :rules="rules")
 </template>
 
 <script>
-import Rule from '@/views/Rules/components/Rule.vue'
+import Weather from '@/views/Rules/components/Weather.vue'
 import { getRules } from '@/apis/apis'
 import { useToast } from 'vue-toastification'
 export default {
   components: {
-    Rule: Rule,
+    Weather: Weather,
   },
   data() {
     return {
@@ -26,7 +26,15 @@ export default {
   methods: {
     async getRulesList() {
       try {
-        this.rules = await getRules()
+        const rules = await getRules()
+        const groupedRules = rules.reduce((acc, rule) => {
+          if (!acc[rule.weather]) {
+            acc[rule.weather] = []
+          }
+          acc[rule.weather].push(rule)
+          return acc
+        }, {})
+        this.rules = groupedRules
       } catch (err) {
         console.log(err)
         toast.error(`Error getting rules`)

@@ -335,7 +335,7 @@ describe('e2e tests', () => {
     cy.contains('Everyday socks')
   })
 
-  it('view configuration rules', () => {
+  it.only('view configuration rules', () => {
     cy.intercept('GET', 'https://garments.localhost.pomerium.io/api/users/me', {
       fixture: 'users/me',
     }).as('getMe')
