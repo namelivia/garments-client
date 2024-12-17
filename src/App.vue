@@ -62,6 +62,11 @@ export default {
           text: this.$i18n.t('navigation.new-rule'),
           href: '/new-rule',
         },
+        {
+          id: 11,
+          text: this.$i18n.t('navigation.weather'),
+          href: '/weather',
+        },
       ],
     }
   },

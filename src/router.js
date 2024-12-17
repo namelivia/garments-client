@@ -76,6 +76,11 @@ const router = createRouter({
       name: 'new-rule',
       component: () => import('./views/NewRule/NewRule.vue'),
     },
+    {
+      path: '/weather',
+      name: 'weather',
+      component: () => import('./views/Weather/Weather.vue'),
+    },
   ],
 })
 

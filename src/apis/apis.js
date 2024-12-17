@@ -239,3 +239,10 @@ export const postRule = async (data) => {
   )
   return response.data
 }
+
+export const getWeatherConfiguration = async () => {
+  const response = await axios.get(
+    `${import.meta.env.VITE_APP_API_ENDPOINT}/weather/configuration`,
+  )
+  return response.data
+}
