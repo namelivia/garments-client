@@ -347,7 +347,7 @@ describe('e2e tests', () => {
     cy.contains('Rules')
   })
 
-  it.only('Add new rule', () => {
+  it('Add new rule', () => {
     cy.intercept('GET', 'https://garments.localhost.pomerium.io/api/users/me', {
       fixture: 'users/me',
     }).as('getMe')
