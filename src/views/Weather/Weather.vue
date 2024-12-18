@@ -1,7 +1,7 @@
 <template lang="pug">
 section
     section-title(text="Weather")
-    span {{ configuration }}
+    range-view(:ranges="ranges")
 </template>
 
 <script>
@@ -14,9 +14,9 @@ export default {
   },
   data() {
     return {
-      configuration: {},
       show: true,
       waiting: false,
+      ranges: [],
     }
   },
   mounted() {
@@ -26,7 +26,13 @@ export default {
     async getWeatherConfiguration() {
       try {
         const configuration = await getWeatherConfiguration()
-        this.configuration = configuration
+        this.ranges = configuration.map((c) => {
+          return {
+            label: c.name,
+            start: c.min,
+            end: c.max,
+          }
+        })
       } catch (err) {
         console.log(err)
         toast.error(`Error getting configuration`)
