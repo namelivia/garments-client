@@ -29,8 +29,7 @@ export default {
         this.ranges = configuration.map((c) => {
           return {
             label: c.name,
-            start: c.min,
-            end: c.max,
+            max: c.max,
           }
         })
       } catch (err) {
