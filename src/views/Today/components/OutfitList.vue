@@ -1,14 +1,16 @@
 <template lang="pug">
 section
     loading(v-if='loading')
-    card-grid(v-else)
-        outfit-card(
-            v-for='outfit in outfits' :key='outfit.id'
-            :id="outfit.id"
-            :activity="outfit.activity"
-            :weather="outfit.weather"
-            :garments="outfit.garments"
-        )
+    div(v-else)
+        p(v-if='outfits.length === 0') {{ $t('outfit-list.no-outfits') }}
+        card-grid(v-else)
+            outfit-card(
+                v-for='outfit in outfits' :key='outfit.id'
+                :id="outfit.id"
+                :activity="outfit.activity"
+                :weather="outfit.weather"
+                :garments="outfit.garments"
+            )
 </template>
 
 <script>

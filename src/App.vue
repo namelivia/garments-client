@@ -49,16 +49,11 @@ export default {
         },
         {
           id: 9,
-          text: this.$i18n.t('navigation.today'),
-          href: '/today',
-        },
-        {
-          id: 10,
           text: this.$i18n.t('navigation.rules'),
           href: '/rules',
         },
         {
-          id: 11,
+          id: 10,
           text: this.$i18n.t('navigation.new-rule'),
           href: '/new-rule',
         },

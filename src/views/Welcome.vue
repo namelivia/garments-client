@@ -1,8 +1,12 @@
 <template lang="pug">
 section
+    span {{ this.weather }}
+section
+    section-title(:text="$t('today.title')")
+    outfit-list()
+section
     section-title(:text="$t('welcome.welcome')")
     place-selector(@selected="onPlaceSelected" :selected="form.place")
-    span {{ this.weather }}
     activity-selector(@selected="onActivitySelected" :selected="form.activity")
     regular-button(
         v-if="outfit !== null"
@@ -25,6 +29,7 @@ import OutfitCard from '@/components/OutfitCard.vue'
 import PlaceSelector from '@/components/PlaceSelector.vue'
 import ActivitySelector from '@/components/ActivitySelector.vue'
 import { getOutfit, getWeatherForPlace, wearOutfit } from '@/apis/apis'
+import OutfitList from '@/views/Today/components/OutfitList.vue'
 import { useToast } from 'vue-toastification'
 import { store } from '@namelivia/vue-currentuser'
 export default {
@@ -32,6 +37,7 @@ export default {
     outfitCard: OutfitCard,
     PlaceSelector: PlaceSelector,
     ActivitySelector: ActivitySelector,
+    OutfitList: OutfitList,
   },
   data: function () {
     return {
