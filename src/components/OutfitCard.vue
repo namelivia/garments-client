@@ -9,6 +9,7 @@ div
             :outfit-id="id"
             :name="garment.name"
             :image-path="garment.image"
+            :can-reject="canRejectGarments"
             @rejected="onGarmentRejected"
         )
 </template>
@@ -28,6 +29,10 @@ export default {
     activity: {
       type: String,
       default: '',
+    },
+    canRejectGarments: {
+      type: Boolean,
+      default: true,
     },
     weather: {
       type: String,

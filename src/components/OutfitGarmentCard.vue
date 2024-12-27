@@ -3,7 +3,7 @@ div
   card
     card-image(:src="imageUrl" :alt="name" @width="onWidth")
     card-body(:title="name")
-    danger-button(@click="onReject" :name="'reject-'+id" :text="$t('outfitGarmentCard.reject')")
+    danger-button(v-if="canReject" @click="onReject" :name="'reject-'+id" :text="$t('outfitGarmentCard.reject')")
       router-link(:to="{ name: 'garment', params: { garmentId: id}}")
           secondary-button.ml-2(:text="$t('outfitGarmentCard.details')")
 </template>
@@ -24,6 +24,10 @@ export default {
     outfitId: {
       type: Number,
       default: 0,
+    },
+    canReject: {
+      type: Boolean,
+      default: true,
     },
     imagePath: {
       type: String,

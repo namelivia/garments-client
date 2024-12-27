@@ -10,6 +10,7 @@ section
                 :activity="outfit.activity"
                 :weather="outfit.weather"
                 :garments="outfit.garments"
+                :can-reject-garments="false"
             )
 </template>
 
