@@ -75,6 +75,7 @@ export default {
       try {
         const response = await wearOutfit(this.outfit.id)
         toast.success(`Wearing outfit`)
+        this.outfit = null
       } catch (err) {
         console.log(err)
         toast.error(`Error wearing outfit`)
