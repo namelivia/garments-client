@@ -1,5 +1,5 @@
 <template lang="pug">
-card.mb-2
+card
   p.mb-0 {{formattedDate}}
   p.mb-0 {{message}}
 </template>

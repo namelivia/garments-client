@@ -12,8 +12,6 @@ import {
   DangerButton,
   SecondaryButton,
   Card,
-  CardImage,
-  CardBody,
   Selector,
   Spinner,
   TextInput,
@@ -42,8 +40,6 @@ app.component('RegularButton', RegularButton)
 app.component('DangerButton', DangerButton)
 app.component('SecondaryButton', SecondaryButton)
 app.component('Card', Card)
-app.component('CardImage', CardImage)
-app.component('CardBody', CardBody)
 app.component('Selector', Selector)
 app.component('TextInput', TextInput)
 app.component('NumberInput', NumberInput)

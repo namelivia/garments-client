@@ -1,14 +1,12 @@
 <template lang="pug">
 div
-  card
-    card-image(:src="imageUrl" :alt="name" @width="onWidth")
-    card-body(:title="name")
-      div(class="inline" v-if="!thrown_away")
-          regular-button(@click="onWear" :text="$t('garmentCard.wearIt')" v-if="!washing")
-          regular-button.ml-2(@click="onWash" :text="$t('garmentCard.washIt')" v-if="washing")
-          regular-button.ml-2(name="send-to-wash" @click="onSendToWash" :text="$t('garmentCard.sendToWash')" v-if="!washing")
-      router-link(:to="{ name: 'garment', params: { garmentId: id}}")
-          secondary-button.ml-2(:text="$t('garmentCard.details')")
+  card(:image="imageUrl" :title="name" @width="onWidth")
+    div(class="inline" v-if="!thrown_away")
+        regular-button(@click="onWear" :text="$t('garmentCard.wearIt')" v-if="!washing")
+        regular-button.ml-2(@click="onWash" :text="$t('garmentCard.washIt')" v-if="washing")
+        regular-button.ml-2(name="send-to-wash" @click="onSendToWash" :text="$t('garmentCard.sendToWash')" v-if="!washing")
+    router-link(:to="{ name: 'garment', params: { garmentId: id}}")
+        secondary-button.ml-2(:text="$t('garmentCard.details')")
 </template>
 <script>
 import { getImageUrl } from '@/apis/helpers'
