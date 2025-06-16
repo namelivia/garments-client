@@ -1,6 +1,6 @@
 <template lang="pug">
 div
-  card(:image="imageUrl" :title="name" @width="onWidth")
+  card(:image="imageUrl" :title="name" @width="onWidth" :dismissed="dismissed")
     div(class="inline" v-if="!thrown_away")
         regular-button(@click="onWear" :text="$t('garmentCard.wearIt')" v-if="!washing")
         regular-button.ml-2(@click="onWash" :text="$t('garmentCard.washIt')" v-if="washing")
@@ -37,6 +37,7 @@ export default {
     return {
       imageUrl: null,
       imageWidth: undefined,
+      dismissed: false,
     }
   },
   watch: {
@@ -76,6 +77,7 @@ export default {
       try {
         await washGarment(this.id)
         toast.success(`Washing Garment ${this.name}`)
+        this.dismissed = true
       } catch (err) {
         console.log(err)
         toast.error(`Garment could not be washed`)

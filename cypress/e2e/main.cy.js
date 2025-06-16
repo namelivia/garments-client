@@ -129,7 +129,7 @@ describe('e2e tests', () => {
     ).as('addNewJournalEntry')
   })
 
-  it('view washing garments', () => {
+  it.only('view washing garments', () => {
     cy.intercept('GET', 'https://garments.localhost.pomerium.io/api/users/me', {
       fixture: 'users/me',
     }).as('getMe')
@@ -140,12 +140,22 @@ describe('e2e tests', () => {
         fixture: 'garments/washing',
       },
     ).as('getWashingGarments')
+    cy.intercept(
+      'POST',
+      'https://garments.localhost.pomerium.io/api/garments/1/wash',
+      {
+        statusCode: 200,
+      },
+    ).as('wash')
 
     // The list of washing garments is displayed
     cy.visit('/washing')
     cy.contains('Some pants to wash')
     cy.contains('Some jeans to wash')
     cy.contains('Wash it')
+    cy.get('button').contains('Wash it').first().click()
+    cy.contains('Washing Garment Some pants to wash')
+    cy.get('.card').should('have.length', 1)
   })
 
   it('random garment selector', () => {
