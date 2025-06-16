@@ -129,7 +129,7 @@ describe('e2e tests', () => {
     ).as('addNewJournalEntry')
   })
 
-  it.only('view washing garments', () => {
+  it('view washing garments', () => {
     cy.intercept('GET', 'https://garments.localhost.pomerium.io/api/users/me', {
       fixture: 'users/me',
     }).as('getMe')
