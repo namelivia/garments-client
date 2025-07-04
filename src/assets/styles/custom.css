@@ -106,7 +106,7 @@
   --border-radius-round: 50%;
   /* CONTAINER */
   --container-max-width: 1200px;
-  --container-marging: 0 auto;
+  --container-margin: 0 auto;
   /* NAVBAR */
   --color-navbar-background: hsl(210, 7%, 21%);
   --color-navbar-text: hsl(0, 0%, 100%);
