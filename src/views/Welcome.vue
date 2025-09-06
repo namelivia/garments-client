@@ -1,6 +1,12 @@
 <template lang="pug">
 section
-    span {{ this.weather }}
+    temperature(
+      v-if="weather !== null"
+      :title="$t('welcome.current_weather')"
+      :min="weather.weather.min"
+      :avg="weather.weather.avg"
+      :max="weather.weather.max"
+    )
 section
     section-title(:text="$t('today.title')")
     outfit-list()

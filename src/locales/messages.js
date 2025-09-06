@@ -16,6 +16,7 @@ const messages = {
     welcome: {
       welcome: 'Welcome to the garments app',
       wear: 'Wear',
+      current_weather: 'Current weather',
     },
     list: {
       title: 'Garment list',
@@ -112,6 +113,7 @@ const messages = {
     welcome: {
       welcome: 'Bienvenido a la app de Ropa',
       wear: 'Vestir',
+      current_weather: 'Clima actual',
     },
     list: {
       title: 'Lista de ropa',
