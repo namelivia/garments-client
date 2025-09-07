@@ -1,5 +1,6 @@
 <template lang="pug">
 section
+    section-title(:text="$t('welcome.title')")
     temperature(
       v-if="weather !== null"
       :title="$t('welcome.current_weather')"
@@ -7,11 +8,7 @@ section
       :avg="weather.weather.avg"
       :max="weather.weather.max"
     )
-section
-    section-title(:text="$t('today.title')")
     outfit-list()
-section
-    section-title(:text="$t('welcome.welcome')")
     place-selector(@selected="onPlaceSelected" :selected="form.place")
     activity-selector(@selected="onActivitySelected" :selected="form.activity")
     regular-button(

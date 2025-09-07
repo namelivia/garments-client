@@ -1,5 +1,5 @@
-describe('welcome page e2e tests', () => {
-  it('welcome page no outfits today', () => {
+describe('today page e2e tests', () => {
+  it('today page no outfits today', () => {
     cy.intercept('GET', 'https://garments.localhost.pomerium.io/api/users/me', {
       fixture: 'users/me',
     }).as('getMe')
@@ -51,7 +51,7 @@ describe('welcome page e2e tests', () => {
 
     // Page loading
     cy.visit('/')
-    cy.contains('Welcome to the garments app')
+    cy.contains('Today')
 
     // Asking for a new outfit
     cy.get('select[id="activity"]').select(1)
@@ -67,7 +67,7 @@ describe('welcome page e2e tests', () => {
     cy.get('button[name="wear-outfit"]').click()
   })
 
-  it('welcome page outfits today', () => {
+  it('today page outfits today', () => {
     cy.intercept('GET', 'https://garments.localhost.pomerium.io/api/users/me', {
       fixture: 'users/me',
     }).as('getMe')
@@ -98,7 +98,7 @@ describe('welcome page e2e tests', () => {
 
     // Page loading
     cy.visit('/')
-    cy.contains('Welcome to the garments app')
+    cy.contains('Today')
   })
 
   it('when only one place is returned, it will be preselected', () => {
